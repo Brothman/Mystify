@@ -1,0 +1,32 @@
+{
+  "name": "Mystify",
+  "version": "1.0.0",
+  "description": "A fullstack clone of Spotify built in React, Redux, Node, and Express along with MongoDB.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Brothman/Mystify.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Brothman/Mystify/issues"
+  },
+  "homepage": "https://github.com/Brothman/Mystify#readme",
+  "dependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
+    "webpack": "^4.29.0",
+    "webpack-cli": "^3.2.1"
+  }
+}
