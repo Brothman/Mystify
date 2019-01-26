@@ -7,7 +7,7 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-//Seems to be needed to host my static files on the server for the index.html to use
+//Serve my static files from the public folder for the index.html to use
 app.use(express.static(path.resolve(__dirname, '..', 'public')));
 
 app.get('/', (req, res) => {
@@ -24,6 +24,10 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
     if (env == 'dev') {
         console.log(`Server listening on port ${port}!`);
-        opn('http://localhost:3000/');
+        // opn('http://localhost:3000/');
+       //commenting out open because server keeps restarting when I rebundle; 
     }
 });
+
+
+//"dev": "start npm run start-watch && start npm run wp-server"
