@@ -8,7 +8,6 @@
     "webpack": "webpack --watch --mode=development",
     "nodemon": "nodemon",
     "start": "npm run webpack & npm run nodemon"
-
   },
   "repository": {
     "type": "git",
@@ -27,7 +26,10 @@
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
     "body-parser": "^1.18.3",
+    "css-loader": "^2.1.0",
     "express": "^4.16.4",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "mini-css-extract-plugin": "^0.5.0",
     "mongoose": "^5.4.6",
     "nodemon": "^1.18.9",
     "opn": "^5.4.0",

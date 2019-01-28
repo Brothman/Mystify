@@ -1,0 +1,15 @@
+
+
+.splash {
+    background-image: url('https://s3.us-east-2.amazonaws.com/mystify-images/mystify-splashpage.svg');
+}
+
+
+
+
+body {
+    margin: 0;
+}
+/* ^^ We include this first so @imports do not break webpack, specifically on --watch */
+
+/*# sourceMappingURL=main.css.map*/
