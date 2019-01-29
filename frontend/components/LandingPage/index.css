@@ -6,6 +6,9 @@
     display: grid;
     grid-template-rows: 80px calc(100vh - 80px) 344px;
     position: relative;
+    background-image: url('https://s3.us-east-2.amazonaws.com/mystify-images/mystify-splashpage.svg');
+    background-color: #f037a5;
+    background: linear-gradient(#f037a5 -60%, #fae62d 140%);
 }
 
 @media only screen and (max-width: 991px) {

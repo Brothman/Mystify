@@ -5,6 +5,7 @@
     " ";
     justify-items: right;
     align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 .header h6 {
@@ -16,7 +17,7 @@
 }
 
 .header__pipe {
-    border-right: 1px solid black;
+    border-right: 1px solid white;
     width: 1px;
     height: 20%;
 }

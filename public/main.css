@@ -1,4 +1,10 @@
-
+.footer {
+    background-color: black;
+    display: grid;
+    grid-template-columns: 1fr 100px 100px 200px 100px 100px 1fr; 
+    align-items: center;
+    justify-items: center;
+}
 .header {
     display: grid;
     grid-template-columns: 1fr 60px 10fr 100px 50px repeat(2, 100px) 1fr;
@@ -6,6 +12,7 @@
     " ";
     justify-items: right;
     align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 .header h6 {
@@ -17,16 +24,16 @@
 }
 
 .header__pipe {
-    border-right: 1px solid black;
+    border-right: 1px solid white;
     width: 1px;
     height: 20%;
 }
 .splash {
-    background-image: url('https://s3.us-east-2.amazonaws.com/mystify-images/mystify-splashpage.svg');
+    /* background-image: url('https://s3.us-east-2.amazonaws.com/mystify-images/mystify-splashpage.svg');
     width: 100%;
     height: 100%;
     background-color: #f037a5;
-    background: linear-gradient(#f037a5 -60%, #fae62d 140%);
+    background: linear-gradient(#f037a5 -60%, #fae62d 140%); */
     /* top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); */
@@ -42,6 +49,9 @@
     display: grid;
     grid-template-rows: 80px calc(100vh - 80px) 344px;
     position: relative;
+    background-image: url('https://s3.us-east-2.amazonaws.com/mystify-images/mystify-splashpage.svg');
+    background-color: #f037a5;
+    background: linear-gradient(#f037a5 -60%, #fae62d 140%);
 }
 
 @media only screen and (max-width: 991px) {
@@ -51,10 +61,11 @@
 }
 
 
-body {
+body, h6 {
     margin: 0;
     padding: 0;
     font-family: Circular, Helvetica, Arial, sans-serif;
+    color: white;
 }
 /* ^^ We include this first so @imports do not break webpack, specifically on --watch */
 
