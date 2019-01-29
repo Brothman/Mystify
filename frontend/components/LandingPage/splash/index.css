@@ -1,3 +1,7 @@
 .splash {
     background-image: url('https://s3.us-east-2.amazonaws.com/mystify-images/mystify-splashpage.svg');
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
