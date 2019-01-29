@@ -1,6 +1,7 @@
-
 body {
     margin: 0;
+    padding: 0;
+    font-family: Circular, Helvetica, Arial, sans-serif;
 }
 /* ^^ We include this first so @imports do not break webpack, specifically on --watch */
 

@@ -1,3 +1,15 @@
 @import url('./footer/index.css');
 @import url('./header/index.css');
 @import url('./splash/index.css');
+
+.landingPage {
+    display: grid;
+    grid-template-rows: 80px calc(100vh - 80px) 344px;
+    position: relative;
+}
+
+@media only screen and (max-width: 991px) {
+    .landingPage {
+        grid-template-rows: 54px calc(100vh - 80px) 344px;
+    }
+}

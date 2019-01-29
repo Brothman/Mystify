@@ -8,7 +8,7 @@ const Header = () => {
 
             <h6 className="header__nav-item">LinkedIn</h6>
             <h6 className="header__nav-item">Github</h6>
-            <h6 className="header__pipe"> | </h6>
+            <div className="header__pipe"> </div>
             <h6 className="header__nav-item">Sign Up</h6>
             <h6 className="header__nav-item">Log In</h6>
         </div>

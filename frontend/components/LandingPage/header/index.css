@@ -1,0 +1,22 @@
+.header {
+    display: grid;
+    grid-template-columns: 1fr 60px 10fr 100px 50px repeat(2, 100px) 1fr;
+    grid-template-areas: 
+    " ";
+    justify-items: right;
+    align-items: center;
+}
+
+.header h6 {
+    font-size: 16px;
+}
+
+.header__nav-item {
+    width: 60px;
+}
+
+.header__pipe {
+    border-right: 1px solid black;
+    width: 1px;
+    height: 20%;
+}

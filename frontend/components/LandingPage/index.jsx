@@ -7,11 +7,11 @@ import Splash from './splash/index';
 
 const LandingPage = () => {
     return ( 
-       <React.Fragment>
+       <div className="landingPage">
            <Header />
            <Splash />
            <Footer />
-       </React.Fragment> 
+        </div>
      );
 }
  
