@@ -1,6 +1,6 @@
 .header {
     display: grid;
-    grid-template-columns: 1fr 60px 10fr 100px 50px repeat(2, 100px) 1fr;
+    grid-template-columns: 1fr 60px 10fr 100px 20px repeat(2, 100px) 1fr;
     grid-template-areas: 
     " ";
     justify-items: right;
@@ -10,14 +10,20 @@
 
 .header h6 {
     font-size: 16px;
+    cursor: pointer;
 }
 
 .header__nav-item {
-    width: 60px;
+    width: 70px;
+    cursor: pointer;
 }
 
 .header__pipe {
     border-right: 1px solid white;
     width: 1px;
     height: 20%;
+}
+
+.header h6:hover, .header__nav-item:hover {
+    color: #1db954;
 }

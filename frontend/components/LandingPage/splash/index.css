@@ -1,6 +1,6 @@
 .splash {
     display: grid;
-    grid-template-rows: 1fr 150px 150px 150px 1fr;
+    grid-template-rows: 1fr 100px 50px 100px 1fr;
     grid-template-columns: 1fr;
     justify-items: center;
     align-items: center;
@@ -17,6 +17,7 @@
     font-size: 80px;
     line-height: 88px;
     letter-spacing: -2px;
+    margin: 0;
 }
 
 .splash__subtitle {
@@ -29,7 +30,7 @@
     grid-area: button;
     font-size: 14px;
     padding: 14px 40px;
-    width: 160px;
+    width: 252px;
     background-color: #1db954;
     cursor: pointer;
     border-radius: 50px;
@@ -40,4 +41,13 @@
     font-weight: 500;
     transition: 0.2s ease-in-out;
     color: white;
+}
+
+.splash__button:hover {
+    background-color: #1ed760;
+}
+
+.splash__button:focus, .splash__button:active {
+    outline: 0;
+    border: 0;
 }
