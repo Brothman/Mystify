@@ -27,3 +27,18 @@
 .header h6:hover, .header__nav-item:hover {
     color: #1db954;
 }
+
+.header__logo {
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+    transition: opacity ease 0.2s;
+    opacity: 0.8;
+    position: relative;
+    top: 3px;
+    left: 10px;
+}
+
+.header__logo:hover {
+    opacity: 1;
+}

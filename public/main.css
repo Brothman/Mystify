@@ -34,6 +34,21 @@
 .header h6:hover, .header__nav-item:hover {
     color: #1db954;
 }
+
+.header__logo {
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+    transition: opacity ease 0.2s;
+    opacity: 0.8;
+    position: relative;
+    top: 3px;
+    left: 10px;
+}
+
+.header__logo:hover {
+    opacity: 1;
+}
 .splash {
     display: grid;
     grid-template-rows: 1fr 100px 50px 100px 1fr;
@@ -101,8 +116,34 @@
         grid-template-rows: 54px calc(100vh - 80px) 344px;
     }
 }
+.home {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+}
 
+.artist {
+    display: flex;
+    flex-direction: column;
+}
 
+.artist__photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+.sidebar {
+    background-color: black;
+    color: white;
+    height: 100vh;
+}
+.sidebar__nav-item {
+    display: flex;
+}
+
+.sidebar__nav-item-icon {
+    width: 30px;
+    height: 30px;
+}
 body, h6 {
     margin: 0;
     padding: 0;

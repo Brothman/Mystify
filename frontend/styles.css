@@ -10,3 +10,7 @@ body, h6 {
 @import url('./components/Home/index.css');
 
 @import url('./components/Library/index.css');
+
+@import url('./components/Shared/artist/index.css');
+@import url('./components/Shared/sidebar/index.css');
+@import url('./components/Shared/sidebar/navItem/index.css');

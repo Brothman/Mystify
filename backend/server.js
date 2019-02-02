@@ -3,6 +3,12 @@ const opn = require('opn');
 const bodyParser = require('body-parser');
 const path = require('path');
 
+const userRouter = require('./resources/users/userRouter');
+const albumRouter = require('./resources/albums/albumRouter');
+const artistRouter = require('./resources/artists/artistRouter');
+const playlistRouter = require('./resources/playlists/playlistRouter');
+const trackRouter = require('./resources/tracks/trackRouter');
+
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -10,7 +16,13 @@ app.use(bodyParser.json());
 //Serve my static files from the public folder for the index.html to use
 app.use(express.static(path.resolve(__dirname, '..', 'public')));
 
-app.get('/', (req, res) => {
+// app.use('/api/user', userRouter);
+// app.use('/api/album', albumRouter);
+// app.use('/api/artist', artistRouter);
+// app.use('/api/playlist', playlistRouter);
+// app.use('/api/track', trackRouter);
+
+app.get('*', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 

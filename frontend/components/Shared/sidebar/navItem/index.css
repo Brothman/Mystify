@@ -1,0 +1,8 @@
+.sidebar__nav-item {
+    display: flex;
+}
+
+.sidebar__nav-item-icon {
+    width: 30px;
+    height: 30px;
+}

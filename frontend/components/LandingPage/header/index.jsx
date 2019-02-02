@@ -3,7 +3,7 @@ import React from 'react';
 const Header = () => {
     return ( 
         <div className="header">
-            <img src="" className="header__logo" />
+            <img src="https://s3.us-east-2.amazonaws.com/mystify-images/logo_mystify.png" className="header__logo" />
             <h6 className="header__logo-text"> Mystify </h6>
 
             <h6 className="header__nav-item">LinkedIn</h6>
