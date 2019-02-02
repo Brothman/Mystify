@@ -119,6 +119,7 @@
 .home {
     display: grid;
     grid-template-columns: 220px 1fr;
+    width: 100vw;
 }
 
 .artist {
