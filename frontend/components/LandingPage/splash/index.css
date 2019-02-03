@@ -41,6 +41,8 @@
     font-weight: 500;
     transition: 0.2s ease-in-out;
     color: white;
+    text-decoration: none;
+    text-align: center;
 }
 
 .splash__button:hover {

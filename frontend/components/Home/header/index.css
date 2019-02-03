@@ -1,0 +1,56 @@
+    .home__nav-item {
+      transition: color 0.2s ease;
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      height: 20px;
+      margin-right: 40px;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 2px;
+      display: inline-block;
+      position: relative;
+    }
+
+    .home__nav-item--active::after {
+        content: "";
+        height: 2px;
+        background-color: #1db954;
+        width: 30px;
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        margin-left: -15px;
+    }
+    
+
+    .home__nav-item--active,  .home__nav-item:hover {
+      color: rgba(255,255,255);
+    }
+
+    .home__new-playlist {
+        font-size: 14px;
+        padding: 5px 10px;
+        width: 175px;
+        background-color: #1db954;
+        cursor: pointer;
+        border-radius: 50px;
+        border: none;
+        text-transform: uppercase;
+        font-family: 'Rubik', Helvetica, Arial, sans-serif;
+        letter-spacing: 2px;
+        font-weight: 500;
+        transition: 0.2s ease-in-out;
+        color: white;
+        text-decoration: none;
+        text-align: center;
+        
+        /* float: right; */
+        position: absolute;
+        right: 50px;
+        top: 35px;
+
+    }
+
+    .home__new-playlist:focus, .home__new-playlist:active {
+        outline: none;
+    }

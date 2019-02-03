@@ -1,7 +1,7 @@
 .home {
     display: grid;
-    grid-template-columns: 220px 1fr;
-    grid-template-rows: 50px 1fr; 
+    grid-template-columns: 230px 1fr;
+    grid-template-rows: 100px 1fr; 
     width: 100vw;
     grid-template-areas:
     " sidebar  header  "
@@ -11,6 +11,8 @@
 
 .home__header {
     grid-area: header;
+    justify-self: center;
+    align-self: center;
 }
 
 .home__artists {

@@ -1,8 +1,43 @@
 .sidebar__nav-item {
     display: flex;
+    cursor: pointer;
+    height: 30px;
+    align-items: center;
+}
+
+.sidebar__nav-item:hover {
+
 }
 
 .sidebar__nav-item-icon {
     width: 30px;
     height: 30px;
+}
+
+.sidebar__nav-item-text {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.5);
+    transition: color ease 0.2s; 
+    margin-left: 15px;
+}
+
+.sidebar__nav-item:hover .sidebar__nav-item-text {
+    color: rgba(255, 255, 255, 1);
+}
+
+.sidebar__svg-home {
+        width: 100%;
+    stroke: rgba(255,255,255,0.6);
+    fill: transparent;
+    stroke-width: 6;
+    transition: 0s;
+    /* transform: scale(0.3); */
+}
+
+.sidebar__svg-container {
+    height: 24px;
+    width: 24px;
+    position: relative;
+    bottom: 2px;
+    margin-left: 24px;
 }

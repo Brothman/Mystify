@@ -8,6 +8,7 @@ body, h6 {
 
 @import url('./components/LandingPage/index.css');
 @import url('./components/Home/index.css');
+@import url('./components/Home/header/index.css');
 
 @import url('./components/Library/index.css');
 
