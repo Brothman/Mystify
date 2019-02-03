@@ -135,8 +135,8 @@
     grid-area: artists;
     height: calc(100vh - 50px);
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    grid-template-rows: repeat(auto-fill, minmax(160px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(210px, 1fr));
 }
 
 .artist {
@@ -146,31 +146,63 @@
     justify-content: center;
 }
 
-.artist:hover {
-    opacity: 0.5;
+.artist__photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
 }
 
-/* .artist__photo:after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    transition: 0.2s ease-in-out;
-    background-color: rgba(0,0,0,0.85);
-    border-radius: 100%;    
-} */
-
-.artist__photo {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
+.artist__photo-play {
+    position: relative;
+    height: 200px;
 }
 
 .artist__photo, .artist__name {
     cursor: pointer;
 }
+
+.artist__play-button {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    transition: opacity cubic-bezier(0.52, 0, 0.5, 1) 0.3s, transform ease 0.2s;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.artist__play-button:hover {
+    transform: translate(-50%, 50%) scale(1.2);
+}
+.artist__photo-play:hover .artist__play-button, .artist__photo-play:hover .artist__black-layer {
+    opacity: 1;
+}
+
+.svg-play {
+    stroke: #fff;
+    width: 100%;
+    fill: transparent;
+    stroke-width: 6;
+    transition: 0s;
+}
+
+.artist__black-layer {
+    opacity: 0;
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+    transition: opacity ease 0.2s;
+    cursor: pointer;
+}
+
+
 .sidebar {
     background-color: rgba(0,0,0,0.5);;
     color: white;

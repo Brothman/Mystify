@@ -29,8 +29,8 @@ class Home extends React.Component {
             ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
             ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
         ];
-        return artists.map((artist) => {
-            return <Artist imageUrl={artist[0]} name={artist[1]} />
+        return artists.map((artist, idx) => {
+            return <Artist key={idx} imageUrl={artist[0]} name={artist[1]} />
         });
     }
     render() { 
