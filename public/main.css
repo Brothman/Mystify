@@ -119,21 +119,60 @@
 .home {
     display: grid;
     grid-template-columns: 220px 1fr;
+    grid-template-rows: 50px 1fr; 
     width: 100vw;
+    grid-template-areas:
+    " sidebar  header  "
+    " sidebar  artists ";
+    background-image: linear-gradient(#3c3e5d, #060609 85%);
+}
+
+.home__header {
+    grid-area: header;
+}
+
+.home__artists {
+    grid-area: artists;
+    height: calc(100vh - 50px);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(160px, 1fr));
 }
 
 .artist {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
+
+.artist:hover {
+    opacity: 0.5;
+}
+
+/* .artist__photo:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: 0.2s ease-in-out;
+    background-color: rgba(0,0,0,0.85);
+    border-radius: 100%;    
+} */
 
 .artist__photo {
     width: 150px;
     height: 150px;
     border-radius: 50%;
 }
+
+.artist__photo, .artist__name {
+    cursor: pointer;
+}
 .sidebar {
-    background-color: black;
+    background-color: rgba(0,0,0,0.5);;
     color: white;
     height: 100vh;
 }

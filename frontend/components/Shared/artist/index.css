@@ -1,10 +1,32 @@
 .artist {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
+
+.artist:hover {
+    opacity: 0.5;
+}
+
+/* .artist__photo:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: 0.2s ease-in-out;
+    background-color: rgba(0,0,0,0.85);
+    border-radius: 100%;    
+} */
 
 .artist__photo {
     width: 150px;
     height: 150px;
     border-radius: 50%;
+}
+
+.artist__photo, .artist__name {
+    cursor: pointer;
 }

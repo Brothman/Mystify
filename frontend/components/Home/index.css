@@ -1,5 +1,22 @@
 .home {
     display: grid;
     grid-template-columns: 220px 1fr;
+    grid-template-rows: 50px 1fr; 
     width: 100vw;
+    grid-template-areas:
+    " sidebar  header  "
+    " sidebar  artists ";
+    background-image: linear-gradient(#3c3e5d, #060609 85%);
+}
+
+.home__header {
+    grid-area: header;
+}
+
+.home__artists {
+    grid-area: artists;
+    height: calc(100vh - 50px);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(160px, 1fr));
 }

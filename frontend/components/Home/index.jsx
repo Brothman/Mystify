@@ -4,6 +4,7 @@ import React from 'react';
 import Sidebar from '../shared/sidebar/index.jsx';
 import Header from './header/index';
 import Artist from '../shared/artist/index.jsx';
+import { debug } from 'util';
 
 class Home extends React.Component {
     constructor(props) {
@@ -13,12 +14,33 @@ class Home extends React.Component {
         x = 'hell';
         
     }
+
+    createArtists = () => {
+        const artists = [
+            ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
+            ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
+            ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
+            ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
+            ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
+            ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
+            ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
+            ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
+            ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
+            ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
+            ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
+        ];
+        return artists.map((artist) => {
+            return <Artist imageUrl={artist[0]} name={artist[1]} />
+        });
+    }
     render() { 
         return ( 
             <div className="home">
                 <Sidebar />
                 <Header />
-                <Artist imageUrl="https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg" name="NF" />
+                <div className="home__artists">
+                   {this.createArtists()}
+                </div>
             </div>
          );
     }

@@ -22,6 +22,7 @@
   "homepage": "https://github.com/Brothman/Mystify#readme",
   "dependencies": {
     "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.3.0",
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.5",
