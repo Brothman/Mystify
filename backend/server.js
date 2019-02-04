@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 const userRouter = require('./resources/users/userRouter');
 const albumRouter = require('./resources/albums/albumRouter');
-const artistRouter = require('./resources/artists/artistRouter');
+import artistRouter from './resources/artists/artistRouter';
 const playlistRouter = require('./resources/playlists/playlistRouter');
 const trackRouter = require('./resources/tracks/trackRouter');
 
@@ -17,11 +17,15 @@ app.use(bodyParser.json());
 //Serve my static files from the public folder for the index.html to use
 app.use(express.static(path.resolve(__dirname, '..', 'public')));
 
+mongoose.connect('mongodb://localhost:27017/mystify', { useNewUrlParser: true });
+
 // app.use('/api/user', userRouter);
 // app.use('/api/album', albumRouter);
 // app.use('/api/artist', artistRouter);
 // app.use('/api/playlist', playlistRouter);
 // app.use('/api/track', trackRouter);
+
+app.use('/api/artists', artistRouter);
 
 app.get('*', (req, res) => {
     res.sendFile(__dirname + '/index.html');
@@ -33,8 +37,6 @@ const env = process.env.NODE_ENV || 'dev';
 //PORT will be undefined if run locally with nodemon server.js
 
 const port = process.env.PORT || 3000;
-
-mongoose.connect('mongodb://localhost:27017/mystify', { useNewUrlParser: true });
 
 app.listen(port, () => {
     if (env == 'dev') {

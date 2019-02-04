@@ -4,43 +4,53 @@ import React from 'react';
 import Sidebar from '../shared/sidebar/index.jsx';
 import Header from './header/index';
 import Artist from '../shared/artist/index.jsx';
-import { debug } from 'util';
+import { getArtists } from '../../utils/artistAPI';
 
 class Home extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {  }
+        this.state = { artists: [] }
         let x = 15;
         x = 'hell';
+    }
+
+    async componentDidMount() {
+        let artists = await getArtists();
+        artists = artists.data;
+        this.setState({ artists });
         
     }
 
     createArtists = () => {
-        const artists = [
-            ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
-            ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
-            ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
-            ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
-            ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
-            ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
-            ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
-            ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
-            ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
-            ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
-            ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
-        ];
-        return artists.map((artist, idx) => {
-            return <Artist key={idx} imageUrl={artist[0]} name={artist[1]} />
+        // const artists = [
+        //     ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
+        //     ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
+        //     ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
+        //     ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
+        //     ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
+        //     ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
+        //     ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
+        //     ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
+        //     ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
+        //     ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
+        //     ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
+        // ];
+        return this.state.artists.map((artist, idx) => {
+            return <Artist key={idx} imageUrl={artist.imageUrl} name={artist.name} />
         });
     }
     render() { 
+        debugger
         return ( 
             <div className="home">
                 <Sidebar />
                 <Header />
                 <div className="home__artists">
-                   {this.createArtists()}
+                   { this.createArtists() }
                 </div>
+                <audio controls>
+                    <source src="https://s3.us-east-2.amazonaws.com/mystify-images/Talk+Like+A+Robot+V1.mp3" type="audio/mp3"/>
+                </audio>
             </div>
          );
     }
