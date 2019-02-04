@@ -1,12 +1,13 @@
 .sidebar__nav-item {
     display: flex;
     cursor: pointer;
-    height: 30px;
+    height: 40px;
     align-items: center;
+    cursor: pointer;
 }
 
-.sidebar__nav-item:hover {
-
+.sidebar__nav-item-text--active {
+    color: rgba(255, 255, 255, 1);
 }
 
 .sidebar__nav-item-icon {
@@ -17,7 +18,7 @@
 .sidebar__nav-item-text {
     text-decoration: none;
     color: rgba(255, 255, 255, 0.5);
-    transition: color ease 0.2s; 
+    transition: color 0.4s ease; 
     margin-left: 15px;
 }
 
@@ -25,13 +26,18 @@
     color: rgba(255, 255, 255, 1);
 }
 
-.sidebar__svg-home {
-        width: 100%;
+.sidebar__svg-home, .sidebar__svg-search, .sidebar__svg-library {
+    width: 100%;
     stroke: rgba(255,255,255,0.6);
     fill: transparent;
     stroke-width: 6;
-    transition: 0s;
-    /* transform: scale(0.3); */
+    transition: stroke 0.4s ease;
+}
+
+.sidebar__nav-item:hover .sidebar__svg-home, 
+.sidebar__nav-item:hover .sidebar__svg-library, 
+.sidebar__nav-item:hover .sidebar__svg-search {
+    stroke: rgba(255,255,255,1);
 }
 
 .sidebar__svg-container {
