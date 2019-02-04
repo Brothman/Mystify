@@ -12,6 +12,11 @@ const Routes = () => {
             <div className="app">
                 <Route path="/" exact={true} component={LandingPage} />
                 <Route path="/home" component={Home} />
+                <Route path="/albums" component={Home} />
+                <Route path="/tracks" component={Home} />
+                <Route path="/playlists" component={Home} />
+                <Route path="/search" component={Home} />
+                <Route path="/library" component={Home} />
             </div>
         </BrowserRouter>
      );

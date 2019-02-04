@@ -6,8 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack --watch --mode=development",
-    "nodemon": "nodemon",
-    "start": "npm run webpack & npm run nodemon"
+    "nodemon": "nodemon --exec babel-node backend/server.js",
+    "start": "npm run webpack & npm run nodemon",
+    "seed": "babel-node backend/database/seed.js"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,7 @@
   "homepage": "https://github.com/Brothman/Mystify#readme",
   "dependencies": {
     "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
     "@babel/plugin-proposal-class-properties": "^7.3.0",
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",

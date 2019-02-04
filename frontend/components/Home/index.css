@@ -22,3 +22,4 @@
     grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
     grid-template-rows: repeat(auto-fill, minmax(210px, 1fr));
 }
+

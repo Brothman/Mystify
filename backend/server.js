@@ -2,6 +2,7 @@ const express = require('express');
 const opn = require('opn');
 const bodyParser = require('body-parser');
 const path = require('path');
+const mongoose = require('mongoose');
 
 const userRouter = require('./resources/users/userRouter');
 const albumRouter = require('./resources/albums/albumRouter');
@@ -33,6 +34,8 @@ const env = process.env.NODE_ENV || 'dev';
 
 const port = process.env.PORT || 3000;
 
+mongoose.connect('mongodb://localhost:27017/mystify', { useNewUrlParser: true });
+
 app.listen(port, () => {
     if (env == 'dev') {
         console.log(`Server listening on port ${port}!`);
@@ -43,3 +46,4 @@ app.listen(port, () => {
 
 
 //"dev": "start npm run start-watch && start npm run wp-server"
+

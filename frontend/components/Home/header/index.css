@@ -29,7 +29,7 @@
 
     .home__new-playlist {
         font-size: 14px;
-        padding: 5px 10px;
+        padding: 4px 8px;
         width: 175px;
         background-color: #1db954;
         cursor: pointer;
@@ -39,7 +39,7 @@
         font-family: 'Rubik', Helvetica, Arial, sans-serif;
         letter-spacing: 2px;
         font-weight: 500;
-        transition: 0.2s ease-in-out;
+        transition: transform 0.3s ease, background-color 0.2s ease;
         color: white;
         text-decoration: none;
         text-align: center;
@@ -48,7 +48,11 @@
         position: absolute;
         right: 50px;
         top: 35px;
+    }
 
+    .home__new-playlist:hover {
+        transform: scale(1.1);
+        background-color: rgb(52, 215, 102);
     }
 
     .home__new-playlist:focus, .home__new-playlist:active {
