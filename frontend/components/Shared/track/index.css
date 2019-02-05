@@ -1,0 +1,30 @@
+.track {
+    display: grid;
+    grid-template-columns: 50px 1fr 55px;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.track:hover {
+    background-color: rgba(0,0,0,.3);
+}
+
+.track__track-length {
+    opacity: 0.5;
+}
+
+.track__title {
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: .015em;
+}
+
+.track__icon-play {
+    color: white;
+    width: 14px;
+    height: 14px;
+    position: relative;
+    top: -1px;
+    justify-self: center;
+}

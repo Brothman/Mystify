@@ -77,21 +77,96 @@ const albums = [
     {
         title: "The White Album",
         releaseDate: "1965",
-        imageURL: "a",
+        imageURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/The+Beatles/The+White+Album/BeatlesWhiteAlbum.png",
         artist: "The Beatles"
     }
-]
+];
+
+const tracks = [
+    {
+        title: "Birthday",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/The+Beatles/The+White+Album/01+-+Birthday.mp3",
+        albumTitle: "The White Album",
+        trackLength: "2:43"
+    },
+    {
+        title: "Yer Blues",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/The+Beatles/The+White+Album/02+-+Yer+Blues.mp3",
+        albumTitle: "The White Album",
+        trackLength: "4:00"
+    },
+    {
+        title: "Mother Nature\'s Son",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/The+Beatles/The+White+Album/03+-+Mother+Nautre's+Son.mp3",
+        albumTitle: "The White Album",
+        trackLength: "2:43"
+    },
+    {
+        title: "Everyone\'s Got Something to Hide Except Me And Mr. Monkey",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/The+Beatles/The+White+Album/04+-+Everybody's+Got+Something+to+Hide+Except+Me+and+My+Monkey.mp3",
+        albumTitle: "The White Album",
+        trackLength: "2:24"
+    },
+    {
+        title: "Sexy Sadie",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/The+Beatles/The+White+Album/05+-+Sexy+Sadie.mp3",
+        albumTitle: "The White Album",
+        trackLength: "3:15"
+    },
+    {
+        title: "Helter Skelter",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/The+Beatles/The+White+Album/06+-+Helter+Skelter.mp3",
+        albumTitle: "The White Album",
+        trackLength: "4:29"
+    },
+    {
+        title: "Long Long Long",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/The+Beatles/The+White+Album/07+-+Long%2C+Long%2C+Long.mp3",
+        albumTitle: "The White Album",
+        trackLength: "3:06"
+    },
+    {
+        title: "Revolution",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/The+Beatles/The+White+Album/08+-+Revolution+I.mp3",
+        albumTitle: "The White Album",
+        trackLength: "4:15"
+    },
+];
+
+const saveTracks = async (album) => {
+    for (let i = 0; i < tracks.length; i++) {
+        try {
+            const track = tracks[i];
+            if (album.title == track.albumTitle) {
+                track.album = album._id;
+                const newTrack = new trackModel(track);
+                const savedTrack = await newTrack.save();
+            }
+        }
+        catch(e) {
+            console.log(e);
+        }
+    }
+
+    mongoose.connection.close();
+}
 
 const saveAlbums = async (artist) => {
     for (let i = 0; i < albums.length; i++) {
-        const album = albums[i];
-        if (artist.name == album.artist) {
-            album.artist = artist._id;
-            const newAlbum = new albumModel(album);
-            const savedAlbum = await newAlbum.save();
-            // const savedAlbumDocument = albumModel.findById(savedAlbum._id);
-            // const populatedAlbum = await savedAlbumDocument.populate('artist').exec((err, albm) => console.log(albm.artist));
-            // console.log(populatedAlbum.artist.name);
+        try {
+            const album = albums[i];
+            if (artist.name == album.artist) {
+                album.artist = artist._id;
+                const newAlbum = new albumModel(album);
+                const savedAlbum = await newAlbum.save();
+                saveTracks(savedAlbum);
+                // const savedAlbumDocument = albumModel.findById(savedAlbum._id);
+                // const populatedAlbum = await savedAlbumDocument.populate('artist').exec((err, albm) => console.log(albm.artist));
+                // console.log(populatedAlbum.artist.name);
+            }
+        }
+        catch(e) {
+            console.log(e);
         }
     }
 }
@@ -108,7 +183,6 @@ const saveArtists = async () => {
             console.log(e);
         }
     }
-    mongoose.connection.close();
 }
 
 saveArtists();

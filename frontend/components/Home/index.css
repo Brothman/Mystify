@@ -7,6 +7,7 @@
     " sidebar  header  header  header  "
     " sidebar    .    artists    .     ";
     background-image: linear-gradient(#3c3e5d, #060609 85%);
+    position: relative;
 }
 
 .home__header {
@@ -17,9 +18,9 @@
 
 .home__artists {
     grid-area: artists;
-    height: calc(100vh - 50px);
+    /* height: calc(100vh - 50px); */
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
-    grid-template-rows: repeat(auto-fill, minmax(210px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(250px, 1fr));
 }
 

@@ -36,11 +36,10 @@ class Home extends React.Component {
         //     ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
         // ];
         return this.state.artists.map((artist, idx) => {
-            return <Artist key={idx} imageUrl={artist.imageUrl} name={artist.name} />
+            return <Artist id={artist._id} key={idx} imageUrl={artist.imageUrl} name={artist.name} />
         });
     }
     render() { 
-        debugger
         return ( 
             <div className="home">
                 <Sidebar />

@@ -2,6 +2,9 @@
     background-color: black;
     color: white;
     height: 100vh;
+    grid-area: sidebar;
+    position: fixed;
+    width: 230px;
 }
 
 .sidebar__nav-item {

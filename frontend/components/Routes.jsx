@@ -2,6 +2,7 @@ import React from 'react';
 import LandingPage from './LandingPage/index';
 import Home from './Home/index';
 import { BrowserRouter, Route, Redirect } from 'react-router-dom';
+import Album from './Album/index';
 
 //Do Routes Here
 //Perhaps Even Call This Routes
@@ -18,6 +19,7 @@ const Routes = () => {
                 <Route path="/home/playlists" component={Home} />
                 <Route path="/search" component={Home} />
                 <Route path="/library" component={Home} />
+                <Route path="/album/:id" component={Album} />
             </div>
         </BrowserRouter>
      );

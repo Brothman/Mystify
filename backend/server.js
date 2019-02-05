@@ -5,10 +5,10 @@ const path = require('path');
 const mongoose = require('mongoose');
 
 const userRouter = require('./resources/users/userRouter');
-const albumRouter = require('./resources/albums/albumRouter');
+import albumRouter from './resources/albums/albumRouter';
 import artistRouter from './resources/artists/artistRouter';
 const playlistRouter = require('./resources/playlists/playlistRouter');
-const trackRouter = require('./resources/tracks/trackRouter');
+import trackRouter from './resources/tracks/trackRouter';
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -21,9 +21,9 @@ mongoose.connect('mongodb://localhost:27017/mystify', { useNewUrlParser: true })
 
 // app.use('/api/user', userRouter);
 app.use('/api/albums', albumRouter);
-// app.use('/api/artist', artistRouter);
-// app.use('/api/playlist', playlistRouter);
-// app.use('/api/track', trackRouter);
+// app.use('/api/artists', artistRouter);
+// app.use('/api/playlists', playlistRouter);
+app.use('/api/tracks', trackRouter);
 
 app.use('/api/artists', artistRouter);
 

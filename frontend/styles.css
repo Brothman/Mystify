@@ -1,4 +1,4 @@
-body, h6 {
+body, h6, h1 {
     margin: 0;
     padding: 0;
     font-family: 'Rubik', Helvetica, Arial, sans-serif;
@@ -10,7 +10,10 @@ body, h6 {
 @import url('./components/Home/index.css');
 @import url('./components/Home/header/index.css');
 
+@import url('./components/Album/index.css');
+
 @import url('./components/Library/index.css');
 
 @import url('./components/Shared/artist/index.css');
 @import url('./components/Shared/sidebar/index.css');
+@import url('./components/Shared/track/index.css');
