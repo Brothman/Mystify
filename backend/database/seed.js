@@ -1,4 +1,6 @@
 import artistModel from '../resources/artists/artistModel';
+import albumModel from '../resources/albums/albumModel';
+import trackModel from '../resources/tracks/trackModel';
 import mongoose from 'mongoose';
 
 mongoose.connect('mongodb://localhost:27017/mystify', { useNewUrlParser: true });
@@ -31,51 +33,76 @@ const artists = [
     },
     {
         name: "Cat Stevens",
-        bio: "Leonard Cohen was a Canadian singer-songwriter, poet and novelist. His work explored religion, politics, isolation, sexuality and romantic relationships.",
-        imageUrl: "https://s3.us-east-2.amazonaws.com/mystify-images/LeonardCohen.jpg",
+        bio: "Cat Stevens is a British singer-songwriter and multi-instrumentalist. His musical style consists of folk, pop, rock, and Islamic music. 'I get the tune and then I just keep on singing the tune until the words come out from the tune. Its kind of a hypnotic state that you reach after a while when you keep on playing it where words just evolve from it.'  ",
+        imageUrl: "https://s3.us-east-2.amazonaws.com/mystify-images/CatStevens.jpg",
     },
     {
         name: "Paul Simon",
-        bio: "Leonard Cohen was a Canadian singer-songwriter, poet and novelist. His work explored religion, politics, isolation, sexuality and romantic relationships.",
-        imageUrl: "https://s3.us-east-2.amazonaws.com/mystify-images/LeonardCohen.jpg",
+        bio: "Paul Simon is an American singer-songwriter and actor. Simon's musical career has spanned seven decades with his fame and commercial success beginning as half of the duo Simon & Garfunkel (originally known as Tom & Jerry), formed in 1956 with Art Garfunkel. Simon was responsible for writing nearly all of the pair's songs.",
+        imageUrl: "https://s3.us-east-2.amazonaws.com/mystify-images/PaulSimon.jpg",
     },
     {
         name: "Kanye West",
-        bio: "Leonard Cohen was a Canadian singer-songwriter, poet and novelist. His work explored religion, politics, isolation, sexuality and romantic relationships.",
-        imageUrl: "https://s3.us-east-2.amazonaws.com/mystify-images/LeonardCohen.jpg",
+        bio: "Kanye West is an American rapper, singer, songwriter, record producer, entrepreneur and fashion designer. His musical career has been marked by dramatic changes in styles, incorporating an eclectic range of influences including soul, baroque pop, electro, indie rock, synth-pop, industrial and gospel. Over the course of his career, West has been responsible for cultural movements and progressions within mainstream hip hop and popular music at large.",
+        imageUrl: "https://s3.us-east-2.amazonaws.com/mystify-images/KanyeWest.jpg",
     },
     {
         name: "Explosions in the Sky",
-        bio: "Leonard Cohen was a Canadian singer-songwriter, poet and novelist. His work explored religion, politics, isolation, sexuality and romantic relationships.",
-        imageUrl: "https://s3.us-east-2.amazonaws.com/mystify-images/LeonardCohen.jpg",
+        bio: "Explosions in the Sky is an American post-rock band from Texas. The quartet originally played under the name Breaker Morant, then changed to the current name in 1999. The band has garnered popularity beyond the post-rock scene for their elaborately developed guitar work, narratively styled instrumentals - what they refer to as 'cathartic mini - symphonies' - and their enthusiastic and emotional live shows.",
+        imageUrl: "https://s3.us-east-2.amazonaws.com/mystify-images/ExplosionsInTheSky.jpg",
     },
     {
         name: "Noname",
-        bio: "Leonard Cohen was a Canadian singer-songwriter, poet and novelist. His work explored religion, politics, isolation, sexuality and romantic relationships.",
-        imageUrl: "https://s3.us-east-2.amazonaws.com/mystify-images/LeonardCohen.jpg",
+        bio: "Noname is an American rapper and poet. Warner is from the Bronzeville neighborhood of Chicago, Illinois, where she began rapping and performing slam poetry in 2010. In 2013, she gained wider recognition following her appearance on the track 'Lost' from Chance the Rapper's popular mixtape Acid Rap.",
+        imageUrl: "https://s3.us-east-2.amazonaws.com/mystify-images/Noname.jpg",
     },
     {
         name: "Mozart",
-        bio: "Leonard Cohen was a Canadian singer-songwriter, poet and novelist. His work explored religion, politics, isolation, sexuality and romantic relationships.",
-        imageUrl: "https://s3.us-east-2.amazonaws.com/mystify-images/LeonardCohen.jpg",
+        bio: "Wolfgang Amadeus Mozart was a prolific and influential composer of the classical era. He composed more than 600 works, many acknowledged as pinnacles of symphonic, concertante, chamber, operatic, and choral music. He is among the most enduringly popular of classical composers, and his influence is profound on subsequent Western art music. Ludwig van Beethoven composed his own early works in the shadow of Mozart, and Joseph Haydn wrote: 'posterity will not see such a talent again in 100 years'.",
+        imageUrl: "https://s3.us-east-2.amazonaws.com/mystify-images/Mozart.jpg",
     },
     {
         name: "Mark Eliyahu",
-        bio: "Leonard Cohen was a Canadian singer-songwriter, poet and novelist. His work explored religion, politics, isolation, sexuality and romantic relationships.",
-        imageUrl: "https://s3.us-east-2.amazonaws.com/mystify-images/LeonardCohen.jpg",
+        bio: "Mark Eliyahu is an Israeli musician. He plays the kamancheh.",
+        imageUrl: "https://s3.us-east-2.amazonaws.com/mystify-images/MarkEliyahu.jpg",
     },
     {
         name: "Benji Rothman",
         bio: "An up and coming artist from New York City, Benji's music displays the rough and unpolished edges of a future music visionary.",
-        imageUrl: "https://s3.us-east-2.amazonaws.com/mystify-images/LeonardCohen.jpg",
+        imageUrl: "https://s3.us-east-2.amazonaws.com/mystify-images/BenAlbumCover2.jpg",
     },
 ];
+
+const albums = [
+    {
+        title: "The White Album",
+        releaseDate: "1965",
+        imageURL: "a",
+        artist: "The Beatles"
+    }
+]
+
+const saveAlbums = async (artist) => {
+    for (let i = 0; i < albums.length; i++) {
+        const album = albums[i];
+        if (artist.name == album.artist) {
+            album.artist = artist._id;
+            const newAlbum = new albumModel(album);
+            const savedAlbum = await newAlbum.save();
+            // const savedAlbumDocument = albumModel.findById(savedAlbum._id);
+            // const populatedAlbum = await savedAlbumDocument.populate('artist').exec((err, albm) => console.log(albm.artist));
+            // console.log(populatedAlbum.artist.name);
+        }
+    }
+}
+
 
 const saveArtists = async () => {
     for (const artist of artists) {
         const newArtist = new artistModel(artist);
         try {
-         await newArtist.save();
+         const artist = await newArtist.save();
+         saveAlbums(artist);
         }
         catch(e) {
             console.log(e);
@@ -85,3 +112,8 @@ const saveArtists = async () => {
 }
 
 saveArtists();
+
+
+
+
+

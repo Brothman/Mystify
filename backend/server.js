@@ -20,7 +20,7 @@ app.use(express.static(path.resolve(__dirname, '..', 'public')));
 mongoose.connect('mongodb://localhost:27017/mystify', { useNewUrlParser: true });
 
 // app.use('/api/user', userRouter);
-// app.use('/api/album', albumRouter);
+app.use('/api/albums', albumRouter);
 // app.use('/api/artist', artistRouter);
 // app.use('/api/playlist', playlistRouter);
 // app.use('/api/track', trackRouter);
