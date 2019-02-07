@@ -16,8 +16,10 @@ export default class Album extends React.Component {
             albums: [], 
             tracks: [], 
             song: null, 
-            playing: false 
+            playing: false,
+            volume: 1
         };
+        this.playMusic = this.playMusic.bind(this);
     }
 
     async componentDidMount() {
@@ -40,35 +42,46 @@ export default class Album extends React.Component {
         this.setState({ artist, tracks, albums }, () => console.log(this.state));
     }
 
-    playMusic = (trackURL) => {
+    playMusic = (newSong) => {
+        // debugger
+        //newSong.volume to change volume
+
+        // const tracks = document.getElementsByClassName('')
+
         const song = this.state.song;
+        
         if (!song) {
-            const newSong = new Audio(trackURL);
+            // const newSong = new Audio(newSong);
             this.setState({ song: newSong, playing: true }, () => {
-                console.log('hi')
                 console.log(this.state);
             });
+            console.log(newSong)
             newSong.play();
         }
-        else if (song.src == trackURL && this.state.playing) {
+        else if (song.src == newSong.src && this.state.playing) {
             song.pause();
             this.setState({ playing: false })
         }
-        else if (song.src == trackURL) {
+        else if (song.src == newSong.src) {
             song.play();
             this.setState({ playing: true })
         }
         else {
             song.pause();
-            const newSong = new Audio(trackURL);
             newSong.play();
             this.setState({ song: newSong, playing: true });
         }
     }
 
+    updateVolume = (e) => {
+        const volume = e.target.value;
+        this.state.song ? this.state.song.volume = volume : null;
+        // this.setState({ volume });
+    }
+
     createTracks = () => {
         return this.state.tracks.map((track, idx) => {
-            return <Track title={track.title} t
+            return <Track title={track.title} 
                 trackURL={track.trackURL}
                 trackLength={track.trackLength}
                 playMusic={this.playMusic}
@@ -122,6 +135,36 @@ export default class Album extends React.Component {
                         <div className="artist__tracks">
                             {this.createTracks()}
                         </div>
+                        
+                        <div className="audio-player">
+                            <div className="audio-player__song-info">
+                                <img src={this.state.albums[0].imageURL} alt="" className="audio-player__album-img"/>
+                                <p className="audio-player__song-title">{this.state.tracks[0].title}</p>
+                                <p className="audio-player__artist-name">{this.state.artist.name}</p>
+                            </div>
+
+                            <div className="audio-player__controls">
+                                <p>Hello</p>
+                            </div>
+
+                            <div className="audio-player__play-queue">
+                            </div>
+
+                            <div className="audio-player__mute-sound">
+                            </div>
+
+                            <div className="audio-player__volume-slider">
+                                <input onChange={(e) => this.updateVolume(e)} 
+                                       type="range" 
+                                       min="0" 
+                                       max="1" 
+                                       step="0.01" 
+                                       className="audio-player__volume-input"/>
+                            </div>
+
+                        </div>
+
+
                     </React.Fragment>
                 }
             </div>

@@ -76,7 +76,9 @@ export default class Album extends React.Component {
                                     {this.state.album.artist.name}
                                 </Link> 
                             }
-                            <p className="album__song-count"> {this.state.tracks.length} SONG(S)</p>
+                            <p className="album__song-count">{this.state.tracks.length == 1 ? 
+                                                                this.state.tracks.length + ' SONG':
+                                                                 this.state.tracks.length + ' SONGS'}</p>
                         </div>
 
                         <div className="album__tracks">

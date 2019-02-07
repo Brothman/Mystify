@@ -98,6 +98,12 @@ const albums = [
         imageURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/NF/Cover.jpg",
         artist: "NF"
     },
+    {
+        title: "Requiem",
+        releaseDate: "1791",
+        imageURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Mozart/Requiem/Mozart-Requiem.jpg",
+        artist: "Mozart"
+    },
 
 ];
 
@@ -281,6 +287,60 @@ const tracks = [
         trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/NF/16+-+Outro.mp3",
         albumTitle: "Perception",
         trackLength: "3:32"
+    },
+    {
+        title: "Introitus",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Mozart/Requiem/Mozart+-+01+-+Introitus%3B++Requiem+Aeterna.mp3",
+        albumTitle: "Requiem",
+        trackLength: "5:02"
+    },
+    {
+        title: "Kyrie",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Mozart/Requiem/Mozart+-+02+-+Kyrie+(Eleison).mp3",
+        albumTitle: "Requiem",
+        trackLength: "2:44"
+    },
+    {
+        title: "Dies Irae",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Mozart/Requiem/Mozart+-+03+-+Dies+Irae.mp3",
+        albumTitle: "Requiem",
+        trackLength: "1:45"
+    },
+    {
+        title: "Tuba Mirum",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Mozart/Requiem/Mozart+-+04+-+Tuba+Mirum.mp3",
+        albumTitle: "Requiem",
+        trackLength: "4:17"
+    },
+    {
+        title: "Rex Tremendae",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Mozart/Requiem/Mozart+-+05+-+Rex+Tremendae+(Majestitas).mp3",
+        albumTitle: "Requiem",
+        trackLength: "2:19"
+    },
+    {
+        title: "Recordare",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Mozart/Requiem/Mozart+-+06+-+Recordare.mp3",
+        albumTitle: "Requiem",
+        trackLength: "6:26"
+    },
+    {
+        title: "Lacrimosa",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Mozart/Requiem/Mozart+-+08+-+Lacrimosa+(Dies+Illa).mp3",
+        albumTitle: "Requiem",
+        trackLength: "3:19"
+    },
+    {
+        title: "Agnus Dei",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Mozart/Requiem/'Mozart'+-+13+-+Agnus+Dei.mp3",
+        albumTitle: "Requiem",
+        trackLength: "3:45"
+    },
+    {
+        title: "Communio",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Mozart/Requiem/'Mozart'+-+14+-+Communio%3B+Lux+Aeterna.mp3",
+        albumTitle: "Requiem",
+        trackLength: "5:50"
     },
     
 
