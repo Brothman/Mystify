@@ -9,4 +9,10 @@ albumRouter.get('/:id', async (req, res) => {
     res.send(album);
 });
 
+// /api/albums/artist/:artistID
+albumRouter.get('/artist/:artistID', async (req, res) => {
+    const albums = await albumModel.find({ artist: req.params.artistID} ).lean().exec();
+    res.send(albums);
+});
+
 export default albumRouter;

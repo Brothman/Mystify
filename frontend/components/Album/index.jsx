@@ -9,12 +9,12 @@ export default class Album extends React.Component {
 
     constructor(props) {
         super(props)
-        this.state = { album: {}, tracks: [] };
+        this.state = { album: {}, tracks: [], song: null, playing: false };
     }
 
     async componentDidMount(){
-        // const id = this.props.match.params.id;
-        const id ="5c5a13775f26719a0b387be3";
+        const id = this.props.match.params.id;
+        // const id ="5c5ad910fff1e5a2b40aae47";
         let album = await getAlbum(id);
         album = album.data;
 
@@ -24,10 +24,39 @@ export default class Album extends React.Component {
         this.setState({ album, tracks });
     }
 
+    playMusic = (trackURL) => {
+        const song = this.state.song;
+        if (!song) {
+            const newSong = new Audio(trackURL);
+            this.setState({ song: newSong, playing: true }, () => {
+                console.log('hi')
+                console.log(this.state);
+            });
+            newSong.play();
+        }
+        else if (song.src == trackURL && this.state.playing) {
+            song.pause();
+            this.setState({ playing: false })
+        }
+        else if (song.src == trackURL) {
+            song.play();
+            this.setState({ playing: true })
+        }
+        else {
+            song.pause();
+            const newSong = new Audio(trackURL);
+            newSong.play();
+            this.setState({ song: newSong, playing: true });
+        }
+    }
+
     createTracks = () => {
         return this.state.tracks.map((track, idx) => {
-            // return <h1>{track.title}</h1>
-            return <Track title={track.title} trackURL={track.trackURL} trackLength={track.trackLength} />
+            return <Track title={track.title} t
+                          trackURL={track.trackURL} 
+                          trackLength={track.trackLength}
+                          playMusic={this.playMusic}
+                          key={idx} />
         });
     }
 
@@ -35,9 +64,10 @@ export default class Album extends React.Component {
         //don't show outlines of img as data will be fetched quickly
         return (
             <div className="album">
+                <Sidebar />
                 { !this.state.album.title ? null :
                     <React.Fragment>
-                        <Sidebar />
+                    
                         <div className="album__information">
                             <img src={this.state.album.imageURL} className="album__cover" />
                             <p className="album__title">{this.state.album.title}</p>

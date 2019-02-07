@@ -9,4 +9,10 @@ artistRouter.get('/', async (req, res) => {
     res.send(artists);
 });
 
+// /api/artists/:id
+artistRouter.get('/:id', async (req, res) => {
+    const artist = await artistModel.findById(req.params.id).lean().exec();
+    res.send(artist);
+});
+
 export default artistRouter;

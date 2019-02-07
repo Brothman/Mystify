@@ -27,8 +27,33 @@ app.use('/api/tracks', trackRouter);
 
 app.use('/api/artists', artistRouter);
 
-app.get('*', (req, res) => {
+app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
+});
+
+app.get('/home*', (req, res) => {
+    res.sendFile(__dirname + '/index.html');
+});
+
+app.get('/artist*', (req, res) => {
+    res.sendFile(__dirname + '/index.html');
+});
+
+app.get('/album*', (req, res) => {
+    res.sendFile(__dirname + '/index.html');
+});
+
+app.get('/search*', (req, res) => {
+    res.sendFile(__dirname + '/index.html');
+});
+
+app.get('/library*', (req, res) => {
+    res.sendFile(__dirname + '/index.html');
+});
+
+app.get('*', (req, res) => {
+    // res.sendFile(__dirname + '/index.html');
+    res.sendFile(__dirname + '/404.html');
 });
 
 const env = process.env.NODE_ENV || 'dev';

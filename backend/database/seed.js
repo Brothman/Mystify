@@ -79,7 +79,26 @@ const albums = [
         releaseDate: "1965",
         imageURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/The+Beatles/The+White+Album/BeatlesWhiteAlbum.png",
         artist: "The Beatles"
-    }
+    },
+    {
+        title: "Seargent Pepper\'s Lonely Hearts Club Band",
+        releaseDate: "1967",
+        imageURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/The+Beatles/Seargent+Pepper's+Lonely+Hearts+Club+Band/The+Beatles+-+Sgt.+Pepper's+Lonely+Hearts+Club+Band+(50th+Anniversary+Super+Deluxe+Edition)+(2017).jpg",
+        artist: "The Beatles"
+    },
+    {
+        title: "Ye",
+        releaseDate: "2018",
+        imageURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Kanye+West/Ye/Cover.jpg",
+        artist: "Kanye West"
+    },
+    {
+        title: "Perception",
+        releaseDate: "2017",
+        imageURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/NF/Cover.jpg",
+        artist: "NF"
+    },
+
 ];
 
 const tracks = [
@@ -131,6 +150,142 @@ const tracks = [
         albumTitle: "The White Album",
         trackLength: "4:15"
     },
+    {
+        title: "Seargent Pepper\'s Lonely Hearts Club Band",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/The+Beatles/Seargent+Pepper's+Lonely+Hearts+Club+Band/01+-+Sgt+Pepper's+Lonely+Hearts+Club+Band.flac",
+        albumTitle: "Seargent Pepper\'s Lonely Hearts Club Band",
+        trackLength: "2:02"
+    },
+    {
+        title: "With A Little Help From My Friends",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/The+Beatles/Seargent+Pepper's+Lonely+Hearts+Club+Band/02+-+With+A+Little+Help+From+My+Friends.flac",
+        albumTitle: "Seargent Pepper\'s Lonely Hearts Club Band",
+        trackLength: "2:45"
+    },
+    {
+        title: "Lucy in the Sky with Diamonds",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/The+Beatles/Seargent+Pepper's+Lonely+Hearts+Club+Band/03+-+Lucy+In+The+Sky+With+Diamonds.flac",
+        albumTitle: "Seargent Pepper\'s Lonely Hearts Club Band",
+        trackLength: "3:27"
+    },
+    {
+        title: "Getting Better",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/The+Beatles/Seargent+Pepper's+Lonely+Hearts+Club+Band/04+-+Getting+Better.flac",
+        albumTitle: "Seargent Pepper\'s Lonely Hearts Club Band",
+        trackLength: "2:47"
+    },
+    {
+        title: "When I\'m Sixty Four",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/The+Beatles/Seargent+Pepper's+Lonely+Hearts+Club+Band/09+-+When+I'm+Sixty-Four.flac",
+        albumTitle: "Seargent Pepper\'s Lonely Hearts Club Band",
+        trackLength: "2:40"
+    },
+    {
+        title: "Lovely Rita",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/The+Beatles/Seargent+Pepper's+Lonely+Hearts+Club+Band/10+-+Lovely+Rita.flac",
+        albumTitle: "Seargent Pepper\'s Lonely Hearts Club Band",
+        trackLength: "2:45"
+    },
+    {
+        title: "Good Morning Good Morning",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/The+Beatles/Seargent+Pepper's+Lonely+Hearts+Club+Band/11+-+Good+Morning+Good+Morning.flac",
+        albumTitle: "Seargent Pepper\'s Lonely Hearts Club Band",
+        trackLength: "2:34"
+    },
+    {
+        title: "I Thought About Killing You",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Kanye+West/Ye/01.+I+Thought+About+Killing+You.mp3",
+        albumTitle: "Ye",
+        trackLength: "4:34"
+    },
+    {
+        title: "Yikes",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Kanye+West/Ye/02.+Yikes.mp3",
+        albumTitle: "Ye",
+        trackLength: "3:08"
+    },
+    {
+        title: "All Mine",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Kanye+West/Ye/03.+All+Mine.mp3",
+        albumTitle: "Ye",
+        trackLength: "2:25"
+    },
+    {
+        title: "Wouldn\'t Leave",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Kanye+West/Ye/04.+Wouldn't+Leave.mp3",
+        albumTitle: "Ye",
+        trackLength: "3:25"
+    },
+    {
+        title: "No Mistakes",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Kanye+West/Ye/05.+No+Mistakes.mp3",
+        albumTitle: "Ye",
+        trackLength: "2:03"
+    },
+    {
+        title: "Ghost Town",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Kanye+West/Ye/06.+Ghost+Town.mp3",
+        albumTitle: "Ye",
+        trackLength: "4:31"
+    },
+    {
+        title: "Violent Crimes",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Kanye+West/Ye/07.+Violent+Crimes.mp3",
+        albumTitle: "Ye",
+        trackLength: "3:35"
+    },
+    {
+        title: "Intro III",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/NF/1+-+Intro+III.mp3",
+        albumTitle: "Perception",
+        trackLength: "4:28"
+    },
+    {
+        title: "Outcast",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/NF/2+-+Outcast.mp3",
+        albumTitle: "Perception",
+        trackLength: "5:25"
+    },
+    {
+        title: "10 Feet Down",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/NF/3+-+10+Feet+Down.mp3",
+        albumTitle: "Perception",
+        trackLength: "3:37"
+    },
+    {
+        title: "Green Lights",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/NF/4+-+Green+Lights.mp3",
+        albumTitle: "Perception",
+        trackLength: "3:01"
+    },
+    {
+        title: "Dreams",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/NF/5+-+Dreams.mp3",
+        albumTitle: "Perception",
+        trackLength: "3:41"
+    },
+    {
+        title: "Remember This",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/NF/11+-+Remember+This.mp3",
+        albumTitle: "Perception",
+        trackLength: "4:00"
+    },
+    {
+        title: "Know",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/NF/12+-+Know.mp3",
+        albumTitle: "Perception",
+        trackLength: "3:58"
+    },
+    {
+        title: "Outro",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/NF/16+-+Outro.mp3",
+        albumTitle: "Perception",
+        trackLength: "3:32"
+    },
+    
+
+
+
 ];
 
 const saveTracks = async (album) => {
@@ -139,6 +294,7 @@ const saveTracks = async (album) => {
             const track = tracks[i];
             if (album.title == track.albumTitle) {
                 track.album = album._id;
+                track.artist = album.artist;
                 const newTrack = new trackModel(track);
                 const savedTrack = await newTrack.save();
             }
@@ -147,8 +303,6 @@ const saveTracks = async (album) => {
             console.log(e);
         }
     }
-
-    mongoose.connection.close();
 }
 
 const saveAlbums = async (artist) => {
@@ -187,6 +341,9 @@ const saveArtists = async () => {
 
 saveArtists();
 
+//close the database after 3000 ms
+// a hack to make sure everything seeds correctly
+setTimeout(() => mongoose.connection.close(), 3000);
 
 
 

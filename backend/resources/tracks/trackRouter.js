@@ -9,4 +9,9 @@ trackRouter.get('/album/:id', async (req, res) => {
     res.send(tracks);
 });
 
+trackRouter.get('/artist/:artistID', async (req, res) => {
+    const tracks = await trackModel.find({ artist: req.params.artistID }).lean().exec();
+    res.send(tracks);
+});
+
 export default trackRouter;

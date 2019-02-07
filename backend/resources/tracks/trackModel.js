@@ -11,6 +11,10 @@ const trackSchema = new mongoose.Schema(
             type: Schema.Types.ObjectId,
             ref: "Album"
         },
+        artist: {
+            type: Schema.Types.ObjectId,
+            ref: "Artist"
+        },
         trackURL: {
             type: String,
             required: true

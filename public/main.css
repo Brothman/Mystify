@@ -265,6 +265,183 @@
 .album__tracks {
     grid-area: tracks;
 }
+.artist-page {
+    display: grid;
+    grid-template-columns: 230px 50px 400px 1fr 75px;
+    grid-template-rows: 50px 75px 60px 40px 100px 210px 30px 50px 400px 25px;
+    overflow: scroll;
+    width: 100vw;
+    height: 100vh;
+    grid-template-areas:
+    " sidebar    .             .              .        .   "
+    " sidebar    .        artist-name   artist-name    .   "
+    " sidebar    .         play-button    play-button  .   "
+    " sidebar    .         nav-links       nav-links   .   "
+    " sidebar    .        album-header        .        .   "
+    " sidebar    .           albums           .        .   "
+    " sidebar    .             .              .        .   "
+    " sidebar    .        track-header        .        .   "
+    " sidebar    .         tracks           tracks     .   "
+    " sidebar    .             .              .        .   ";
+    background-image: linear-gradient(to right bottom, rgb(92, 92, 61), rgb(0, 0, 0)), linear-gradient(transparent, rgb(0, 0, 0) 70%);
+    align-items: center;
+}
+
+.artist-page__name {
+    grid-area: artist-name;
+    justify-self: center;
+    font-size: 48px;
+    line-height: 56px;
+    letter-spacing: -.005em;
+}
+
+.play-button {
+    grid-area: play-button;
+    padding: 11px 25px 9px;
+    font-weight: 300;
+    background-color: #1db954;
+    cursor: pointer;
+    width: 160px;
+    border-radius: 50px;
+    border: none;
+    text-transform: uppercase;
+    font-family: 'Rubik', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: #fff;
+    transition: 0.2s ease-in-out;
+    justify-self: center;
+}
+
+.play-button:hover {
+    transform: scale(1.1);
+    background-color: rgb(52, 215, 102);
+}
+
+.artist__nav-links {
+    display: flex;
+    justify-self: center;
+    grid-area: nav-links;
+}
+
+.artist__overview, .artist__about {
+    opacity: .6;
+    transition: opacity .2s linear;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: .16em;
+    margin-left: 40px;
+    position: relative;
+    left: -20px;
+    cursor: pointer;
+}
+
+
+.artist__overview:hover, .artist__about:hover {
+    opacity: 1;
+}
+
+.artist__albums-header {
+    grid-area: album-header;
+}
+
+.artist__albums {
+    grid-area: albums;
+    display: flex;
+}
+
+.artist__album {
+    display: flex;
+    flex-direction: column;
+    width: 180px;
+    align-items: center;
+    margin-right: 25px;
+}
+
+.artist__album-img-and-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.artist__album-img {
+    width: 180px;
+    height: 180px;
+    position: relative;
+}
+
+.artist__album-img-link {
+    height: 180px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.artist__album-img-and-title:hover .artist__play-button, .artist__album-img-and-title:hover .artist-page__black-layer
+{
+    opacity: 1;
+}
+
+.artist-page__black-layer {
+    opacity: 0;
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+    transition: opacity ease 0.2s;
+    cursor: pointer;
+}
+
+
+.artist__album-title, .artist__album-artist {
+    margin-top: 10px;
+    margin-bottom: 0;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: .015em;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+}
+
+.artist__album-title {
+    text-align: center;
+}
+
+.artist__album-artist {
+    opacity: 0.6;
+    margin-top: 0;
+    transition: opacity 0.2s ease, border-bottom 0.2s ease;
+    border-bottom: solid 1px transparent;
+}
+
+.artist__album-artist:hover {
+    opacity: 1;
+    border-bottom: solid 1px white;
+}
+
+.artist__tracks {
+    grid-area: tracks;
+    overflow: scroll;
+    height: 400px;
+}
+
+.artist__tracks-header {
+    grid-area: track-header;
+}
+
+.artist__tracks-header, .artist__albums-header {
+    font-size: 36px;
+    line-height: 44px;
+    letter-spacing: -.005em;
+    position: relative;
+    left: -20px;
+}
 
 .artist {
     display: flex;
@@ -443,11 +620,15 @@
     top: -1px;
     justify-self: center;
 }
-body, h6, h1 {
+body, h6, h1, h3 {
     margin: 0;
     padding: 0;
     font-family: 'Rubik', Helvetica, Arial, sans-serif;
     color: white;
+}
+
+button:focus, button:active {
+    outline: none;
 }
 /* ^^ We include this first so @imports do not break webpack, specifically on --watch */
 

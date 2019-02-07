@@ -1,8 +1,12 @@
-body, h6, h1 {
+body, h6, h1, h3 {
     margin: 0;
     padding: 0;
     font-family: 'Rubik', Helvetica, Arial, sans-serif;
     color: white;
+}
+
+button:focus, button:active {
+    outline: none;
 }
 /* ^^ We include this first so @imports do not break webpack, specifically on --watch */
 
@@ -11,6 +15,8 @@ body, h6, h1 {
 @import url('./components/Home/header/index.css');
 
 @import url('./components/Album/index.css');
+
+@import url('./components/Artist/index.css');
 
 @import url('./components/Library/index.css');
 
