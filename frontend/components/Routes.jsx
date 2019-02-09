@@ -16,7 +16,7 @@ const Routes = ({ store }) => {
             <Provider store={store}>
                 <div className="app">
                     <Route path="/" exact={true} component={LandingPage} />
-                    <Route path="/home/" render={() => <Redirect to="/home/artists" />} />
+                    <Route path="/home/" exact={true} render={() => <Redirect to="/home/artists" />} />
                     <Route path="/home/artists" component={Home} />
                     <Route path="/home/albums" component={Home} />
                     <Route path="/home/tracks" component={Home} />

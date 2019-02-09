@@ -1,27 +1,26 @@
 import React from 'react';
-import { getAlbum } from '../../utils/albumAPI';
+// import { getAlbum } from '../../utils/albumAPI';
 import Sidebar from '../shared/sidebar/index.jsx';
-import { getAlbumTracks } from '../../utils/trackAPI';
+// import { getAlbumTracks } from '../../utils/trackAPI';
 import Track from '../shared/track/index';
 import { Link } from 'react-router-dom';
 
-export default class Album extends React.Component {
+import { getAlbumTracks } from '../../actions/trackActions.js';
+import { getAlbum } from '../../actions/albumActions';
+import { connect } from 'react-redux';
+
+
+class Album extends React.Component {
 
     constructor(props) {
         super(props)
         this.state = { album: {}, tracks: [], song: null, playing: false };
     }
 
-    async componentDidMount(){
+    componentDidMount(){
         const id = this.props.match.params.id;
-        // const id ="5c5ad910fff1e5a2b40aae47";
-        let album = await getAlbum(id);
-        album = album.data;
-
-        let tracks = await getAlbumTracks(album._id);
-        tracks = tracks.data;
-
-        this.setState({ album, tracks });
+        this.props.getAlbum(id);
+        this.props.getAlbumTracks(id);
     }
 
     playMusic = (trackURL) => {
@@ -51,7 +50,7 @@ export default class Album extends React.Component {
     }
 
     createTracks = () => {
-        return this.state.tracks.map((track, idx) => {
+        return this.props.tracks.map((track, idx) => {
             return <Track title={track.title} t
                           trackURL={track.trackURL} 
                           trackLength={track.trackLength}
@@ -65,29 +64,47 @@ export default class Album extends React.Component {
         return (
             <div className="album">
                 <Sidebar />
-                { !this.state.album.title ? null :
-                    <React.Fragment>
-                    
-                        <div className="album__information">
-                            <img src={this.state.album.imageURL} className="album__cover" />
-                            <p className="album__title">{this.state.album.title}</p>
-                            {!this.state.album.artist ? null: 
-                                <Link to={`/artist/${this.state.album.artist._id}`} className="album__artist">
-                                    {this.state.album.artist.name}
-                                </Link> 
-                            }
-                            <p className="album__song-count">{this.state.tracks.length == 1 ? 
-                                                                this.state.tracks.length + ' SONG':
-                                                                 this.state.tracks.length + ' SONGS'}</p>
-                        </div>
+                { (!this.props.album.title || !this.props.tracks.length >= 1) ? null :
+                    (this.props.album._id !== this.props.match.params.id) ? null :
+                        <React.Fragment>
+                        
+                            <div className="album__information">
+                                <img src={this.props.album.imageURL} className="album__cover" />
+                                <p className="album__title">{this.props.album.title}</p>
+                                {!this.props.album.artist ? null: 
+                                    <Link to={`/artist/${this.props.album.artist._id}`} className="album__artist">
+                                        {this.props.album.artist.name}
+                                    </Link> 
+                                }
+                                <p className="album__song-count">{this.props.tracks.length == 1 ? 
+                                                                    this.props.tracks.length + ' SONG':
+                                                                    this.props.tracks.length + ' SONGS'}</p>
+                            </div>
 
-                        <div className="album__tracks">
-                            {this.createTracks()}
-                        </div>
-                    </React.Fragment>
+                            <div className="album__tracks">
+                                {this.createTracks()}
+                            </div>
+                        </React.Fragment>
                 }
             </div>
         );
     }
 };
+
+//destruct entities out of state
+const mapStateToProps = ({ entities }) => {
+    return {
+        tracks: entities.tracks,
+        album: entities.albums,
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        getAlbum: (albumID) => dispatch(getAlbum(albumID)),
+        getAlbumTracks: (albumID) => dispatch(getAlbumTracks(albumID)),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Album);
 

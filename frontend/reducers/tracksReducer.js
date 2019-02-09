@@ -2,7 +2,7 @@ import { RECEIVE_TRACKS } from '../actions/trackActions.js';
 
 //default state is the empty Object
 
-const tracksReducer = (state = {}, action) => {
+const tracksReducer = (state = [], action) => {
     //Never mutate the original state in Redux
     Object.freeze(state);
 
