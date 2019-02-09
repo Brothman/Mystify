@@ -8,6 +8,7 @@
     " sidebar    .    artists    .     ";
     background-image: linear-gradient(#3c3e5d, #060609 85%);
     position: relative;
+    height: 100vh;
 }
 
 .home__header {

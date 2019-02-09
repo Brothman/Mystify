@@ -2,7 +2,7 @@ import { RECEIVE_ARTIST } from '../actions/artistActions.js';
 
 //default state is the empty Object
 
-const artistReducer = (state = {}, action) => {
+const artistsReducer = (state = {}, action) => {
     //Never mutate the original state in Redux
     Object.freeze(state);
 
@@ -11,7 +11,7 @@ const artistReducer = (state = {}, action) => {
             return action.artist;
         default:
             return state;
-    }
+    };
 };
 
-export default artistReducer;
+export default artistsReducer;
