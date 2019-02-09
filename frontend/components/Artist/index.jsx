@@ -7,7 +7,11 @@ import { getArtist } from '../../utils/artistAPI';
 import Track from '../shared/track/index';
 import { Link } from 'react-router-dom';
 
-export default class Album extends React.Component {
+import * as test from '../../actions/trackActions.js';
+import { connect } from 'react-redux';
+import Artist from '../shared/artist';
+
+class ArtistPage extends React.Component {
 
     constructor(props) {
         super(props)
@@ -27,6 +31,8 @@ export default class Album extends React.Component {
     async componentDidMount() {
         const id = this.props.match.params.id;
 
+        this.props.test(id);
+
         //I am unsure if having three awaits in an array fires off all functions at once, or has to wait until one finishes.
 
         let tempArtist = getArtist(id);
@@ -40,6 +46,8 @@ export default class Album extends React.Component {
         artist = artist.data;
         tracks = tracks.data;
         albums = albums.data;
+
+
 
         this.setState({ artist, tracks, albums }, () => console.log(this.state));
     }
@@ -251,7 +259,8 @@ export default class Album extends React.Component {
                                 </svg>
                                 <svg onClick={() => this.playMusic(null)} viewBox="0 0 300 300" className="rela-block svg play-pause pause">
                                     <circle cx="150" cy="150" r="100"></circle>
-                                    <rect x="109" y="105" width="25" height="90" rx="8" ry="8" strokeWidth="0"></rect><rect svg x="166" y="105" width="25" height="90" rx="8" ry="8" strokeWidth="0"></rect>
+                                    <rect x="109" y="105" width="25" height="90" rx="8" ry="8" strokeWidth="0"></rect>
+                                    <rect x="166" y="105" width="25" height="90" rx="8" ry="8" strokeWidth="0"></rect>
                                 </svg>
                                 <svg viewBox="0 0 500 500" className="rela-block svg player"><path d="M 215 205 L 215 295 Q 215 300 221 299 L 303 253 Q 305 250 303 247 L 221 202 Q 215 200 215 205 Z" strokeWidth="0"></path><rect x="310" y="205" width="25" height="90" rx="8" ry="8" strokeWidth="0"></rect></svg>
                                 <svg viewBox="0 0 600 600" className="rela-block svg arrows"><path d="M 210 310 Q 210 250 270 250 L 310 250" strokeWidth="15"></path><path d="M 325 230 L 325 270 L 370 250 L 325 230 Z" strokeWidth="10" className="arrow"></path><path d="M 390 290 Q 390 350 330 350 L 290 350" strokeWidth="15"></path><path d="M 275 330 L 275 370 L 230 350 L 275 330 Z" strokeWidth="10" className="arrow"></path></svg>
@@ -293,4 +302,19 @@ export default class Album extends React.Component {
         );
     }
 };
+
+//destruct entities out of state
+const mapStateToProps = ({ entities }) => {
+    return {
+        tracks: entities.tracks
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        test: (artistID) => dispatch(test.getArtistTracks(artistID))
+    };
+}; 
+
+export default connect(mapStateToProps, mapDispatchToProps)(ArtistPage);
 

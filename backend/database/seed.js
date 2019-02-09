@@ -361,10 +361,6 @@ const tracks = [
         albumTitle: "Revelations",
         trackLength: "2:53"
     },
-    
-
-
-
 ];
 
 const saveTracks = async (album) => {
