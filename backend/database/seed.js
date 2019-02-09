@@ -104,6 +104,13 @@ const albums = [
         imageURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Mozart/Requiem/Mozart-Requiem.jpg",
         artist: "Mozart"
     },
+    {
+        title: "Revelations",
+        releaseDate: "2019",
+        imageURL: "https://s3.us-east-2.amazonaws.com/mystify-images/BenAlbumCover1.jpg",
+        artist: "Benji Rothman"
+    },
+
 
 ];
 
@@ -341,6 +348,18 @@ const tracks = [
         trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Mozart/Requiem/'Mozart'+-+14+-+Communio%3B+Lux+Aeterna.mp3",
         albumTitle: "Requiem",
         trackLength: "5:50"
+    },
+    {
+        title: "Talk Like A Robot",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Benji/Talk+Like+A+Robot+V1.mp3",
+        albumTitle: "Revelations",
+        trackLength: "2:56"
+    },
+    {
+        title: "Ghost Drum",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Benji/Ghost+Drum.mp3",
+        albumTitle: "Revelations",
+        trackLength: "2:53"
     },
     
 
