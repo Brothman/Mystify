@@ -163,7 +163,6 @@ class ArtistPage extends React.Component {
             return <Track title={track.title} 
                 trackURL={track.trackURL}
                 trackLength={track.trackLength}
-                playMusic={this.playMusic}
                 key={idx} />
         });
     }

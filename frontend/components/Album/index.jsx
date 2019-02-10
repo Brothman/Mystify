@@ -23,27 +23,22 @@ class Album extends React.Component {
         this.props.getAlbumTracks(id);
     }
 
-    playMusic = (trackURL) => {
+    playMusic = (newSong) => {
         const song = this.state.song;
         if (!song) {
-            const newSong = new Audio(trackURL);
-            this.setState({ song: newSong, playing: true }, () => {
-                console.log('hi')
-                console.log(this.state);
-            });
+            this.setState({ song: newSong, playing: true });
             newSong.play();
         }
-        else if (song.src == trackURL && this.state.playing) {
+        else if (song.src == newSong.src && this.state.playing) {
             song.pause();
             this.setState({ playing: false })
         }
-        else if (song.src == trackURL) {
+        else if (song.src == newSong.src) {
             song.play();
             this.setState({ playing: true })
         }
         else {
             song.pause();
-            const newSong = new Audio(trackURL);
             newSong.play();
             this.setState({ song: newSong, playing: true });
         }
@@ -51,10 +46,9 @@ class Album extends React.Component {
 
     createTracks = () => {
         return this.props.tracks.map((track, idx) => {
-            return <Track title={track.title} t
+            return <Track title={track.title} 
                           trackURL={track.trackURL} 
                           trackLength={track.trackLength}
-                          playMusic={this.playMusic}
                           key={idx} />
         });
     }

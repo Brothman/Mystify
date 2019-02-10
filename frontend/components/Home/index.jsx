@@ -52,9 +52,6 @@ class Home extends React.Component {
                         <div className="home__artists">
                             {this.createArtists()}
                         </div>
-                        <audio controls>
-                            <source src="https://s3.us-east-2.amazonaws.com/mystify-images/Talk+Like+A+Robot+V1.mp3" type="audio/mp3" />
-                        </audio>
                     </React.Fragment>
                 }
             </div>
