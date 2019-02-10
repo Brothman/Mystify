@@ -6,11 +6,54 @@ class AudioPlayerFooter extends React.Component {
 
     constructor(props) {
         super(props)
-        this.state = { };
+        this.state = { 
+            tempTime: 0,
+        };
     }
+
+    // componentDidMount(){
+    //     //on mouse down add event listener to input so we follow its changes and ignore current time update
+
+    //     //on mouse up add event listener back.
+
+    //     const input = document.querySelector('.audio-player__time-slider');
+    //     input.addEventListener('mousedown', (e) => {
+    //         debugger
+    //         input.removeEventListener('change', (event) => this.updateCurrentTime(event));
+    //         const min = e.target.min,
+    //             max = e.target.max,
+    //             val = e.target.value;
+
+    //         const realVal = (val - min) / max - min;
+    //         this.setState({tempTime: val});
+
+    //         input.style.backgroundImage = '-webkit-gradient(linear, left top, right top, '
+    //             + 'color-stop(' + realVal + ', #aaa), '
+    //             + 'color-stop(' + realVal + ', #404040)'
+    //             + ')';
+    //     });
+
+    //     input.addEventListener('mouseup', (e) => {
+    //         const min = e.target.min,
+    //             max = e.target.max,
+    //             val = e.target.value;
+
+    //         const realVal = (val - min) / max - min;
+    //         // this.props.song.removeEventListener('timeupdate', () => updateTimeInState(this.props.song, input));
+    //         this.props.updateSongCurrentTime(val);
+    //         // this.props.song.currentTime = realVal;
+
+    //         input.style.backgroundImage = '-webkit-gradient(linear, left top, right top, '
+    //             + 'color-stop(' + realVal + ', #aaa), '
+    //             + 'color-stop(' + realVal + ', #404040)'
+    //             + ')';
+    //     });
+
+    // }
 
     updateVolume = (e) => {
         const volume = e.target.value;
+        debugger
         this.props.song ? this.props.song.volume = volume : null;
     }
 
@@ -51,10 +94,12 @@ class AudioPlayerFooter extends React.Component {
 
     updateCurrentTime = (e) => {
         //fill in
-        // debugger
+        debugger
         const min = e.target.min,
             max = e.target.max,
             val = e.target.value;
+
+        this.setState({ tempTime: val });
 
         const realVal = (val - min) / max - min;
 
@@ -101,7 +146,7 @@ class AudioPlayerFooter extends React.Component {
                             min="0"
                             max={this.props.song.duration ? this.props.song.duration : 250}
                             step="0.01"
-                            value={this.props.song.currentTime ? this.props.song.currentTime : 0}
+                            value={this.props.song.currentTime ? this.props.song.currentTime : this.state.tempTime }
                             className="audio-player__time-slider" />
                         <p className="audio-player__time">{this.props.song.duration ? this.formatTime(this.props.song.duration) : this.props.tracks[0].trackLength}</p>
                     </div>

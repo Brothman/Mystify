@@ -93,7 +93,7 @@ class Album extends React.Component {
 const mapStateToProps = ({ entities }) => {
     return {
         tracks: entities.tracks,
-        album: entities.albums,
+        album: entities.albums[0],
     };
 };
 

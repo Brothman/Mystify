@@ -11,11 +11,11 @@ export const receiveAlbums = (albums) => {
 };
 
 //Regular action creator, return a plain old Javascript object.
-//MAY GIVE A SPECIFIC ALBUM REDUCER
+//Make it an array to keep data consistent
 export const receiveAlbum = (album) => {
     return {
         type: RECEIVE_ALBUM,
-        albums: album.data,
+        albums: [album.data],
     };
 };
 
