@@ -1,5 +1,6 @@
 export const RECEIVE_SONG = "RECEIVE_SONG";
 export const PLAY_SONG = "PLAY_SONG";
+export const UPDATE_CURRENT_TIME = "UPDATE_CURRENT_TIME";
 // import * as ArtistAPI from '../utils/artistAPI';
 
 //Regular action creator, return a plain old Javascript object.
@@ -19,3 +20,9 @@ export const playSong = (song) => {
     };
 };
 
+export const updateSongCurrentTime = (time) => {
+    return {
+        type: UPDATE_CURRENT_TIME,
+        time: time,
+    };
+};
