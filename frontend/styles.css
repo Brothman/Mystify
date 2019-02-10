@@ -23,3 +23,4 @@ button:focus, button:active {
 @import url('./components/Shared/artist/index.css');
 @import url('./components/Shared/sidebar/index.css');
 @import url('./components/Shared/track/index.css');
+@import url('./components/Shared/audioPlayerFooter/index.css');

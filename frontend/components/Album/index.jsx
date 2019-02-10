@@ -3,6 +3,8 @@ import React from 'react';
 import Sidebar from '../shared/sidebar/index.jsx';
 // import { getAlbumTracks } from '../../utils/trackAPI';
 import Track from '../shared/track/index';
+import AudioPlayerFooter from '../shared/audioPlayerFooter/index.jsx';
+
 import { Link } from 'react-router-dom';
 
 import { getAlbumTracks } from '../../actions/trackActions.js';
@@ -78,6 +80,8 @@ class Album extends React.Component {
                             <div className="album__tracks">
                                 {this.createTracks()}
                             </div>
+
+                            <AudioPlayerFooter />
                         </React.Fragment>
                 }
             </div>
