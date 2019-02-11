@@ -109,6 +109,7 @@ class ArtistPage extends React.Component {
             return <Track title={track.title} 
                 trackURL={track.trackURL}
                 trackLength={track.trackLength}
+                albumImgURL={track.album.imageURL}
                 key={idx} />
         });
     }

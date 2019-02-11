@@ -1,10 +1,27 @@
-import { PLAY_SONG, UPDATE_CURRENT_TIME } from '../actions/songActions.js';
+import { PLAY_SONG, UPDATE_CURRENT_TIME, updateSongCurrentTime  } from '../actions/songActions.js';
+
+const formatTime = (time) => {
+    // Display formatted time
+    // debugger
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    // return;
+    if (seconds < 10) {
+        return `${minutes}:0${seconds}`;
+    }
+    else {
+        return `${minutes}:${seconds}`;
+    }
+}
 
 const updateTimeInState = (song, input) => {
     let min = input.min;
     let max = input.max;
     let val = song.currentTime;
     input.value = val;
+
+    const p = document.querySelector('.audio-player__time-start');
+    p.innerHTML=formatTime(val);
 
     let realVal = (val - min) / max - min;
 
@@ -29,45 +46,52 @@ const showPlayButton = () => {
 };
 
 //default state is the empty Object
+//Be careful, not supposed to mutate state!
 const songReducer = (state = {}, action) => {
     //Never mutate the original state in Redux
     Object.freeze(state);
-    const oldSong = state;
+    const oldSong = state.song;
+    const newSong = action.song ? action.song.song : action.song;
+    // const newSong = action.song || action.song.song;
 
     switch (action.type) {
         case (PLAY_SONG):
             //there is no old song for the play-pause buttotn
-            if (!oldSong && !action.song) {
+            if (!oldSong && !newSong) {
                 return state;
             }
-            else if (!action.song && !oldSong.paused) {
+            else if (!newSong && !oldSong.paused) {
                 oldSong.pause();
                 showPlayButton();
                 return state;
             }
-            else if (!action.song && oldSong.paused) {
+            else if (!newSong && oldSong.paused) {
                 oldSong.play();
                 showPauseButton();
                 return state;
             }
             //for a new track
-            else if (!oldSong.src) {
-                action.song.play();
+            else if (!oldSong) {
+                newSong.play();
                 showPauseButton();
 
                 const input = document.querySelector('.audio-player__time-slider');
-                action.song.addEventListener('timeupdate', () => updateTimeInState(action.song, input));
-                return action.song;
+                newSong.addEventListener('timeupdate', () => updateTimeInState(newSong, input));
+                return { 
+                        title: action.song.title, 
+                        albumImgURL: action.song.albumImgURL,
+                        song: newSong 
+                    };
             }
-            else if (oldSong.src == action.song.src && !oldSong.paused) {
+            else if (oldSong.src == newSong.src && !oldSong.paused) {
                 oldSong.pause();
                 showPlayButton();
-                return oldSong;
+                return state;
             }
-            else if (oldSong.src == action.song.src) {
+            else if (oldSong.src == newSong.src) {
                 oldSong.play();
                 showPauseButton();
-                return oldSong;
+                return state;
             }
             else {
                 oldSong.pause();
@@ -75,15 +99,19 @@ const songReducer = (state = {}, action) => {
                 const input = document.querySelector('.audio-player__time-slider');
                 oldSong.removeEventListener('timeupdate', () => updateTimeInState(oldSong, input));
 
-                action.song.play();
+                newSong.play();
                 showPauseButton();
 
-                action.song.addEventListener('timeupdate', () => updateTimeInState(action.song, input));
-                return action.song;
+                newSong.addEventListener('timeupdate', () => updateTimeInState(newSong, input));
+                return {
+                    title: action.song.title,
+                    albumImgURL: action.song.albumImgURL,
+                    song: newSong
+                };
             }
         case (UPDATE_CURRENT_TIME): 
             oldSong.currentTime = action.time;
-            return oldSong;
+            return state;
         default:
             return state;
     };

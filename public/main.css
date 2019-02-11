@@ -753,7 +753,7 @@
 
 .audio-player__time {
     font-size: 12px;
-    width: 30px;
+    min-width: 25px;
     color: #919496;
     font-weight: 300;
     margin-right: 5px;
@@ -764,7 +764,7 @@
     width: 100%;
     padding: 0;
     margin: 0;
-    /* background-color: transparent; */
+    background-color: transparent;
     /* background-color: green; */
     background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #404040), color-stop(100%, #404040));
     -webkit-appearance: none;

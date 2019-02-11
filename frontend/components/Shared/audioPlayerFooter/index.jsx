@@ -94,7 +94,6 @@ class AudioPlayerFooter extends React.Component {
 
     updateCurrentTime = (e) => {
         //fill in
-        debugger
         const min = e.target.min,
             max = e.target.max,
             val = e.target.value;
@@ -117,11 +116,14 @@ class AudioPlayerFooter extends React.Component {
     }
 
     render() {
+        //for error handling
+        debugger
+        const song = this.props.song.song ? this.props.song.song : this.props.song;
         return (
             <div className="audio-player">
                 <div className="audio-player__song-info">
-                    <img src={this.props.albums[0].imageURL} alt="" className="audio-player__album-img" />
-                    <p className="audio-player__song-title">{this.props.tracks[0].title}</p>
+                    <img src={this.props.song.albumImgURL ? this.props.song.albumImgURL : this.props.albums[0].imageURL} alt="" className="audio-player__album-img" />
+                    <p className="audio-player__song-title">{this.props.song.title ? this.props.song.title : this.props.tracks[0].title}</p>
                     <p className="audio-player__artist-name">{this.props.artist.name}</p>
                 </div>
 
@@ -140,15 +142,15 @@ class AudioPlayerFooter extends React.Component {
                     <svg viewBox="0 0 600 600" className="rela-block svg arrows"><path d="M 210 310 Q 210 250 270 250 L 310 250" strokeWidth="15"></path><path d="M 325 230 L 325 270 L 370 250 L 325 230 Z" strokeWidth="10" className="arrow"></path><path d="M 390 290 Q 390 350 330 350 L 290 350" strokeWidth="15"></path><path d="M 275 330 L 275 370 L 230 350 L 275 330 Z" strokeWidth="10" className="arrow"></path></svg>
 
                     <div className="audio-player__current-time">
-                        <p className="audio-player__time">{(this.props.song.currentTime ? this.formatTime(this.props.song.currentTime) : '0:00')}</p>
+                        <p className="audio-player__time audio-player__time-start">{this.formatTime(this.state.tempTime)}</p>
                         <input onChange={(e) => this.updateCurrentTime(e)}
                             type="range"
                             min="0"
-                            max={this.props.song.duration ? this.props.song.duration : 250}
+                            max={song.duration ? song.duration : 250}
                             step="0.01"
-                            value={this.props.song.currentTime ? this.props.song.currentTime : this.state.tempTime }
+                            value={song.currentTime ? song.currentTime : this.state.tempTime }
                             className="audio-player__time-slider" />
-                        <p className="audio-player__time">{this.props.song.duration ? this.formatTime(this.props.song.duration) : this.props.tracks[0].trackLength}</p>
+                        <p className="audio-player__time">{song.duration ? this.formatTime(song.duration) : this.props.tracks[0].trackLength}</p>
                     </div>
                 </div>
 

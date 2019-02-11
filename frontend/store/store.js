@@ -10,7 +10,10 @@ const middlewares = [thunk];
 const configureStore = (preLoadedState = {}) => {
     return createStore(rootReducer,
         preLoadedState,
-        applyMiddleware(...middlewares));
+        composeWithDevTools(
+            applyMiddleware(...middlewares)
+            )
+    );
 };
 
 export default configureStore;
