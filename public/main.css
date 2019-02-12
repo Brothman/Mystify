@@ -123,12 +123,13 @@
     grid-template-columns: 230px 75px 1fr 75px;
     grid-template-rows: 100px 1fr; 
     width: 100vw;
+    height: 100%;
+    /* height: 100vh; */
     grid-template-areas:
     " sidebar  header  header  header  "
     " sidebar    .    artists    .     ";
     background-image: linear-gradient(#3c3e5d, #060609 85%);
     position: relative;
-    height: 100vh;
 }
 
 .home__header {

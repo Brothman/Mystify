@@ -418,7 +418,7 @@ saveArtists();
 
 //close the database after 3000 ms
 // a hack to make sure everything seeds correctly
-setTimeout(() => mongoose.connection.close(), 3000);
+// setTimeout(() => mongoose.connection.close(), 3000);
 
 
 

@@ -121,7 +121,6 @@ class AudioPlayerFooter extends React.Component {
 
     render() {
         //for error handling
-        debugger
         const song = this.props.song.song ? this.props.song.song : this.props.song;
         return (
             <div className="audio-player">
