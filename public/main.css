@@ -212,7 +212,7 @@
     grid-template-columns: 230px 50px 400px 1fr 75px;
     grid-template-rows: 50px 1fr; 
     width: 100vw;
-    height: 100vh;
+    height: calc(100vh - 40px);
     grid-template-areas:
     " sidebar    .             .              .      .   "
     " sidebar    .    album__information    tracks   .   ";
@@ -272,7 +272,7 @@
     grid-template-rows: 50px 75px 60px 40px 100px 210px 30px 50px 400px 25px;
     overflow: scroll;
     width: 100vw;
-    height: 100vh;
+    height: calc(100vh - 40px);
     grid-template-areas:
     " sidebar    .             .              .        .   "
     " sidebar    .        artist-name   artist-name    .   "

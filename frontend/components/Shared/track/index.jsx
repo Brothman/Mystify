@@ -26,9 +26,23 @@ class track extends React.Component {
     }
 
     playThisSong = (song) => {
-        song.song.addEventListener('ended', () => {
-            this.props.playSong(this.props.playQueue[0]);
-        });
+        let idx;
+
+        for (let i = 0; i < this.props.playQueue.length; i++) {
+            if (this.props.playQueue[i].title == song.title) {
+                idx = i;
+            }
+        }
+
+        if (idx == this.props.playQueue.length - 1) {
+            //do nothing, last song
+        }
+        else {
+            song.song.addEventListener('ended', () => {
+                this.playThisSong(this.props.playQueue[idx + 1]);
+            })
+        }
+
         this.props.playSong(song);
     }
 
