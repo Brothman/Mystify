@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { playSong, updateSongCurrentTime } from '../../../actions/songActions';
+import { Link } from 'react-router-dom';
 
 class AudioPlayerFooter extends React.Component {
 
@@ -93,7 +94,10 @@ class AudioPlayerFooter extends React.Component {
     }
 
     updateCurrentTime = (e) => {
-        //fill in
+        //fail safe so user cannot edit progress bar before a song is selected
+        if (!this.props.song.song) {
+            return;
+        }
         const min = e.target.min,
             max = e.target.max,
             val = e.target.value;
@@ -121,11 +125,16 @@ class AudioPlayerFooter extends React.Component {
         const song = this.props.song.song ? this.props.song.song : this.props.song;
         return (
             <div className="audio-player">
-                <div className="audio-player__song-info">
-                    <img src={this.props.song.albumImgURL ? this.props.song.albumImgURL : this.props.albums[0].imageURL} alt="" className="audio-player__album-img" />
-                    <p className="audio-player__song-title">{this.props.song.title ? this.props.song.title : this.props.tracks[0].title}</p>
-                    <p className="audio-player__artist-name">{this.props.artist.name}</p>
-                </div>
+                {(this.props.song.albumImgURL && this.props.song.title && this.props.artist.name) ?
+                    <div className="audio-player__song-info">
+                        <Link to={`/artist/${this.props.artist._id}`} className="audio-player__album-img">
+                            <img src={this.props.song.albumImgURL} alt="" className="audio-player__album-img" /> 
+                        </Link>
+                        <p className="audio-player__song-title">{this.props.song.title}</p>
+                        <Link to={`/artist/${this.props.artist._id}`} className="audio-player__artist-name">{this.props.artist.name}</Link>
+                    </div>
+                    : null
+                }
 
                 <div className="audio-player__controls">
                     <svg viewBox="0 0 610 610" className="rela-block svg arrows"><path d="M 405 230 L 405 270 L 450 250 L 405 230 Z" strokeWidth="10" className="arrow"></path><path d="M 390 250 L 350 250 L 250 350 L 210 350" strokeWidth="15"></path><path d="M 390 350 L 350 350 330 330" strokeWidth="15"></path><path d="M 210 250 L 250 250 270 270" strokeWidth="15"></path><path d="M 405 330 L 405 370 L 450 350 L 405 330 Z" strokeWidth="10" className="arrow"></path></svg>
@@ -150,7 +159,7 @@ class AudioPlayerFooter extends React.Component {
                             step="0.01"
                             value={song.currentTime ? song.currentTime : this.state.tempTime }
                             className="audio-player__time-slider" />
-                        <p className="audio-player__time">{song.duration ? this.formatTime(song.duration) : this.props.tracks[0].trackLength}</p>
+                        <p className="audio-player__time">{song.duration ? this.formatTime(song.duration) : '3:00'}</p>
                     </div>
                 </div>
 

@@ -95,6 +95,7 @@ const songReducer = (state = {}, action) => {
             }
             else {
                 oldSong.pause();
+                oldSong.currentTime = 0;
 
                 const input = document.querySelector('.audio-player__time-slider');
                 oldSong.removeEventListener('timeupdate', () => updateTimeInState(oldSong, input));

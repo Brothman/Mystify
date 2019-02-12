@@ -82,7 +82,6 @@ class Album extends React.Component {
                                 {this.createTracks()}
                             </div>
 
-                            <AudioPlayerFooter />
                         </React.Fragment>
                 }
             </div>
