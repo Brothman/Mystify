@@ -136,8 +136,29 @@ class AudioPlayerFooter extends React.Component {
             else {
                 this.props.playSong(this.props.playQueue[idx + 1]);
             }
+    }
 
+    loop = () => {
+        const song = this.props.song.song;
+        const arrowLoopSVG = document.querySelectorAll('.arrow');
         
+        if (song.loop) {
+            song.loop = false;  
+            for (let i = 0; i < arrowLoopSVG.length; i++) {
+                const arrow = arrowLoopSVG[i];
+                // arrow.style.fill = 'rgba(255, 255, 255, 0.6)';
+                arrow.style.className = 'arrow';
+            }
+        }
+        else {
+            song.loop = true;
+            for (let i = 0; i < arrowLoopSVG.length; i++) {
+                const arrow = arrowLoopSVG[i];
+                // arrow.style.fill = '#1db954';
+                debugger
+                arrowLoopSVG[i].style.className += ' green';
+            }
+        }
     }
 
     render() {
@@ -157,7 +178,7 @@ class AudioPlayerFooter extends React.Component {
                 }
 
                 <div className="audio-player__controls">
-                    <svg viewBox="0 0 610 610" className="rela-block svg arrows"><path d="M 405 230 L 405 270 L 450 250 L 405 230 Z" strokeWidth="10" className="arrow"></path><path d="M 390 250 L 350 250 L 250 350 L 210 350" strokeWidth="15"></path><path d="M 390 350 L 350 350 330 330" strokeWidth="15"></path><path d="M 210 250 L 250 250 270 270" strokeWidth="15"></path><path d="M 405 330 L 405 370 L 450 350 L 405 330 Z" strokeWidth="10" className="arrow"></path></svg>
+                    <svg viewBox="0 0 610 610" className="rela-block svg shuffle"><path d="M 405 230 L 405 270 L 450 250 L 405 230 Z" strokeWidth="10" className="arrow"></path><path d="M 390 250 L 350 250 L 250 350 L 210 350" strokeWidth="15"></path><path d="M 390 350 L 350 350 330 330" strokeWidth="15"></path><path d="M 210 250 L 250 250 270 270" strokeWidth="15"></path><path d="M 405 330 L 405 370 L 450 350 L 405 330 Z" strokeWidth="10" className="arrow"></path></svg>
                     <svg onClick={() => song.currentTime = 0} viewBox="0 0 500 500" className="rela-block svg player"><path d="M 290 205 L 290 295 Q 290 300 284 299 L 197 253 Q 195 250 197 247 L 284 202 Q 290 200 290 205 Z" strokeWidth="0"></path><rect x="165" y="205" width="25" height="90" rx="8" ry="8" strokeWidth="0"></rect></svg>
                     <svg onClick={() => this.props.playSong(null)} viewBox="0 0 300 300" className="rela-block svg play-pause play">
                         <circle cx="150" cy="150" r="100"></circle><path d="M 115 105 L 115 195 Q 115 200 121 199 L 203 153 Q 205 150 203 147 L 121 102 Q 115 100 115 105 Z" strokeWidth="0"></path>
@@ -168,7 +189,7 @@ class AudioPlayerFooter extends React.Component {
                         <rect x="166" y="105" width="25" height="90" rx="8" ry="8" strokeWidth="0"></rect>
                     </svg>
                     <svg onClick={() => this.playNextSong()} viewBox="0 0 500 500" className="rela-block svg player"><path d="M 215 205 L 215 295 Q 215 300 221 299 L 303 253 Q 305 250 303 247 L 221 202 Q 215 200 215 205 Z" strokeWidth="0"></path><rect x="310" y="205" width="25" height="90" rx="8" ry="8" strokeWidth="0"></rect></svg>
-                    <svg viewBox="0 0 600 600" className="rela-block svg arrows"><path d="M 210 310 Q 210 250 270 250 L 310 250" strokeWidth="15"></path><path d="M 325 230 L 325 270 L 370 250 L 325 230 Z" strokeWidth="10" className="arrow"></path><path d="M 390 290 Q 390 350 330 350 L 290 350" strokeWidth="15"></path><path d="M 275 330 L 275 370 L 230 350 L 275 330 Z" strokeWidth="10" className="arrow"></path></svg>
+                    <svg onClick={() => this.loop()} viewBox="0 0 600 600" className="rela-block svg repeat-loop"><path d="M 210 310 Q 210 250 270 250 L 310 250" strokeWidth="15" className='arrow'></path><path d="M 325 230 L 325 270 L 370 250 L 325 230 Z" strokeWidth="10" className="arrow"></path><path d="M 390 290 Q 390 350 330 350 L 290 350" strokeWidth="15" className='arrow'></path><path d="M 275 330 L 275 370 L 230 350 L 275 330 Z" strokeWidth="10" className="arrow"></path></svg>
 
                     <div className="audio-player__current-time">
                         <p className="audio-player__time audio-player__time-start">{this.formatTime(this.state.tempTime)}</p>

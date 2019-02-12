@@ -736,6 +736,10 @@
     stroke: rgba(255,255,255,1);
 }
 
+.green {
+    fill: #1db954;
+}
+
 .play-pause {
     transition: transform 0.3s ease;
 }
