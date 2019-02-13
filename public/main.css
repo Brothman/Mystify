@@ -625,6 +625,10 @@
     justify-self: center;
 }
 
+.track--green {
+    color: green;
+}
+
 
 
 .audio-player {

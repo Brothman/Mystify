@@ -28,3 +28,7 @@
     top: -1px;
     justify-self: center;
 }
+
+.track--green {
+    color: green;
+}

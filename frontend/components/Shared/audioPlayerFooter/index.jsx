@@ -156,7 +156,7 @@ class AudioPlayerFooter extends React.Component {
                 const arrow = arrowLoopSVG[i];
                 // arrow.style.fill = '#1db954';
                 debugger
-                arrowLoopSVG[i].style.className += ' green';
+                arrow.style.className += ' green';
             }
         }
     }

@@ -31,14 +31,15 @@ const updateTimeInState = (song, input) => {
         + ')';
 } 
 
-const showPauseButton = () => {
+const showPauseButton = (songTitle) => {
     const play = document.querySelector('.play');
     const pause = document.querySelector('.pause');
+
     play.style.display = "none";
     pause.style.display = "inline";
 }
 
-const showPlayButton = () => {
+const showPlayButton = (songTitle) => {
     const play = document.querySelector('.play');
     const pause = document.querySelector('.pause');
     play.style.display = "inline";
