@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Sidebar from '../../shared/sidebar/index.jsx';
-import Track from '../../shared/track/index.jsx';
+import HomeTrack from '../../shared/homeTrack/index.jsx';
 import Header from '../header/index';
 import { getAllTracks } from '../../../actions/trackActions';
 import { connect } from 'react-redux';
@@ -20,10 +20,12 @@ class HomeTracks extends React.Component {
 
     createTracks = () => {
         return this.props.tracks.map((track, idx) => {
-            return <Track title={track.title}
+            return <HomeTrack title={track.title}
                 trackURL={track.trackURL}
                 trackLength={track.trackLength}
                 albumImgURL={track.album.imageURL}
+                album={track.album}
+                artist={track.artist}
                 key={idx} />
         });
     }

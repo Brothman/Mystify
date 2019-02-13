@@ -1,0 +1,62 @@
+.track-home {
+    display: grid;
+    grid-template-columns: 50px 1fr 55px;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.track-home:hover {
+    background-color: rgba(0,0,0,.3);
+}
+
+.home-track__track-length {
+    opacity: 0.5;
+}
+
+.home-track__info {
+    display: flex;
+    flex-direction: column;
+}
+
+.home-track__artist-album {
+    display: flex;
+}
+
+.home-track__artist-name, .home-track__album-title {
+    margin-right: 15px;
+    color: rgba(255,255,255,0.6);
+    font-size: 14px;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s ease, border 0.2s ease;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    text-decoration: none;
+}
+
+.home-track__artist-name:hover, .home-track__album-title:hover {
+    color: rgba(255,255,255,1);
+    border-bottom: 1px solid white;
+}
+
+.home-track__title {
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: .015em;
+    position: relative;
+    top: 22px;
+    margin-top: 0;
+}
+
+.home-track__icon-play {
+    color: white;
+    width: 14px;
+    height: 14px;
+    position: relative;
+    top: -1px;
+    justify-self: center;
+}
+
+.track--green {
+    color: #1db954;
+}

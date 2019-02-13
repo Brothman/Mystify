@@ -5,7 +5,7 @@ import track from './trackModel';
 const trackRouter = Router();
 
 trackRouter.get('/', async (req, res) => {
-    const tracks = await track.find( {} ).populate('album').lean().exec();
+    const tracks = await track.find( {} ).populate('album').populate('artist').lean().exec();
     res.send(tracks);
 });
 

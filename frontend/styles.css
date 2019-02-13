@@ -27,4 +27,5 @@ button:focus, button:active, input:focus, input:active {
 @import url('./components/Shared/artist/index.css');
 @import url('./components/Shared/sidebar/index.css');
 @import url('./components/Shared/track/index.css');
+@import url('./components/Shared/homeTrack/index.css');
 @import url('./components/Shared/audioPlayerFooter/index.css');

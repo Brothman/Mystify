@@ -3,7 +3,7 @@ import { RECEIVE_ALBUM} from '../actions/albumActions.js';
 
 //default state is the empty Object
 
-const albumsReducer = (state = [], action) => {
+const albumsReducer = (state = [[]], action) => {
     //Never mutate the original state in Redux
     Object.freeze(state);
 

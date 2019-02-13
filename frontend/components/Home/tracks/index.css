@@ -21,5 +21,5 @@
 .home-track__tracks {
     grid-area: tracks;
     display: grid;
-    grid-template-rows: repeat(auto-fill, minmax(60px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(54px, 1fr));
 }
