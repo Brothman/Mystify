@@ -45,3 +45,16 @@ export const getAlbum = (albumID) => {
         }
     };
 };
+
+//Return a function (Thunk Action Creator)
+export const getAlbums = () => {
+    return async (dispatch) => {
+        try {
+            const albums = await AlbumAPI.getAlbums();
+            dispatch(receiveAlbums(albums));
+        }
+        catch (e) {
+            console.log(e);
+        }
+    };
+};

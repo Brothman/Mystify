@@ -4,7 +4,8 @@ import Home from './Home/index';
 import Search from './Search/index';
 import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
 import Album from './Album/index';
-import Albums from './Home/albums/index';
+import HomeAlbums from './Home/albums/index';
+import HomeTracks from './Home/tracks/index';
 import Artist from './Artist/index';
 import { Provider } from 'react-redux';
 import AudioPlayerFooter from './shared/audioPlayerFooter/index';
@@ -21,8 +22,8 @@ const Routes = ({ store }) => {
 
                     <Route path="/home/" exact={true} render={() => <Redirect to="/home/artists" />} />
                     <Route path="/home/artists" component={Home} />
-                    <Route path="/home/albums" component={Albums} />
-                    <Route path="/home/tracks" component={Home} />
+                    <Route path="/home/albums" component={HomeAlbums} />
+                    <Route path="/home/tracks" component={HomeTracks} />
                     <Route path="/home/playlists" component={Home} />
                     <Route path="/search" component={Search} />
                     <Route path="/library" component={Home} />

@@ -37,3 +37,17 @@ export const getArtistTracks = (artistID) => {
     };
 };
 
+//Return a function (Thunk Action Creator)
+export const getAllTracks = () => {
+    return async (dispatch) => {
+        try {
+            const tracks = await TrackAPI.getAllTracks();
+            dispatch(receiveTracks(tracks));
+        }
+        catch (e) {
+            console.log(e);
+        }
+    };
+};
+
+

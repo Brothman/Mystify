@@ -14,6 +14,7 @@ button:focus, button:active, input:focus, input:active {
 @import url('./components/Home/index.css');
 @import url('./components/Home/header/index.css');
 @import url('./components/Home/albums/index.css');
+@import url('./components/Home/tracks/index.css');
 
 @import url('./components/Album/index.css');
 

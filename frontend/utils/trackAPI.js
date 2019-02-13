@@ -7,3 +7,6 @@ export const getAlbumTracks = (albumID) => {
 export const getArtistTracks = (artistID) => {
     return axios.get(`/api/tracks/artist/${artistID}`);
 };
+export const getAllTracks = () => {
+    return axios.get(`/api/tracks/`);
+};
