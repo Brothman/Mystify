@@ -31,6 +31,7 @@ class HomeTracks extends React.Component {
     }
 
     render() {
+        debugger
         return (
             <div className="home-track">
                 <Sidebar />

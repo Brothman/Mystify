@@ -1,4 +1,5 @@
 export const RECEIVE_TRACKS = "RECEIVE_TRACKS";
+export const CLEAR_TRACKS = "CLEAR_TRACKS";
 
 import * as TrackAPI from '../utils/trackAPI';
 
@@ -9,6 +10,14 @@ export const receiveTracks = (tracks) => {
         tracks: tracks.data,
     };
 };
+
+//Regular action creator, return a plain old Javascript object.
+export const clearTracks = (tracks) => {
+    return {
+        type: CLEAR_TRACKS,
+    };
+};
+
 
 
 //Return a function (Thunk Action Creator)

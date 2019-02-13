@@ -3,7 +3,7 @@ import Sidebar from '../shared/sidebar/index.jsx';
 import Track from '../shared/track/index';
 import { Link } from 'react-router-dom';
 
-import { getArtistTracks } from '../../actions/trackActions.js';
+import { getArtistTracks, clearTracks } from '../../actions/trackActions.js';
 import { getArtistAlbums } from '../../actions/albumActions';
 import { getArtist } from '../../actions/artistActions';
 import { playSong, updateSongCurrentTime } from '../../actions/songActions';
@@ -24,6 +24,10 @@ class ArtistPage extends React.Component {
         this.props.getArtist(id);
         // There is a RACE CONDITION HERE. -> If I get the Artist too soon, the application will crash as I try to access tracks and albums information
         // ALSO, FOOTER RELIES ON THIS INFORMATION
+    }
+
+    componentWillUnmount(){
+        this.props.clearTracks();
     }
 
     createTracks = () => {
@@ -129,6 +133,7 @@ const mapDispatchToProps = dispatch => {
         getArtist: (artistID) => dispatch(getArtist(artistID)),
         playSong: (song) => dispatch(playSong(song)),
         updateSongCurrentTime: (time) => dispatch(updateSongCurrentTime(time)),
+        clearTracks: () => dispatch(clearTracks()),
     };
 }; 
 

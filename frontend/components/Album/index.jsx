@@ -7,7 +7,7 @@ import AudioPlayerFooter from '../shared/audioPlayerFooter/index.jsx';
 
 import { Link } from 'react-router-dom';
 
-import { getAlbumTracks } from '../../actions/trackActions.js';
+import { getAlbumTracks, clearTracks } from '../../actions/trackActions.js';
 import { getAlbum } from '../../actions/albumActions';
 import { connect } from 'react-redux';
 
@@ -23,6 +23,10 @@ class Album extends React.Component {
         const id = this.props.match.params.id;
         this.props.getAlbum(id);
         this.props.getAlbumTracks(id);
+    }
+
+    componentWillUnmount() {
+        this.props.clearTracks();
     }
 
     playMusic = (newSong) => {
@@ -101,6 +105,7 @@ const mapDispatchToProps = dispatch => {
     return {
         getAlbum: (albumID) => dispatch(getAlbum(albumID)),
         getAlbumTracks: (albumID) => dispatch(getAlbumTracks(albumID)),
+        clearTracks: () => dispatch(clearTracks()),
     };
 };
 

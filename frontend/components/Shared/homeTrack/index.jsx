@@ -1,10 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { playSong, addSongToPlayQueue } from '../../../actions/songActions';
+import { clearTracks } from '../../../actions/trackActions';
+
 import { Link } from 'react-router-dom';
 
 
-class track extends React.Component {
+class HomeTrack extends React.Component {
 
     constructor(props) {
         super(props)
@@ -46,6 +48,11 @@ class track extends React.Component {
         this.props.playSong(song);
     }
 
+    componentWillUnmount(){
+        // this.props.clearPlayQueue();
+        this.props.clearTracks();
+    }
+
     render() {
         const title = this.props.title;
         const trackLength = this.props.trackLength;
@@ -53,7 +60,6 @@ class track extends React.Component {
         const albumTitle = this.props.album.title;
 
         //CHECK TO SEE IF this.props.song.title matches the title AND it is not paused. If so, render a different style
-
         return (
             <div onClick={() => this.playThisSong(this.state.song)} className={`track-home song-${title}`} >
                 <svg className="home-track__icon-play" viewBox="0 0 85 100"><path fill={this.props.song.title == title ? "#1db954" : "currentColor"} d="M81 44.6c5 3 5 7.8 0 10.8L9 98.7c-5 3-9 .7-9-5V6.3c0-5.7 4-8 9-5l72 43.3z"><title>PLAY</title></path></svg>
@@ -81,7 +87,8 @@ const mapDispatchToProps = dispatch => {
     return {
         playSong: (song) => dispatch(playSong(song)),
         addSongToPlayQueue: (song) => dispatch(addSongToPlayQueue(song)),
+        clearTracks: () => dispatch(clearTracks()),
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(track);
+export default connect(mapStateToProps, mapDispatchToProps)(HomeTrack);
