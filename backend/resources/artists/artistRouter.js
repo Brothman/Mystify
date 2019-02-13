@@ -11,8 +11,14 @@ artistRouter.get('/', async (req, res) => {
 
 // /api/artists/:id
 artistRouter.get('/:id', async (req, res) => {
-    const artist = await artistModel.findById(req.params.id).lean().exec();
-    res.send(artist);
+    try {
+        const artist = await artistModel.findById(req.params.id).lean().exec();
+        res.send(artist);
+    }
+    catch(e) {
+        console.log(e);
+    }  
 });
 
 export default artistRouter;
+

@@ -5,7 +5,7 @@ body, h6, h1, h3 {
     color: white;
 }
 
-button:focus, button:active {
+button:focus, button:active, input:focus, input:active {
     outline: none;
 }
 /* ^^ We include this first so @imports do not break webpack, specifically on --watch */
@@ -13,12 +13,15 @@ button:focus, button:active {
 @import url('./components/LandingPage/index.css');
 @import url('./components/Home/index.css');
 @import url('./components/Home/header/index.css');
+@import url('./components/Home/albums/index.css');
 
 @import url('./components/Album/index.css');
 
 @import url('./components/Artist/index.css');
 
 @import url('./components/Library/index.css');
+
+@import url('./components/Search/index.css');
 
 @import url('./components/Shared/artist/index.css');
 @import url('./components/Shared/sidebar/index.css');

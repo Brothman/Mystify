@@ -4,7 +4,7 @@
     grid-template-rows: 100px 1fr; 
     width: 100vw;
     height: 100%;
-    /* height: 100vh; */
+    min-height: 100vh;
     grid-template-areas:
     " sidebar  header  header  header  "
     " sidebar    .    artists    .     ";
@@ -24,5 +24,5 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
     grid-template-rows: repeat(auto-fill, minmax(250px, 1fr));
+    /* background-image: linear-gradient(#3c3e5d, #060609 85%); */
 }
-

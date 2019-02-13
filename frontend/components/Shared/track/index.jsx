@@ -12,7 +12,6 @@ class track extends React.Component {
 
     componentDidMount() {
         //add to playQUEUE
-        console.log('hi')
         const title = this.props.title;
         const trackURL = this.props.trackURL;
         const trackLength = this.props.trackLength;
@@ -54,7 +53,7 @@ class track extends React.Component {
         
         return (
             <div className={`track song-${title}`} onClick={() => this.playThisSong(this.state.song)}>
-                <svg className="track__icon-play" viewBox="0 0 85 100"><path fill={this.props.song.title == title ? "green" : "currentColor"} d="M81 44.6c5 3 5 7.8 0 10.8L9 98.7c-5 3-9 .7-9-5V6.3c0-5.7 4-8 9-5l72 43.3z"><title>PLAY</title></path></svg>
+                <svg className="track__icon-play" viewBox="0 0 85 100"><path fill={this.props.song.title == title ? "#1db954" : "currentColor"} d="M81 44.6c5 3 5 7.8 0 10.8L9 98.7c-5 3-9 .7-9-5V6.3c0-5.7 4-8 9-5l72 43.3z"><title>PLAY</title></path></svg>
                 <p className={this.props.song.title == title ? "track__title track--green" : "track__title"}> {title}</p>
                 <p className={this.props.song.title == title ? "track__track-length track--green" : "track__track-length"}> {trackLength}</p>
             </div>

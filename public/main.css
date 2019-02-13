@@ -124,7 +124,7 @@
     grid-template-rows: 100px 1fr; 
     width: 100vw;
     height: 100%;
-    /* height: 100vh; */
+    min-height: 100vh;
     grid-template-areas:
     " sidebar  header  header  header  "
     " sidebar    .    artists    .     ";
@@ -144,9 +144,8 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
     grid-template-rows: repeat(auto-fill, minmax(250px, 1fr));
+    /* background-image: linear-gradient(#3c3e5d, #060609 85%); */
 }
-
-
     .home__nav-item {
       transition: color 0.2s ease;
       color: rgba(255,255,255,0.6);
@@ -207,6 +206,11 @@
     .home__new-playlist:focus, .home__new-playlist:active {
         outline: none;
     }
+body {
+    margin: 0;
+}
+
+
 .album {
     display: grid;
     grid-template-columns: 230px 50px 400px 1fr 75px;
@@ -428,7 +432,7 @@
 
 .artist__tracks {
     grid-area: tracks;
-    overflow: scroll;
+    /* overflow: scroll; */
     height: 400px;
 }
 
@@ -447,6 +451,65 @@
 
 /* fun linear gradient     background: linear-gradient(356deg, #000 28%, #9d3333 94%);   */
 
+.search {
+    display: grid;
+    grid-template-columns: 230px 75px 1fr 75px;
+    grid-template-rows: 100px 1fr; 
+    width: 100vw;
+    height: 100%;
+    min-height: 100vh;
+    grid-template-areas:
+    " sidebar  header  header  header  "
+    " sidebar    .    results    .     ";
+    background-image: linear-gradient(to right bottom, rgb(11, 108, 142), rgb(0, 0, 0)), linear-gradient(transparent, rgb(0, 0, 0) 70%);
+    position: relative;
+}
+
+.search__input {
+    grid-area: header;
+    font-size: 48px;
+    line-height: 56px;
+    background-color: #282828;
+    color: #fff;
+    border: none;
+    font-weight: 500;
+    letter-spacing: -1px;
+    padding: 0 50px;
+    caret-color: #1db954;
+    font-family: 'Rubik', Helvetica, Arial, sans-serif;
+}
+
+.search__results {
+    grid-area: results;
+}
+
+.search__initial-messsage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+    /* margin-top: 150px; */
+    align-self: center
+}
+
+.search_header-text {
+    font-size: 28px;
+    line-height: 36px;
+    margin-bottom: 0;
+    font-weight: 500;
+}
+
+.search__body-text {
+    color: rgba(255,255,255,0.6);
+    font-size: 14px;
+    font-weight: 300;
+}
+
+
+.search__results {
+    display: grid;
+    grid-template-rows: 3fr 4fr;
+}
 .artist {
     display: flex;
     flex-direction: column;
@@ -626,7 +689,7 @@
 }
 
 .track--green {
-    color: green;
+    color: #1db954;
 }
 
 
@@ -820,7 +883,7 @@ body, h6, h1, h3 {
     color: white;
 }
 
-button:focus, button:active {
+button:focus, button:active, input:focus, input:active {
     outline: none;
 }
 /* ^^ We include this first so @imports do not break webpack, specifically on --watch */

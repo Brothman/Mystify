@@ -160,7 +160,7 @@
 
 .artist__tracks {
     grid-area: tracks;
-    overflow: scroll;
+    /* overflow: scroll; */
     height: 400px;
 }
 

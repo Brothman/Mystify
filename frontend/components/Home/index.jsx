@@ -6,38 +6,18 @@ import Header from './header/index';
 import Artist from '../shared/artist/index.jsx';
 import { getArtists } from '../../actions/artistActions';
 import { connect } from 'react-redux';
-import { debug } from 'util';
 
 class Home extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { artists: [] }
-        let x = 15;
-        x = 'hell';
+        this.state = { };
     }
 
     componentDidMount() {
         this.props.getArtists();
-        // let artists = await getArtists();
-        // artists = artists.data;
-        // this.setState({ artists });
-        
     }
 
     createArtists = () => {
-        // const artists = [
-        //     ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
-        //     ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
-        //     ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
-        //     ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
-        //     ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
-        //     ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
-        //     ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
-        //     ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
-        //     ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
-        //     ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
-        //     ["https://s3.us-east-2.amazonaws.com/mystify-images/NF_photo_2016.jpg", "NF"],
-        // ];
         return this.props.artists.map((artist, idx) => {
             return <Artist id={artist._id} key={idx} imageUrl={artist.imageUrl} name={artist.name} />
         });

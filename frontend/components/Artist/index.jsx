@@ -8,7 +8,6 @@ import { getArtistAlbums } from '../../actions/albumActions';
 import { getArtist } from '../../actions/artistActions';
 import { playSong, updateSongCurrentTime } from '../../actions/songActions';
 import { connect } from 'react-redux';
-import AudioPlayerFooter from '../shared/audioPlayerFooter/index.jsx';
 
 class ArtistPage extends React.Component {
 
@@ -25,83 +24,6 @@ class ArtistPage extends React.Component {
         this.props.getArtist(id);
         // There is a RACE CONDITION HERE. -> If I get the Artist too soon, the application will crash as I try to access tracks and albums information
         // ALSO, FOOTER RELIES ON THIS INFORMATION
-    }
-
-    playMusic = (newSong) => {
-        // debugger
-        //newSong.volume to change volume
-
-        // const tracks = document.getElementsByClassName('')
-
-
-        const song = this.state.song;
-        const playing = this.state.playing;
-
-        //done for the fixed playbar on bottom of screen
-        
-        if (!newSong && !song) { 
-            return; 
-        };
-
-        if (!newSong && song && playing ) {
-            song.pause();
-            this.setState({ playing: false });
-
-            const play = document.querySelector('.play');
-            const pause = document.querySelector('.pause');
-            play.style.display = "inline";
-            pause.style.display = "none";
-        }
-        else if (!newSong && song && !playing ) {
-            song.play();            
-            this.setState({ playing: true })
-
-            const play = document.querySelector('.play');
-            const pause = document.querySelector('.pause');
-            play.style.display = "none";
-            pause.style.display = "inline";
-        }
-        else if (!song) {
-            // const newSong = new Audio(newSong);
-
-            this.setState({ song: newSong, playing: true }, () => {
-                console.log(this.state);
-            });
-            console.log(newSong)
-            const input = document.querySelector('.audio-player__time-slider');
-            input.max = newSong.duration;
-
-            const play = document.querySelector('.play');
-            const pause = document.querySelector('.pause');
-            play.style.display="none";
-            pause.style.display="inline";
-
-            newSong.addEventListener('timeupdate', () => this.updateTimeInState(newSong));
-            newSong.play();
-        }
-        else if (song.src == newSong.src && this.state.playing) {
-            song.pause();
-            this.setState({ playing: false })
-
-            const play = document.querySelector('.play');
-            const pause = document.querySelector('.pause');
-            play.style.display = "inline";
-            pause.style.display = "none";
-        }
-        else if (song.src == newSong.src) {
-            song.play();
-            this.setState({ playing: true })
-
-            const play = document.querySelector('.play');
-            const pause = document.querySelector('.pause');
-            play.style.display = "none";
-            pause.style.display = "inline";
-        }
-        else {
-            song.pause();
-            newSong.play();
-            this.setState({ song: newSong, playing: true });
-        }
     }
 
     createTracks = () => {
@@ -134,6 +56,26 @@ class ArtistPage extends React.Component {
             );
         });
     }
+
+    playAlbumSong = (id) => {
+        // let idx;
+
+        // for (let i = 0; i < this.props.playQueue.length; i++) {
+        //     if (this.props.playQueue[i].title == song.title) {
+        //         idx = i;
+        //     }
+        // }
+
+        // if (idx == this.props.playQueue.length - 1) {
+        //     //do nothing, last song
+        // }
+        // else {
+        //     song.song.addEventListener('ended', () => {
+        //         this.playThisSong(this.props.playQueue[idx + 1]);
+        //     })
+        // }
+        // this.props.playSong(song);
+    };
 
     render() {
         //don't show outlines of img as data will be fetched quickly
@@ -191,4 +133,3 @@ const mapDispatchToProps = dispatch => {
 }; 
 
 export default connect(mapStateToProps, mapDispatchToProps)(ArtistPage);
-
