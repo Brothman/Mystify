@@ -14,3 +14,9 @@ Coming soon!
 
 ## Key Features
 Coming soon!
+
+
+## To Do
+Figure out why the uncaught in DOM Promise exception occurs.
+What we know:
+After switching pages, a track sometimes loses its trackURL, which causes no Audio element to be created. But where does that trackURL go? That is the million dollar question. 
