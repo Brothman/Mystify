@@ -68,24 +68,34 @@ class ArtistPage extends React.Component {
         });
     }
 
-    playAlbumSong = (id) => {
-        // let idx;
-
-        // for (let i = 0; i < this.props.playQueue.length; i++) {
-        //     if (this.props.playQueue[i].title == song.title) {
-        //         idx = i;
-        //     }
-        // }
-
-        // if (idx == this.props.playQueue.length - 1) {
-        //     //do nothing, last song
-        // }
-        // else {
-        //     song.song.addEventListener('ended', () => {
-        //         this.playThisSong(this.props.playQueue[idx + 1]);
-        //     })
-        // }
-        // this.props.playSong(song);
+    playAlbumSong = () => {
+        //nothing is currently selected
+        if (!this.props.song.song) {
+            if (this.props.newPlayQueue.length > 0) {
+                this.props.playSong(this.props.newPlayQueue[0]);
+            }
+            else {
+                this.props.playSong(this.props.playQueue[0]);
+            }
+        }
+        else {
+            if (this.props.newPlayQueue.length > 0) {
+                if (this.props.newPlayQueue[0].artist.name !== this.props.song.artist.name ) {
+                    this.props.playSong(this.props.newPlayQueue[0]);
+                }
+                else {
+                    this.props.playSong(null);
+                }
+            }
+            else {
+                if (this.props.playQueue[0].artist.name !== this.props.song.artist.name) {
+                    this.props.playSong(this.props.playQueue[0]);
+                }
+                else {
+                    this.props.playSong(null);
+                }
+            }
+        }
     };
 
     render() {
@@ -98,7 +108,7 @@ class ArtistPage extends React.Component {
                             <React.Fragment>
 
                                     <h1 className="artist-page__name">{this.props.artist.name}</h1>
-                                    <button className="play-button">Play</button>
+                                    <button onClick={this.playAlbumSong} className="play-button">Play</button>
 
                                     <div className="artist__nav-links">
                                         <NavLink exact={true} activeStyle={{ opacity: '1', borderBottom: '1px solid white' }} to={`/artist/${this.props.artist._id}`} className="artist__overview">OVERVIEW</NavLink>
@@ -137,7 +147,9 @@ const mapStateToProps = ({ entities }) => {
         tracks: entities.tracks,
         albums: entities.albums,
         artist: entities.artist,
-        song: entities.song
+        song: entities.song,
+        playQueue: entities.playQueue,
+        newPlayQueue: entities.newPlayQueue,
     };
 };
 

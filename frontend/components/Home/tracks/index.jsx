@@ -7,7 +7,6 @@ import Header from '../header/index';
 import { getAllTracks } from '../../../actions/trackActions';
 import { clearPlayQueue } from '../../../actions/playQueueActions.js';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 class HomeTracks extends React.Component {
     constructor(props) {
