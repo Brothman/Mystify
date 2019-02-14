@@ -34,7 +34,7 @@ class HomeTrack extends React.Component {
 
         //Nothing is on the backburner yet, first time playing a song, or clicked
         //actually could just be clicked?
-        if (this.props.playQueue.length == 0 || clicked) {
+        if (this.props.playQueue.length == 0 || (clicked && this.props.newPlayQueue.length > 0)) {
             const newPlayQueue = this.props.newPlayQueue;
             for (let i = 0; i < newPlayQueue.length; i++) {
                 if (newPlayQueue[i].title == song.title) {
