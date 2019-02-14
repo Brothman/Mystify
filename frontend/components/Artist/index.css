@@ -6,16 +6,16 @@
     width: 100vw;
     height: calc(100vh - 100px);
     grid-template-areas:
-    " sidebar    .             .              .        .   "
-    " sidebar    .        artist-name   artist-name    .   "
-    " sidebar    .         play-button    play-button  .   "
-    " sidebar    .         nav-links       nav-links   .   "
-    " sidebar    .        album-header        .        .   "
-    " sidebar    .           albums           .        .   "
-    " sidebar    .             .              .        .   "
-    " sidebar    .        track-header        .        .   "
-    " sidebar    .         tracks           tracks     .   "
-    " sidebar    .             .              .        .   ";
+    " sidebar    .             .              .        .       "
+    " sidebar    .        artist-name   artist-name    .       "
+    " sidebar    .         play-button    play-button  .       "
+    " sidebar    .         nav-links       nav-links   .       "
+    " sidebar    .        album-header        .        .       "
+    " sidebar    .           albums           .        .       "
+    " sidebar    .             .              .        .       "
+    " sidebar    .        track-header        .        .       "
+    " sidebar    .         tracks           tracks     .       "
+    " sidebar    .             .              .        .       ";
     background-image: linear-gradient(to right bottom, rgb(92, 92, 61), rgb(0, 0, 0)), linear-gradient(transparent, rgb(0, 0, 0) 70%);
     align-items: center;
 }
@@ -178,6 +178,41 @@
     letter-spacing: -.005em;
     position: relative;
     left: -20px;
+}
+
+.artist__about-container {
+    background-color: #181818;
+    grid-row: 5 / -1;
+    grid-column: 2 / -1;
+    margin: 0;
+    /* height: 20vh; */
+    height: 100%;
+    position: relative;
+    top: 40px;
+}
+
+.artist__about-container-title {
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: .015em;
+    font-weight: 500;
+    color: #fff;
+    text-transform: none;
+    margin-bottom: 1em;
+    margin-top: 30px;
+    margin-left: 60px;
+}
+
+.artist__about-container-body {
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: .015em;
+    font-weight: 300;
+    color: #b3b3b3;
+    text-transform: none;
+    margin-bottom: 1em;
+    margin-left: 60px;
+    max-width: 60%;
 }
 
 

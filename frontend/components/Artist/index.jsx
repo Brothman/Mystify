@@ -95,28 +95,36 @@ class ArtistPage extends React.Component {
                 <Sidebar />
                 {(!this.props.artist.name || !this.props.albums[0] || !this.props.tracks[0]) ? null :
                     (this.props.artist._id !== this.props.match.params.id) ? null :
-                        <React.Fragment>
+                            <React.Fragment>
 
-                            <h1 className="artist-page__name">{this.props.artist.name}</h1>
-                            <button className="play-button">Play</button>
+                                    <h1 className="artist-page__name">{this.props.artist.name}</h1>
+                                    <button className="play-button">Play</button>
 
-                            <div className="artist__nav-links">
-                                <NavLink exact={true} activeStyle={{ opacity: '1', borderBottom: '1px solid white' }} to={`/artist/${this.props.artist._id}`} className="artist__overview">OVERVIEW</NavLink>
-                                <NavLink activeStyle={{ opacity: '1', borderBottom: '1px solid white' }} to={`/artist/${this.props.artist._id}/about`} className="artist__about">ABOUT</NavLink>
-                            </div>
-                            
-                            <h3 className="artist__albums-header">Albums</h3>
-                            <div className="artist__albums">
-                                {this.createAlbums()}
-                            </div>
+                                    <div className="artist__nav-links">
+                                        <NavLink exact={true} activeStyle={{ opacity: '1', borderBottom: '1px solid white' }} to={`/artist/${this.props.artist._id}`} className="artist__overview">OVERVIEW</NavLink>
+                                        <NavLink activeStyle={{ opacity: '1', borderBottom: '1px solid white' }} to={`/artist/${this.props.artist._id}/about`} className="artist__about">ABOUT</NavLink>
+                                    </div>
 
-                            <h3 className="artist__tracks-header">Tracks</h3>
-                            <div className="artist__tracks">
-                                {this.createTracks()}
-                            </div>
-                            
+                                {(window.location.href.slice(-5) == 'about') ? 
+                                    <div className="artist__about-container">
+                                        <p className="artist__about-container-title">Biography</p>
+                                        <p className="artist__about-container-body">{this.props.artist.bio}</p>
+                                    </div>
+                                    :
+                                    <React.Fragment>
+                                        <h3 className="artist__albums-header">Albums</h3>
+                                        <div className="artist__albums">
+                                            {this.createAlbums()}
+                                        </div>
 
-                        </React.Fragment>
+                                        <h3 className="artist__tracks-header">Tracks</h3>
+                                        <div className="artist__tracks">
+                                            {this.createTracks()}
+                                        </div>
+                                    </React.Fragment>
+                                }
+
+                            </React.Fragment>
                 }
             </div>
         );
