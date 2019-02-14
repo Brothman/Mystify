@@ -120,7 +120,7 @@ class AudioPlayerFooter extends React.Component {
     }
 
     playNextSong = () => {
-            let idx;
+            let idx = -1;
             const song = this.props.song;
 
             for (let i = 0; i < this.props.playQueue.length; i++) {
@@ -166,13 +166,13 @@ class AudioPlayerFooter extends React.Component {
         const song = this.props.song.song ? this.props.song.song : this.props.song;
         return (
             <div className="audio-player">
-                {(this.props.song.albumImgURL && this.props.song.title && this.props.artist.name) ?
+                {(this.props.song.albumImgURL && this.props.song.title && this.props.song.artist) ?
                     <div className="audio-player__song-info">
-                        <Link to={`/artist/${this.props.artist._id}`} className="audio-player__album-img">
+                        <Link to={`/artist/${this.props.song.artist._id}`} className="audio-player__album-img">
                             <img src={this.props.song.albumImgURL} alt="" className="audio-player__album-img" /> 
                         </Link>
                         <p className="audio-player__song-title">{this.props.song.title}</p>
-                        <Link to={`/artist/${this.props.artist._id}`} className="audio-player__artist-name">{this.props.artist.name}</Link>
+                        <Link to={`/artist/${this.props.song.artist._id}`} className="audio-player__artist-name">{this.props.song.artist.name}</Link>
                     </div>
                     : null
                 }

@@ -4,7 +4,7 @@
     grid-template-rows: 50px 75px 60px 40px 100px 210px 30px 50px 400px 25px;
     overflow: scroll;
     width: 100vw;
-    height: calc(100vh - 40px);
+    height: calc(100vh - 100px);
     grid-template-areas:
     " sidebar    .             .              .        .   "
     " sidebar    .        artist-name   artist-name    .   "
@@ -59,7 +59,7 @@
 
 .artist__overview, .artist__about {
     opacity: .6;
-    transition: opacity .2s linear;
+    transition: opacity .2s linear, border .2s linear;
     font-size: 12px;
     line-height: 16px;
     letter-spacing: .16em;
@@ -67,11 +67,15 @@
     position: relative;
     left: -20px;
     cursor: pointer;
+    text-decoration: none;
+    color: white;
+    border-bottom: 1px solid transparent;
 }
 
 
 .artist__overview:hover, .artist__about:hover {
     opacity: 1;
+    /* border-bottom: 1px solid white; */
 }
 
 .artist__albums-header {

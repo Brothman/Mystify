@@ -8,6 +8,7 @@ import AudioPlayerFooter from '../shared/audioPlayerFooter/index.jsx';
 import { Link } from 'react-router-dom';
 
 import { getAlbumTracks, clearTracks } from '../../actions/trackActions.js';
+import { clearPlayQueue, clearNewPlayQueue } from '../../actions/playQueueActions.js';
 import { getAlbum } from '../../actions/albumActions';
 import { connect } from 'react-redux';
 
@@ -27,6 +28,7 @@ class Album extends React.Component {
 
     componentWillUnmount() {
         this.props.clearTracks();
+        this.props.clearNewPlayQueue();
     }
 
     playMusic = (newSong) => {
@@ -56,16 +58,21 @@ class Album extends React.Component {
                           trackURL={track.trackURL} 
                           trackLength={track.trackLength}
                           albumImgURL={track.album.imageURL}
+                          artist={track.artist}
                           key={idx} />
         });
     }
 
     render() {
-        //don't show outlines of img as data will be fetched quickly
+        let album = this.props.album;
+        //in case album is undefined, make it an array
+        if (!album) {
+            album = [];
+        }
         return (
             <div className="album">
                 <Sidebar />
-                { (!this.props.album.title || !this.props.tracks.length >= 1) ? null :
+                { (!album.title || !this.props.tracks.length >= 1) ? null :
                     (this.props.album._id !== this.props.match.params.id) ? null :
                         <React.Fragment>
                         
@@ -106,6 +113,8 @@ const mapDispatchToProps = dispatch => {
         getAlbum: (albumID) => dispatch(getAlbum(albumID)),
         getAlbumTracks: (albumID) => dispatch(getAlbumTracks(albumID)),
         clearTracks: () => dispatch(clearTracks()),
+        clearPlayQueue: () => dispatch(clearPlayQueue()),
+        clearNewPlayQueue: () => dispatch(clearNewPlayQueue()),
     };
 };
 

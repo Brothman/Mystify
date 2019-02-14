@@ -1,12 +1,13 @@
 import React from 'react';
 import Sidebar from '../shared/sidebar/index.jsx';
 import Track from '../shared/track/index';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import { getArtistTracks, clearTracks } from '../../actions/trackActions.js';
 import { getArtistAlbums } from '../../actions/albumActions';
 import { getArtist } from '../../actions/artistActions';
 import { playSong, updateSongCurrentTime } from '../../actions/songActions';
+import { clearPlayQueue, clearNewPlayQueue } from '../../actions/playQueueActions.js';
 import { connect } from 'react-redux';
 
 class ArtistPage extends React.Component {
@@ -16,7 +17,11 @@ class ArtistPage extends React.Component {
         this.state = { };
     }
 
-    async componentDidMount() {
+    componentWillMount() {
+        // this.props.clearPlayQueue();
+    }
+
+    componentDidMount() {
         const id = this.props.match.params.id;
 
         this.props.getArtistTracks(id);
@@ -28,6 +33,7 @@ class ArtistPage extends React.Component {
 
     componentWillUnmount(){
         this.props.clearTracks();
+        this.props.clearNewPlayQueue();
     }
 
     createTracks = () => {
@@ -36,6 +42,7 @@ class ArtistPage extends React.Component {
                 trackURL={track.trackURL}
                 trackLength={track.trackLength}
                 albumImgURL={track.album.imageURL}
+                artist={track.artist}
                 key={idx} />
         });
     }
@@ -94,8 +101,8 @@ class ArtistPage extends React.Component {
                             <button className="play-button">Play</button>
 
                             <div className="artist__nav-links">
-                                <p className="artist__overview">OVERVIEW</p>
-                                <p className="artist__about">ABOUT</p>
+                                <NavLink exact={true} activeStyle={{ opacity: '1', borderBottom: '1px solid white' }} to={`/artist/${this.props.artist._id}`} className="artist__overview">OVERVIEW</NavLink>
+                                <NavLink activeStyle={{ opacity: '1', borderBottom: '1px solid white' }} to={`/artist/${this.props.artist._id}/about`} className="artist__about">ABOUT</NavLink>
                             </div>
                             
                             <h3 className="artist__albums-header">Albums</h3>
@@ -134,6 +141,8 @@ const mapDispatchToProps = dispatch => {
         playSong: (song) => dispatch(playSong(song)),
         updateSongCurrentTime: (time) => dispatch(updateSongCurrentTime(time)),
         clearTracks: () => dispatch(clearTracks()),
+        clearPlayQueue: () => dispatch(clearPlayQueue()),
+        clearNewPlayQueue: () => dispatch(clearNewPlayQueue()),
     };
 }; 
 

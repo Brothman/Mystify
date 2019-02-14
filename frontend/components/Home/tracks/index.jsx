@@ -5,6 +5,7 @@ import Sidebar from '../../shared/sidebar/index.jsx';
 import HomeTrack from '../../shared/homeTrack/index.jsx';
 import Header from '../header/index';
 import { getAllTracks } from '../../../actions/trackActions';
+import { clearPlayQueue } from '../../../actions/playQueueActions.js';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -12,6 +13,10 @@ class HomeTracks extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
+    }
+
+    componentWillMount() {
+        this.props.clearPlayQueue();
     }
 
     componentDidMount() {
@@ -31,7 +36,6 @@ class HomeTracks extends React.Component {
     }
 
     render() {
-        debugger
         return (
             <div className="home-track">
                 <Sidebar />
@@ -58,6 +62,7 @@ const mapStateToProps = ({ entities }) => {
 const mapDispatchToProps = dispatch => {
     return {
         getAllTracks: () => dispatch(getAllTracks()),
+        clearPlayQueue: () => dispatch(clearPlayQueue()),
     };
 };
 

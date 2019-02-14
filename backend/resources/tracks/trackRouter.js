@@ -10,12 +10,12 @@ trackRouter.get('/', async (req, res) => {
 });
 
 trackRouter.get('/album/:id', async (req, res) => {
-    const tracks = await track.find({ album: req.params.id}).populate('album').lean().exec();
+    const tracks = await track.find({ album: req.params.id}).populate('album').populate('artist').lean().exec();
     res.send(tracks);
 });
 
 trackRouter.get('/artist/:artistID', async (req, res) => {
-    const tracks = await trackModel.find({ artist: req.params.artistID }).populate('album').lean().exec();
+    const tracks = await trackModel.find({ artist: req.params.artistID }).populate('album').populate('artist').lean().exec();
     res.send(tracks);
 });
 
