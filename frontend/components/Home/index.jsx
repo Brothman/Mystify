@@ -26,9 +26,9 @@ class Home extends React.Component {
         return ( 
             <div className="home">
                 <Sidebar />
+                <Header />
                 { (!this.props.artists.length >= 1) ? null : 
                     <React.Fragment>
-                        <Header />
                         <div className="home__artists">
                             {this.createArtists()}
                         </div>

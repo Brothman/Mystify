@@ -42,9 +42,9 @@ class HomeAlbums extends React.Component {
         return (
             <div className="home-album">
                 <Sidebar />
+                <Header />
                 {(!this.props.albums.length >= 1) ? null :
                     <React.Fragment>
-                        <Header />
                         <div className="home-album__albums">
                             {this.createAlbums()}
                         </div>

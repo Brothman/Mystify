@@ -35,9 +35,9 @@ class HomeTracks extends React.Component {
         return (
             <div className="home-track">
                 <Sidebar />
+                <Header />
                 {(!this.props.tracks.length >= 1) ? null :
                     <React.Fragment>
-                        <Header />
                         <div className="home-track__tracks">
                             {this.createTracks()}
                         </div>
