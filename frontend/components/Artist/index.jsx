@@ -69,7 +69,7 @@ class ArtistPage extends React.Component {
     }
 
     playAlbumSong = () => {
-        //nothing is currently selected
+        //checks if we have a song, as well as if it we are on a new artist's page from the current song
         if (!this.props.song.song) {
             if (this.props.newPlayQueue.length > 0) {
                 this.props.playSong(this.props.newPlayQueue[0]);
