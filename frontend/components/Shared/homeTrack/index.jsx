@@ -5,6 +5,7 @@ import { clearTracks } from '../../../actions/trackActions';
 import { replacePlayQueue } from '../../../actions/playQueueActions';
 
 import { Link } from 'react-router-dom';
+import { showPlayButton } from '../../../utils/editTheDOM';
 
 
 class HomeTrack extends React.Component {
@@ -40,7 +41,12 @@ class HomeTrack extends React.Component {
                     idx = i;
                 }
             }
-            if (idx == newPlayQueue.length - 1) { }
+            if (idx == newPlayQueue.length - 1) {
+                //make the button turn to pause
+                song.song.addEventListener('ended', () => {
+                    showPlayButton();
+                });
+             }
             else {
                 song.song.addEventListener('ended', () => {
                     //need for loop to find idx
@@ -58,7 +64,9 @@ class HomeTrack extends React.Component {
             }
 
             if (idx == playQueue.length - 1) {
-                //do nothing, last song
+                song.song.addEventListener('ended', () => {
+                    showPlayButton();
+                });
             }
             else {
                 song.song.addEventListener('ended', () => {

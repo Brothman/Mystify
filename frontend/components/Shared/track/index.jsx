@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { playSong, addSongToPlayQueue, addSongToNewPlayQueue } from '../../../actions/songActions';
 import { replacePlayQueue } from '../../../actions/playQueueActions';
+import { showPlayButton } from '../../../utils/editTheDOM';
 
 
 class track extends React.Component {
@@ -46,14 +47,19 @@ class track extends React.Component {
 
         //Nothing is on the backburner yet, first time playing a song, or clicked
         //actually could just be clicked?
-        if (this.props.playQueue.length == 0 || clicked) {
+        if (this.props.playQueue.length == 0 || (clicked && this.props.newPlayQueue.length > 0)) {
             const newPlayQueue = this.props.newPlayQueue;
             for (let i = 0; i < newPlayQueue.length; i++) {
                 if (newPlayQueue[i].title == song.title) {
                     idx = i;
                 }
             }
-            if (idx == newPlayQueue.length - 1) { }
+            if (idx == newPlayQueue.length - 1) { 
+                //make the button turn to pause
+                song.song.addEventListener('ended', () => {
+                    showPlayButton();
+                });
+            }
             else {
                 song.song.addEventListener('ended', () => {
                     //need for loop to find idx
@@ -71,7 +77,10 @@ class track extends React.Component {
             }
 
             if (idx == playQueue.length - 1) {
-                //do nothing, last song
+                //make the button turn to pause
+                song.song.addEventListener('ended', () => {
+                    showPlayButton();
+                });
             }
             else {
                 song.song.addEventListener('ended', () => {

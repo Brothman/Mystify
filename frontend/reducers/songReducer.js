@@ -1,4 +1,5 @@
-import { PLAY_SONG, UPDATE_CURRENT_TIME, updateSongCurrentTime  } from '../actions/songActions.js';
+import { PLAY_SONG, UPDATE_CURRENT_TIME } from '../actions/songActions.js';
+import { showPlayButton, showPauseButton } from '../utils/editTheDOM';
 
 const formatTime = (time) => {
     // Display formatted time
@@ -31,20 +32,6 @@ const updateTimeInState = (song, input) => {
         + ')';
 } 
 
-const showPauseButton = (songTitle) => {
-    const play = document.querySelector('.play');
-    const pause = document.querySelector('.pause');
-
-    play.style.display = "none";
-    pause.style.display = "inline";
-}
-
-const showPlayButton = (songTitle) => {
-    const play = document.querySelector('.play');
-    const pause = document.querySelector('.pause');
-    play.style.display = "inline";
-    pause.style.display = "none";
-};
 
 //default state is the empty Object
 //Be careful, not supposed to mutate state!

@@ -6,7 +6,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { getArtistTracks, clearTracks } from '../../actions/trackActions.js';
 import { getArtistAlbums } from '../../actions/albumActions';
 import { getArtist } from '../../actions/artistActions';
-import { playSong, updateSongCurrentTime } from '../../actions/songActions';
+import { playSong } from '../../actions/songActions';
 import { clearPlayQueue, clearNewPlayQueue } from '../../actions/playQueueActions.js';
 import { connect } from 'react-redux';
 
@@ -139,7 +139,6 @@ const mapDispatchToProps = dispatch => {
         getArtistAlbums: (artistID) => dispatch(getArtistAlbums(artistID)),
         getArtist: (artistID) => dispatch(getArtist(artistID)),
         playSong: (song) => dispatch(playSong(song)),
-        updateSongCurrentTime: (time) => dispatch(updateSongCurrentTime(time)),
         clearTracks: () => dispatch(clearTracks()),
         clearPlayQueue: () => dispatch(clearPlayQueue()),
         clearNewPlayQueue: () => dispatch(clearNewPlayQueue()),
