@@ -15,6 +15,34 @@ Coming soon!
 ## Key Features
 Coming soon!
 
+
+#### Express Routing to interact with ```Mongoose``` and the ```mongodb``` database.
+
+###### Setup of Express Routers
+
+```JWT``` is a library on NPM that provides a clean, declarative way to use JSON Web Tokens. When a user is logged in, ...
+
+###### Individual Routers mount specialized Controllers
+
+```JWT``` is a library on NPM that provides a clean, declarative way to use JSON Web Tokens. When a user is logged in, ... 
+
+###### Individual Controllers talk to the ```mongodb``` database through the use of the ```Mongoose``` Object-wrapper
+
+```JWT``` is a library on NPM that provides a clean, declarative way to use JSON Web Tokens. When a user is logged in, ...
+
+###### Setup of Mongoose Model Schema to interact with the ```mongodb``` database
+
+```JWT``` is a library on NPM that provides a clean, declarative way to use JSON Web Tokens. When a user is logged in, ...
+
+
+
+
+#### JSON Web Token Authentication
+
+###### JWT
+
+
+
 #### Play Queue State Throughout The Entire Site
 
 ###### playQueue && newPlayQueue
