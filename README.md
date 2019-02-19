@@ -3,6 +3,8 @@ A fullstack clone of Spotify built in React, Redux, Node, and Express along with
 
 #  KEEP THE STREAK ALIVE, Day 2
 
+<img src="./Mystify-Demo.gif" />
+
 <details>
   <summary> Click me for awesomeness. </summary>
   
