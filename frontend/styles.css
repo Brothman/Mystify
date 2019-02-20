@@ -23,6 +23,10 @@ button:focus, button:active, input:focus, input:active {
 @import url('./components/Library/index.css');
 
 @import url('./components/Search/index.css');
+@import url('./components/Search/header/index.css');
+@import url('./components/Search/artists/index.css');
+@import url('./components/Search/albums/index.css');
+@import url('./components/Search/tracks/index.css');
 
 @import url('./components/Shared/artist/index.css');
 @import url('./components/Shared/sidebar/index.css');

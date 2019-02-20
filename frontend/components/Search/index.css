@@ -57,3 +57,23 @@
     display: grid;
     grid-template-rows: 3fr 4fr;
 }
+
+.search__results-container {
+    grid-area: results;
+    display: grid;
+    grid-template-rows: 100px 1fr;
+    justify-items: center;
+    align-items: center;
+}
+
+.search__results__artists{
+
+}
+
+.search__results__albums{
+    
+}
+
+.search__results__tracks{
+    
+}

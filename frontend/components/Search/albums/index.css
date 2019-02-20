@@ -1,0 +1,7 @@
+.search__results__albums {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(250px, 1fr));
+    /* background-image: linear-gradient(#3c3e5d, #060609 85%); */
+}
