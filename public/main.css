@@ -227,11 +227,9 @@
 
 .home-album__albums {
     grid-area: albums;
-    /* height: calc(100vh - 50px); */
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
-    grid-template-rows: repeat(auto-fill, minmax(250px, 1fr));
-    /* background-image: linear-gradient(#3c3e5d, #060609 85%); */
+    grid-template-rows: repeat(auto-fill, minmax(225px, 1fr));
 }
 .home-track {
     display: grid;
@@ -544,8 +542,9 @@
     grid-template-columns: 230px 75px 1fr 75px;
     grid-template-rows: 100px 1fr; 
     width: 100vw;
-    height: 100%;
-    min-height: 100vh;
+    height: calc(100vh - 100px);
+    overflow: scroll;
+    /* min-height: 100vh; */
     grid-template-areas:
     " sidebar  header  header  header  "
     " sidebar    .    results    .     ";
@@ -650,6 +649,7 @@
 .search__results__artists {
     display: grid;
     width: 100%;
+    align-self: start;
     grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
     grid-template-rows: repeat(auto-fill, minmax(250px, 1fr));
     /* background-image: linear-gradient(#3c3e5d, #060609 85%); */
@@ -659,9 +659,15 @@
     width: 100%;
     grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
     grid-template-rows: repeat(auto-fill, minmax(250px, 1fr));
+    align-self: start;
     /* background-image: linear-gradient(#3c3e5d, #060609 85%); */
 }
-
+.search__results__tracks {
+    display: grid;
+    width: 100%;
+    grid-template-rows: repeat(auto-fill, minmax(54px, 1fr));
+    align-self: start;
+}
 .artist {
     display: flex;
     flex-direction: column;

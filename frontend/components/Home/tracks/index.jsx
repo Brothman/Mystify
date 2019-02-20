@@ -4,7 +4,7 @@ import React from 'react';
 import Sidebar from '../../shared/sidebar/index.jsx';
 import HomeTrack from '../../shared/homeTrack/index.jsx';
 import Header from '../header/index';
-import { getAllTracks } from '../../../actions/trackActions';
+import { getAllTracks, clearTracks } from '../../../actions/trackActions';
 import { clearPlayQueue } from '../../../actions/playQueueActions.js';
 import { connect } from 'react-redux';
 
@@ -20,6 +20,10 @@ class HomeTracks extends React.Component {
 
     componentDidMount() {
         this.props.getAllTracks();
+    }
+
+    componentWillUnmount(){
+        this.props.clearTracks();
     }
 
     createTracks = () => {
@@ -61,6 +65,7 @@ const mapStateToProps = ({ entities }) => {
 const mapDispatchToProps = dispatch => {
     return {
         getAllTracks: () => dispatch(getAllTracks()),
+        clearTracks: () => dispatch(clearTracks()),
         clearPlayQueue: () => dispatch(clearPlayQueue()),
     };
 };

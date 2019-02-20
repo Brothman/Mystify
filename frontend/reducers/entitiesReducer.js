@@ -6,6 +6,7 @@ import artistsReducer from './artistsReducer.js';
 import songReducer from './songReducer.js';
 import playQueueReducer from './playQueueReducer.js';
 import newPlayQueueReducer from './newPlayQueueReducer.js';
+import searchReducer from './searchReducer.js';
 
 
 const entitiesReducer = combineReducers({
@@ -16,6 +17,7 @@ const entitiesReducer = combineReducers({
     song: songReducer,
     playQueue: playQueueReducer,
     newPlayQueue: newPlayQueueReducer,
+    search: searchReducer,
 });
 
 export default entitiesReducer;

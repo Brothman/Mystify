@@ -6,9 +6,11 @@ import Header from './header/index';
 import Artists from './artists/index.jsx';
 import Albums from './albums/index.jsx';
 import Tracks from './tracks/index.jsx';
-import { getArtists } from '../../actions/artistActions';
-import { getAlbums } from '../../actions/albumActions';
-import { getAllTracks, clearTracks } from '../../actions/trackActions';
+import { getArtists, getAlbums, getAllTracks } from '../../actions/searchActions';
+// import { getArtists } from '../../actions/artistActions';
+// import { getAlbums } from '../../actions/albumActions';
+// import { getAllTracks, clearTracks } from '../../actions/trackActions';
+import { clearTracks } from '../../actions/trackActions';
 import { clearNewPlayQueue } from '../../actions/playQueueActions';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
@@ -22,9 +24,9 @@ class Search extends React.Component {
     }
 
     componentDidMount() {
-        this.props.getArtists();
-        this.props.getAlbums();
-        this.props.getAllTracks();
+            this.props.getArtists();
+            this.props.getAlbums();
+            this.props.getAllTracks();
     }
 
     componentWillUnmount(){
@@ -39,7 +41,31 @@ class Search extends React.Component {
     }
 
     handleSearch = (e) => {
-        this.setState({ text: e.target.value });
+        this.setState({ text: e.target.value.toUpperCase() });
+    }
+
+    filterArtists = (artists) => {
+        return artists.filter(artist => {
+            return artist.name.toUpperCase().includes(this.state.text);
+            // return 'hi';
+        });
+    }
+
+    filterAlbums = (albums) => {
+        return albums.filter((album) => {
+            return (album.title.toUpperCase().includes(this.state.text) || album.artist.name.toUpperCase().includes(this.state.text));
+            // return 'hi';
+        });
+    }
+
+    filterTracks = (tracks) => {
+        return tracks.filter((track) => {
+            return (track.title.toUpperCase().includes(this.state.text) || 
+                track.artist.name.toUpperCase().includes(this.state.text) || 
+                track.album.title.toUpperCase().includes(this.state.text)
+            );
+            // return 'hi';
+        });
     }
 
     render() {
@@ -53,10 +79,10 @@ class Search extends React.Component {
                         { this.state.text.length > 0 ? 
                        <div className="search__results-container">
                             <Header />
-                            <Route exact path="/search" render={props => <Artists {...props} artists={this.props.artists} /> } />
-                            <Route path="/search/albums" render={props => <Albums {...props} albums={this.props.albums} dog={"hi"} /> } />
-                            <Route path="/search/tracks" render={props => <Tracks {...props} tracks={this.props.tracks} /> } />
-                            <Route path="/search/playlists" render={props => <Artists {...props} artists={this.props.artists} /> } />
+                            <Route exact path="/search" render={props => <Artists {...props} artists={this.filterArtists(this.props.artists)} /> } />
+                            <Route path="/search/albums" render={props => <Albums {...props} albums={this.filterAlbums(this.props.albums)} /> } />
+                            <Route path="/search/tracks" render={props => <Tracks {...props} tracks={this.filterTracks(this.props.tracks)} /> } />
+                            <Route path="/search/playlists" render={props => <Artists {...props} artists={this.filterArtists(this.props.artists)} /> } />
                         </div>
                     :
                         <div className="search__results">
@@ -73,9 +99,9 @@ class Search extends React.Component {
 
 const mapStateToProps = ({ entities }) => {
     return {
-        artists: entities.artists,
-        albums: entities.albums,
-        tracks: entities.tracks,
+        artists: entities.search.artists,
+        albums: entities.search.albums,
+        tracks: entities.search.tracks,
     };
 };
 

@@ -80,7 +80,7 @@ class HomeTrack extends React.Component {
 
     componentWillUnmount(){
         // this.props.clearPlayQueue();
-        this.props.clearTracks();
+        // this.props.clearTracks();
     }
 
     render() {

@@ -23,7 +23,6 @@ const createAlbums = (albums) => {
 }
 
 const Albums = ({ albums }) => {
-    debugger
     return (
         <div className="search__results__albums">
             {createAlbums(albums)}

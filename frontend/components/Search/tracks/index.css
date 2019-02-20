@@ -1,0 +1,6 @@
+.search__results__tracks {
+    display: grid;
+    width: 100%;
+    grid-template-rows: repeat(auto-fill, minmax(54px, 1fr));
+    align-self: start;
+}
