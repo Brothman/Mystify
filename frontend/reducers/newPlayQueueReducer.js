@@ -10,7 +10,7 @@ const newPlayQueueReducer = (state = [], action) => {
     switch (action.type) {
         case (ADD_SONG_TO_NEW_PLAY_QUEUE):
             const playQueue = [...state];
-            playQueue.push(action.song)
+            playQueue.push(action.song);
             return playQueue;
         case (CLEAR_NEW_PLAY_QUEUE):
             return [];
