@@ -19,11 +19,12 @@ class HomeTrack extends React.Component {
         //add to playQUEUE
         const title = this.props.title;
         const trackURL = this.props.trackURL;
-        const albumImgURL = this.props.albumImgURL;
+        const albumImgURL = this.props.album.imageURL;
+        const albumID = this.props.album._id;
         const artist = this.props.artist;
         const song = new Audio(trackURL);
 
-        const newSong = { title, albumImgURL, artist, song }
+        const newSong = { title, albumImgURL, albumID, artist, song }
         // this.props.addSongToPlayQueue(song);
         this.props.addSongToNewPlayQueue(newSong);
 

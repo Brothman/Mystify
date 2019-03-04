@@ -31,7 +31,7 @@ class HomeTracks extends React.Component {
             return <HomeTrack title={track.title}
                 trackURL={track.trackURL}
                 trackLength={track.trackLength}
-                albumImgURL={track.album.imageURL}
+                album={track.album}
                 album={track.album}
                 artist={track.artist}
                 key={idx} />

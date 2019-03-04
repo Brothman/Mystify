@@ -16,10 +16,11 @@ class track extends React.Component {
         //add to playQUEUE
         const title = this.props.title;
         const trackURL = this.props.trackURL;
-        const albumImgURL = this.props.albumImgURL;
+        const albumImgURL = this.props.album.imageURL;
+        const albumID = this.props.album._id;
         const artist = this.props.artist;
 
-        const song = { title, albumImgURL, artist, song: new Audio(trackURL) }
+        const song = { title, albumImgURL, artist, albumID, song: new Audio(trackURL) }
         // this.props.addSongToPlayQueue(song);
         this.props.addSongToNewPlayQueue(song);
 

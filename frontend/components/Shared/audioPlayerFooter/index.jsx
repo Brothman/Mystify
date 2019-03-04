@@ -16,7 +16,12 @@ class AudioPlayerFooter extends React.Component {
 
     updateVolume = (e) => {
         const volume = e.target.value;
-        this.props.song ? this.props.song.volume = volume : null;
+        this.props.song.song ? this.props.song.song.volume = volume : null;
+    }
+
+    muteSong = (e) => {
+        console.log(this.props.song.song)
+        this.props.song.song ? this.props.song.song.muted = !this.props.song.song.muted : null;
     }
 
     formatTime = (time) => {
@@ -171,7 +176,7 @@ class AudioPlayerFooter extends React.Component {
             <div className="audio-player">
                 {(this.props.song.albumImgURL && this.props.song.title && this.props.song.artist) ?
                     <div className="audio-player__song-info">
-                        <Link to={`/artist/${this.props.song.artist._id}`} className="audio-player__album-img">
+                        <Link to={`/album/${this.props.song.albumID}`} className="audio-player__album-img">
                             <img src={this.props.song.albumImgURL} alt="" className="audio-player__album-img" /> 
                         </Link>
                         <p className="audio-player__song-title">{this.props.song.title}</p>
@@ -210,7 +215,8 @@ class AudioPlayerFooter extends React.Component {
                 <div className="audio-player__play-queue">
                 </div>
 
-                <div className="audio-player__mute-sound">
+                <div onClick={(e) => this.muteSong(e)} className="audio-player__mute-sound">
+                    <svg viewBox="0 0 400 400" className="audio-player__mute-sound svg"><path id="nofill" d="M 60 135 L 60 245 L 140 245 L 210 295 L 210 85 L 140 135 Z" strokeWidth="10" fill="none"></path><path id="nofill" d="M 250 260 Q 310 195 250 130 " strokeWidth="10" fill="none"></path><path id="nofill" d="M 270 320 Q 420 195 270 70 " strokeWidth="10" fill="none"></path></svg>
                 </div>
 
                 <div className="audio-player__volume-slider">

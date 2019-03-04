@@ -80,6 +80,7 @@ const songReducer = (state = {}, action) => {
                 return { 
                         title: action.song.title, 
                         albumImgURL: action.song.albumImgURL,
+                        albumID: action.song.albumID,
                         artist: action.song.artist,
                         song: newSong 
                     };
@@ -108,6 +109,7 @@ const songReducer = (state = {}, action) => {
                 return {
                     title: action.song.title,
                     albumImgURL: action.song.albumImgURL,
+                    albumID: action.song.albumID,
                     artist: action.song.artist,
                     song: newSong
                 };
