@@ -1,9 +1,9 @@
 // @ts-check
 
 import React from 'react';
-import Sidebar from '../shared/sidebar/index.jsx';
+import Sidebar from '../Shared/sidebar/index.jsx';
 import Header from './header/index';
-import Artist from '../shared/artist/index.jsx';
+import Artist from '../Shared/artist/index.jsx';
 import { getArtists } from '../../actions/artistActions';
 import { connect } from 'react-redux';
 

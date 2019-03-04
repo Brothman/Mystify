@@ -1,5 +1,5 @@
 import React from 'react';
-import HomeTrack from '../../shared/homeTrack/index';
+import HomeTrack from '../../Shared/homeTrack/index';
 
 const createTracks = (tracks) => {
     return tracks.map((track, idx) => {
