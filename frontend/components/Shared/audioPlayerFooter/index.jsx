@@ -228,8 +228,8 @@ class AudioPlayerFooter extends React.Component {
                 <div onClick={(e) => this.muteSong(e)} className="audio-player__mute-sound">
                     <svg viewBox="0 0 400 400" className="audio-player__mute-sound svg">
                         <path id="nofill" d="M 60 135 L 60 245 L 140 245 L 210 295 L 210 85 L 140 135 Z" strokeWidth="10" fill="none"></path>
-                        <path className="muted" id="nofill" d="M 260 160 L 340 240" stroke-width="20"></path> 
-                        <path className="muted" id="nofill" d="M 260 240 L 340 160" stroke-width="20"></path>
+                        <path className="muted" id="nofill" d="M 260 160 L 340 240" strokeWidth="20"></path> 
+                        <path className="muted" id="nofill" d="M 260 240 L 340 160" strokeWidth="20"></path>
                         
                         <path className="not-muted" id="nofill" d="M 250 260 Q 310 195 250 130 " strokeWidth="10" fill="none"></path>
                         <path className="not-muted" id="nofill" d="M 270 320 Q 420 195 270 70 " strokeWidth="10" fill="none"></path>

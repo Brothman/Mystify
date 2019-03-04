@@ -1,6 +1,6 @@
 import React from 'react';
-import Sidebar from '../shared/sidebar/index.jsx';
-import Track from '../shared/track/index';
+import Sidebar from '../Shared/sidebar/index.jsx';
+import Track from '../Shared/track/index';
 import { Link, NavLink } from 'react-router-dom';
 
 import { getArtistTracks, clearTracks } from '../../actions/trackActions.js';
