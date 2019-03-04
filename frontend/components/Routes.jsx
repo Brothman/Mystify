@@ -20,19 +20,21 @@ const Routes = ({ store }) => {
             <Provider store={store}>
                 <div className="app">
 
-                    <Route path="/home/" exact={true} render={() => <Redirect to="/home/artists" />} />
-                    <Route path="/home/artists" component={Home} />
-                    <Route path="/home/albums" component={HomeAlbums} />
-                    <Route path="/home/tracks" component={HomeTracks} />
-                    <Route path="/home/playlists" component={Home} />
-                    <Route path="/search" component={Search} />
-                    <Route path="/library" component={Home} />
-                    <Route path="/album/:id" component={Album} />
-                    <Route path="/artist/:id" component={Artist} />
-
                     <Switch>
                         <Route path="/" exact={true} component={LandingPage} />
                         <Route path="/" component={AudioPlayerFooter} />
+                    </Switch>
+
+                    <Switch>
+                        <Route path="/home/" exact={true} render={() => <Redirect to="/home/artists" />} />
+                        <Route path="/home/artists" component={Home} />
+                        <Route path="/home/albums" component={HomeAlbums} />
+                        <Route path="/home/tracks" component={HomeTracks} />
+                        <Route path="/home/playlists" component={Home} />
+                        <Route path="/search" component={Search} />
+                        <Route path="/library" component={Home} />
+                        <Route path="/album/:id" component={Album} />
+                        <Route path="/artist/:id" component={Artist} />
                     </Switch>
 
                 </div>
@@ -46,3 +48,5 @@ export default Routes;
 //BUG watch out
 
 {/* <AudioPlayerFooter /> */}
+
+//                        <Route path="/*" render={() => window.location.href="/woah" }/>

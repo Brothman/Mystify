@@ -1,9 +1,89 @@
 .footer {
     background-color: black;
     display: grid;
-    grid-template-columns: 1fr 100px 100px 200px 100px 100px 1fr; 
+    /* grid-template-columns: 1fr 250px 175px 175px 100px 1fr;  */
+    grid-template-columns: 1fr 3fr 1fr 1fr 1fr 2fr; 
     align-items: center;
     justify-items: center;
+    grid-template-areas: 
+    " .  logo  nav1  nav2  nav3  . ";
+}
+
+.footer__logo {
+    width: 70px;
+    height: 70px;
+    position: relative;
+    top: -13px;
+    left: 3px;
+}
+
+.footer__logo-text {
+    font-size: 26px;
+}
+
+.footer_logo-container {
+    grid-area: logo;
+    display: flex;
+    cursor: pointer;
+}
+
+.footer__nav-1 {
+    grid-area: nav1;
+}
+
+.footer__nav-2 {
+    grid-area: nav2;
+
+}
+
+.footer__nav-3 {
+    grid-area: nav3;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer__title {
+    opacity: 0.6;
+    font-family: 'Georgia';
+    margin-bottom: 16px;
+}
+
+.footer__nav-item {
+    cursor: pointer;
+    transition: color 0.2s ease;
+    padding-top: 5px;
+    margin-bottom: 16px;
+    display: block;
+}
+
+.footer__nav-item:hover {
+    color: #1ED760;
+    /* green */
+}
+
+.social-icon {
+    font-size: 30px;
+    margin-bottom: 15px;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+    cursor: pointer;
+}
+
+.social-icon:hover {
+    opacity: 1;
+}
+
+.footer_logo-container, .footer__nav {
+    height: 200px;
+}
+
+.footer__nav p {
+    margin-top: 0;
+}
+
+.footer a {
+    text-decoration: none;
+    color: inherit;
 }
 .header {
     display: grid;

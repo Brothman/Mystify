@@ -110,6 +110,36 @@ const albums = [
         imageURL: "https://s3.us-east-2.amazonaws.com/mystify-images/BenAlbumCover1.jpg",
         artist: "Benji Rothman"
     },
+    {
+        title: "Blonde on Blonde",
+        releaseDate: "1966",
+        imageURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Bob+Dylan/Blonde+on+Blonde/BlondeOnBlonde.jpg",
+        artist: "Bob Dylan"
+    },
+    {
+        title: "Trip",
+        releaseDate: "2017",
+        imageURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Jhene+Aiko/Trip/Cover.jpg",
+        artist: "Jhene Aiko"
+    },
+    {
+        title: "Graceland",
+        releaseDate: "1986",
+        imageURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Paul+Simon/Graceland/front.jpg",
+        artist: "Paul Simon"
+    },
+    {
+        title: "The Very Best of Cat Stevens",
+        releaseDate: "1990",
+        imageURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Cat+Stevens/The+Very+Best/The+Very+Best+Of+Cat+Stevens+Front.jpg",
+        artist: "Cat Stevens"
+    },
+    {
+        title: "Songs of Love and Hate",
+        releaseDate: "1971",
+        imageURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Leonard+Cohen/Songs+of+Love+and+Hate/Songs+of+Love+and+Hate+%5BFRONT%5D.jpg",
+        artist: "Leonard Cohen"
+    },
 
 
 ];
@@ -361,6 +391,217 @@ const tracks = [
         albumTitle: "Revelations",
         trackLength: "2:53"
     },
+    {
+        title: "Rainy Day Women 12 and 35",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Bob+Dylan/Blonde+on+Blonde/01+Rainy+Day+Women+12+%26+35.mp3",
+        albumTitle: "Blonde on Blonde",
+        trackLength: "4:36"
+    },
+    {
+        title: "Pledging My Time",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Bob+Dylan/Blonde+on+Blonde/02+Pledging+My+Time.mp3",
+        albumTitle: "Blonde on Blonde",
+        trackLength: "3:49"
+    },
+    {
+        title: "Visions of Johanna",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Bob+Dylan/Blonde+on+Blonde/03+Visions+Of+Johanna.mp3",
+        albumTitle: "Blonde on Blonde",
+        trackLength: "4:36"
+    },
+    {
+        title: "One of Us Must Know (Sooner or Later)",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Bob+Dylan/Blonde+on+Blonde/04+One+Of+Us+Must+Know+%5BSooner+Or+Later%5D.mp3",
+        albumTitle: "Blonde on Blonde",
+        trackLength: "4:57"
+    },
+    {
+        title: "I Want You",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Bob+Dylan/Blonde+on+Blonde/05+I+Want+You.mp3",
+        albumTitle: "Blonde on Blonde",
+        trackLength: "3:07"
+    },
+    {
+        title: "Just Like A Woman",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Bob+Dylan/Blonde+on+Blonde/08+Just+Like+A+Woman.mp3",
+        albumTitle: "Blonde on Blonde",
+        trackLength: "4:54"
+    },
+    {
+        title: "Most Likely You Go Your Way And I Go Mine",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Bob+Dylan/Blonde+on+Blonde/09+Most+Likely+You+Go+Your+Way+And+I'll+Go+Mine.mp3",
+        albumTitle: "Blonde on Blonde",
+        trackLength: "3:30"
+    },
+    {
+        title: "Temporary Like Achilles",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Bob+Dylan/Blonde+on+Blonde/10+Temporary+Like+Achilles.mp3",
+        albumTitle: "Blonde on Blonde",
+        trackLength: "5:02"
+    },
+    {
+        title: "4th Time Around",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Bob+Dylan/Blonde+on+Blonde/12+4th+Time+Around.mp3",
+        albumTitle: "Blonde on Blonde",
+        trackLength: "4:34"
+    },
+    {
+        title: "Sad Eyed Lady of the Lowlands",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Bob+Dylan/Blonde+on+Blonde/14+Sad+Eyed+Lady+Of+The+Lowlands.mp3",
+        albumTitle: "Blonde on Blonde",
+        trackLength: "11:19"
+    },
+    {
+        title: "LSD",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Jhene+Aiko/Trip/01+Lsd.mp3",
+        albumTitle: "Trip",
+        trackLength: "1:45"
+    },
+    {
+        title: "Jukai",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Jhene+Aiko/Trip/02+Jukai.mp3",
+        albumTitle: "Trip",
+        trackLength: "4:16"
+    },
+    {
+        title: "While We\'re Young",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Jhene+Aiko/Trip/03+While+We're+Young.mp3",
+        albumTitle: "Trip",
+        trackLength: "3:56"
+    },
+    {
+        title: "Moments",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Jhene+Aiko/Trip/04+Moments+(feat.+Big+Sean).mp3",
+        albumTitle: "Trip",
+        trackLength: "2:59"
+    },
+    {
+        title: "You Are Here",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Jhene+Aiko/Trip/10+You+Are+Here.mp3",
+        albumTitle: "Trip",
+        trackLength: "3:39"
+    },
+    {
+        title: "Nobody",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Jhene+Aiko/Trip/12+Nobody.mp3",
+        albumTitle: "Trip",
+        trackLength: "4:16"
+    },
+    {
+        title: "Sing To Me",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Jhene+Aiko/Trip/19+Sing+to+Me+(feat.+Namiko+Love).mp3",
+        albumTitle: "Trip",
+        trackLength: "2:27"
+    },
+    {
+        title: "Ascension",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Jhene+Aiko/Trip/21+Ascension+(feat.+Brandy).mp3",
+        albumTitle: "Trip",
+        trackLength: "3:33"
+    },
+    {
+        title: "Trip",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Jhene+Aiko/Trip/22+Trip+(feat.+Mali+Music).mp3",
+        albumTitle: "Trip",
+        trackLength: "3:36"
+    },
+    {
+        title: "Homeless",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Paul+Simon/Graceland/12+Homeless+(Demo).flac",
+        albumTitle: "Graceland",
+        trackLength: "2:30"
+    },
+    {
+        title: "All Around The World (Or the Myth of Fingerprints)",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Paul+Simon/Graceland/14+All+Around+The+World+Or+The+Myth+Of+Fingerprints+(Early+Version).flac",
+        albumTitle: "Graceland",
+        trackLength: "3:17"
+    },
+    {
+        title: "Hard Headed Woman",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Cat+Stevens/The+Very+Best/%5B10%5D+Hard+headed+woman+-+Cat+Stevens.flac",
+        albumTitle: "The Very Best of Cat Stevens",
+        trackLength: "3:49"
+    },
+    {
+        title: "Don\'t Be Shy",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Cat+Stevens/The+Very+Best/%5B13%5D+Don't+be+shy+-+Cat+Stevens.flac",
+        albumTitle: "The Very Best of Cat Stevens",
+        trackLength: "2:51"
+    },
+    {
+        title: "(Remember the Days of the) Old School Yard",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Cat+Stevens/The+Very+Best/%5B17%5D+(Remember+the+days+of+the)+Old+school+yard+-+Cat+Stevens.flac",
+        albumTitle: "The Very Best of Cat Stevens",
+        trackLength: "2:43"
+    },
+    {
+        title: "Where Do The Children Play",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Cat+Stevens/The+Very+Best/%5B18%5D+Where+do+the+children+play+-+Cat+Stevens.flac",
+        albumTitle: "The Very Best of Cat Stevens",
+        trackLength: "3:52"
+    },
+    {
+        title: "Sad Lisa",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Cat+Stevens/The+Very+Best/%5B21%5D+Sad+lisa+-+Cat+Stevens.flac",
+        albumTitle: "The Very Best of Cat Stevens",
+        trackLength: "3:42"
+    },
+    {
+        title: "Oh Very Young",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Cat+Stevens/The+Very+Best/%5B7%5D+Oh+very+young+-+Cat+Stevens.flac",
+        albumTitle: "The Very Best of Cat Stevens",
+        trackLength: "2:36"
+    },
+    {
+        title: "Morning has Broken",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Cat+Stevens/The+Very+Best/%5B3%5D+Morning+has+broken+-+Cat+Stevens.flac",
+        albumTitle: "The Very Best of Cat Stevens",
+        trackLength: "3:20"
+    },
+    {
+        title: "If You Want To Sing Out, Sing Out",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Cat+Stevens/The+Very+Best/%5B24%5D+If+you+want+to+sing+out%2C+sing+out+-+Cat+Stevens.flac",
+        albumTitle: "The Very Best of Cat Stevens",
+        trackLength: "2:46"
+    },
+    {
+        title: "Avalanche",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Leonard+Cohen/Songs+of+Love+and+Hate/01)+Leonard+Cohen+-+Avalanche.mp3",
+        albumTitle: "Songs of Love and Hate",
+        trackLength: "5:06"
+    },
+    {
+        title: "Last Year\'s Man",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Leonard+Cohen/Songs+of+Love+and+Hate/02)+Leonard+Cohen+-+Last+Year's+Man.mp3",
+        albumTitle: "Songs of Love and Hate",
+        trackLength: "6:02"
+    },
+    {
+        title: "Dress Rehearsal Rag",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Leonard+Cohen/Songs+of+Love+and+Hate/03)+Leonard+Cohen+-+Dress+Rehearsal+Rag.mp3",
+        albumTitle: "Songs of Love and Hate",
+        trackLength: "6:12"
+    },
+    {
+        title: "Famous Blue Raincoat",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Leonard+Cohen/Songs+of+Love+and+Hate/06)+Leonard+Cohen+-+Famous+Blue+Raincoat.mp3",
+        albumTitle: "Songs of Love and Hate",
+        trackLength: "5:15"
+    },
+    {
+        title: "Sing Another Song Boys",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Leonard+Cohen/Songs+of+Love+and+Hate/07)+Leonard+Cohen+-+Sing+Another+Song%2C+Boys.mp3",
+        albumTitle: "Songs of Love and Hate",
+        trackLength: "6:17"
+    },
+    {
+        title: "Joan of Arc",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Leonard+Cohen/Songs+of+Love+and+Hate/08)+Leonard+Cohen+-+Joan+Of+Arc.mp3",
+        albumTitle: "Songs of Love and Hate",
+        trackLength: "6:29"
+    },
+
 ];
 
 const saveTracks = async (album) => {
