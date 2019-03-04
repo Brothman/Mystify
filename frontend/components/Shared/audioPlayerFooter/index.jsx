@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { playSong, updateSongCurrentTime } from '../../../actions/songActions';
 import { Link } from 'react-router-dom';
+import { showPlayButton } from '../../../utils/editTheDOM';
+
 
 class AudioPlayerFooter extends React.Component {
 
@@ -12,64 +14,9 @@ class AudioPlayerFooter extends React.Component {
         };
     }
 
-    // componentDidMount(){
-    //     //on mouse down add event listener to input so we follow its changes and ignore current time update
-
-    //     //on mouse up add event listener back.
-
-    //     const input = document.querySelector('.audio-player__time-slider');
-    //     input.addEventListener('mousedown', (e) => {
-    //         debugger
-    //         input.removeEventListener('change', (event) => this.updateCurrentTime(event));
-    //         const min = e.target.min,
-    //             max = e.target.max,
-    //             val = e.target.value;
-
-    //         const realVal = (val - min) / max - min;
-    //         this.setState({tempTime: val});
-
-    //         input.style.backgroundImage = '-webkit-gradient(linear, left top, right top, '
-    //             + 'color-stop(' + realVal + ', #aaa), '
-    //             + 'color-stop(' + realVal + ', #404040)'
-    //             + ')';
-    //     });
-
-    //     input.addEventListener('mouseup', (e) => {
-    //         const min = e.target.min,
-    //             max = e.target.max,
-    //             val = e.target.value;
-
-    //         const realVal = (val - min) / max - min;
-    //         // this.props.song.removeEventListener('timeupdate', () => updateTimeInState(this.props.song, input));
-    //         this.props.updateSongCurrentTime(val);
-    //         // this.props.song.currentTime = realVal;
-
-    //         input.style.backgroundImage = '-webkit-gradient(linear, left top, right top, '
-    //             + 'color-stop(' + realVal + ', #aaa), '
-    //             + 'color-stop(' + realVal + ', #404040)'
-    //             + ')';
-    //     });
-
-    // }
-
     updateVolume = (e) => {
         const volume = e.target.value;
-        debugger
         this.props.song ? this.props.song.volume = volume : null;
-    }
-
-        formatTime = (time) => {
-        // Display formatted time
-        debugger
-        const minutes = Math.floor(time / 60);
-        const seconds = Math.floor(time % 60);
-        // return;
-        if (seconds < 10) {
-            return `${minutes}:0${seconds}`;
-        }
-        else {
-            return `${minutes}:${seconds}`;
-        }
     }
 
     formatTime = (time) => {
@@ -122,6 +69,7 @@ class AudioPlayerFooter extends React.Component {
     playNextSong = () => {
             let idx = -1;
             const song = this.props.song;
+            const lastIndex = this.props.playQueue.length - 1;
 
             for (let i = 0; i < this.props.playQueue.length; i++) {
                 if (this.props.playQueue[i].title == song.title) {
@@ -129,12 +77,24 @@ class AudioPlayerFooter extends React.Component {
                 }
             }
 
-            if (idx == this.props.playQueue.length - 1) {
+            //this is a hack because when I set currentTime to duration, I get a weird DOM error of 
+            //Failed to load, no supported source found -> DOMPromiseRejection
+            if (idx == lastIndex) {
                 //go to end of song, last song
-                song.song.currentTime = song.song.duration;
+                song.song.pause();
+                song.song.currentTime = song.song.duration - 0.1;
+                showPlayButton();
             }
             else {
-                this.props.playSong(this.props.playQueue[idx + 1]);
+                const newSong = this.props.playQueue[idx + 1];
+                if (idx !== lastIndex-1) {
+                    newSong.song.addEventListener('ended', () => {
+                        //need for loop to find idx
+                        this.props.playSong(this.props.playQueue[idx + 2]);
+                    });
+                }
+                
+                this.props.playSong(newSong);
             }
     }
 

@@ -54,7 +54,19 @@ const songReducer = (state = {}, action) => {
                 return state;
             }
             else if (!newSong && oldSong.paused) {
-                oldSong.play();
+                //toFixed cretes a string representation at 2 decimals
+                if (oldSong.currentTime.toFixed(2) === (oldSong.duration-0.1).toFixed(2)) {
+                    //this is a hack because when I set currentTime to duration, I get a weird DOM error of 
+                    //Failed to load, no supported source found -> DOMPromiseRejection
+                    oldSong.currentTime = 0;
+                }
+                const oldSongPromise = oldSong.play();
+                if (oldSongPromise) { 
+                    oldSongPromise.catch(() => {
+                        oldSong.play();
+                        console.log('Error occured')
+                    });
+                }
                 showPauseButton();
                 return state;
             }

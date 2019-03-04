@@ -140,6 +140,12 @@ const albums = [
         imageURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Leonard+Cohen/Songs+of+Love+and+Hate/Songs+of+Love+and+Hate+%5BFRONT%5D.jpg",
         artist: "Leonard Cohen"
     },
+    {
+        title: "Friday Night Lights",
+        releaseDate: "2004",
+        imageURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Explosions+in+the+Sky/Friday+Night+Lights/Cover.jpg",
+        artist: "Explosions in the Sky"
+    },
 
 
 ];
@@ -601,6 +607,48 @@ const tracks = [
         albumTitle: "Songs of Love and Hate",
         trackLength: "6:29"
     },
+    {
+        title: "From West Texas",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Explosions+in+the+Sky/Friday+Night+Lights/01+-+From+West+Texas.flac",
+        albumTitle: "Friday Night Lights",
+        trackLength: "2:41"
+    },
+    {
+        title: "Your Hand in Mine",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Explosions+in+the+Sky/Friday+Night+Lights/02+-+Your+Hand+In+Mine+(w%2C+Strings).flac",
+        albumTitle: "Friday Night Lights",
+        trackLength: "4:08"
+    },
+    {
+        title: 'Our Last Days As Children',
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Explosions+in+the+Sky/Friday+Night+Lights/03+-+Our+Last+Days+As+Children.flac",
+        albumTitle: "Friday Night Lights",
+        trackLength: "2:41"
+    },
+    {
+        title: "An Ugly Fact of Life",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Explosions+in+the+Sky/Friday+Night+Lights/04+-+An+Ugly+Fact+of+Life.flac",
+        albumTitle: "Friday Night Lights",
+        trackLength: "2:55"
+    },
+    {
+        title: "Home",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Explosions+in+the+Sky/Friday+Night+Lights/05+-+Home.flac",
+        albumTitle: "Friday Night Lights",
+        trackLength: "2:38"
+    },
+    {
+        title: "Lonely Train",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Explosions+in+the+Sky/Friday+Night+Lights/11+-+Lonely+Train.flac",
+        albumTitle: "Friday Night Lights",
+        trackLength: "6:51"
+    },
+    {
+        title: "A Slow Dance",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Explosions+in+the+Sky/Friday+Night+Lights/14+-+A+Slow+Dance.flac",
+        albumTitle: "Friday Night Lights",
+        trackLength: "3:53"
+    },
 
 ];
 
@@ -659,7 +707,7 @@ saveArtists();
 
 //close the database after 3000 ms
 // a hack to make sure everything seeds correctly
-// setTimeout(() => mongoose.connection.close(), 3000);
+setTimeout(() => mongoose.connection.close(), 4000);
 
 
 
