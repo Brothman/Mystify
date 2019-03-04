@@ -1,7 +1,8 @@
 // @ts-check
 
 import React from 'react';
-import Sidebar from '../shared/sidebar/index.jsx';
+import Sidebar from '../Shared/sidebar/index.jsx';
+//hi
 import Header from './header/index';
 import Artists from './artists/index.jsx';
 import Albums from './albums/index.jsx';
