@@ -1,8 +1,8 @@
 // @ts-check
 
 import React from 'react';
-import Sidebar from '../../shared/sidebar/index.jsx';
-import HomeTrack from '../../shared/homeTrack/index.jsx';
+import Sidebar from '../../Shared/sidebar/index.jsx';
+import HomeTrack from '../../Shared/homeTrack/index.jsx';
 import Header from '../header/index';
 import { getAllTracks, clearTracks } from '../../../actions/trackActions';
 import { clearPlayQueue } from '../../../actions/playQueueActions.js';

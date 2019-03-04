@@ -1,9 +1,6 @@
 import React from 'react';
-// import { getAlbum } from '../../utils/albumAPI';
 import Sidebar from '../Shared/sidebar/index.jsx';
-// import { getAlbumTracks } from '../../utils/trackAPI';
 import Track from '../Shared/track/index';
-import AudioPlayerFooter from '../shared/audioPlayerFooter/index.jsx';
 
 import { Link } from 'react-router-dom';
 

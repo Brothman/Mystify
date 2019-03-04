@@ -1,5 +1,5 @@
 import React from 'react';
-import Artist from '../../shared/artist/index.jsx';
+import Artist from '../../Shared/artist/index.jsx';
 
 
 const createArtists = artists => {
