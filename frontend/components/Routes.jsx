@@ -8,7 +8,7 @@ import HomeAlbums from './Home/albums/index';
 import HomeTracks from './Home/tracks/index';
 import Artist from './Artist/index';
 import { Provider } from 'react-redux';
-import AudioPlayerFooter from './shared/audioPlayerFooter/index';
+import AudioPlayerFooter from './Shared/audioPlayerFooter/index';
 
 
 //Do Routes Here
