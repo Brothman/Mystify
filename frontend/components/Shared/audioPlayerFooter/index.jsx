@@ -67,9 +67,16 @@ class AudioPlayerFooter extends React.Component {
     }
 
     playNextSong = () => {
-            let idx = -1;
             const song = this.props.song;
+
+            if (!song.song) {
+                //break early if we haven't first selected a song
+                return;
+            }
+
+            let idx = -1;
             const lastIndex = this.props.playQueue.length - 1;
+
 
             for (let i = 0; i < this.props.playQueue.length; i++) {
                 if (this.props.playQueue[i].title == song.title) {
@@ -121,6 +128,42 @@ class AudioPlayerFooter extends React.Component {
         }
     }
 
+    restartOrPlayPreviousSong = () => {
+
+        const song = this.props.song;
+        if (!song.song) {
+            //break early if we haven't first selected a song
+            return;
+        }
+
+        if (song.song.currentTime <= 1) {
+            let idx = -1;
+
+            for (let i = 0; i < this.props.playQueue.length; i++) {
+                if (this.props.playQueue[i].title == song.title) {
+                    idx = i;
+                }
+            }
+
+            if (idx == 0) {
+                song.song.currentTime = 0;
+            }
+            else {
+                const newSong = this.props.playQueue[idx - 1];
+                if (idx !== 0) {
+                    newSong.song.addEventListener('ended', () => {
+                        //need for loop to find idx
+                        this.props.playSong(this.props.playQueue[idx]);
+                    });
+                }
+                this.props.playSong(newSong);
+            }
+        }
+        else {
+            song.song.currentTime = 0;
+        }
+    }
+
     render() {
         //for error handling
         const song = this.props.song.song ? this.props.song.song : this.props.song;
@@ -139,7 +182,7 @@ class AudioPlayerFooter extends React.Component {
 
                 <div className="audio-player__controls">
                     <svg viewBox="0 0 610 610" className="rela-block svg shuffle"><path d="M 405 230 L 405 270 L 450 250 L 405 230 Z" strokeWidth="10" className="arrow"></path><path d="M 390 250 L 350 250 L 250 350 L 210 350" strokeWidth="15"></path><path d="M 390 350 L 350 350 330 330" strokeWidth="15"></path><path d="M 210 250 L 250 250 270 270" strokeWidth="15"></path><path d="M 405 330 L 405 370 L 450 350 L 405 330 Z" strokeWidth="10" className="arrow"></path></svg>
-                    <svg onClick={() => song.currentTime = 0} viewBox="0 0 500 500" className="rela-block svg player"><path d="M 290 205 L 290 295 Q 290 300 284 299 L 197 253 Q 195 250 197 247 L 284 202 Q 290 200 290 205 Z" strokeWidth="0"></path><rect x="165" y="205" width="25" height="90" rx="8" ry="8" strokeWidth="0"></rect></svg>
+                    <svg onClick={this.restartOrPlayPreviousSong} viewBox="0 0 500 500" className="rela-block svg player"><path d="M 290 205 L 290 295 Q 290 300 284 299 L 197 253 Q 195 250 197 247 L 284 202 Q 290 200 290 205 Z" strokeWidth="0"></path><rect x="165" y="205" width="25" height="90" rx="8" ry="8" strokeWidth="0"></rect></svg>
                     <svg onClick={() => this.props.playSong(null)} viewBox="0 0 300 300" className="rela-block svg play-pause play">
                         <circle cx="150" cy="150" r="100"></circle><path d="M 115 105 L 115 195 Q 115 200 121 199 L 203 153 Q 205 150 203 147 L 121 102 Q 115 100 115 105 Z" strokeWidth="0"></path>
                     </svg>

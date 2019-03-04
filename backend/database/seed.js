@@ -146,6 +146,18 @@ const albums = [
         imageURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Explosions+in+the+Sky/Friday+Night+Lights/Cover.jpg",
         artist: "Explosions in the Sky"
     },
+    {
+        title: "Roads",
+        releaseDate: "2004",
+        imageURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Mark+Eliyahu/MarkEliyahuRoads.jpg",
+        artist: "Mark Eliyahu"
+    },
+    {
+        title: "Room 25",
+        releaseDate: "2018",
+        imageURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Noname/Room25.jpeg",
+        artist: "Noname"
+    },
 
 
 ];
@@ -648,6 +660,24 @@ const tracks = [
         trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Explosions+in+the+Sky/Friday+Night+Lights/14+-+A+Slow+Dance.flac",
         albumTitle: "Friday Night Lights",
         trackLength: "3:53"
+    },
+    {
+        title: "Drops",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Mark+Eliyahu/mark-eliyahu-drops.mp3",
+        albumTitle: "Roads",
+        trackLength: "3:37"
+    },
+    {
+        title: "Tribe",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Mark+Eliyahu/mark-eliyahu-tribe.mp3",
+        albumTitle: "Roads",
+        trackLength: "3:34"
+    },
+    {
+        title: "Don\'t Forget About Me",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Noname/noname-dont-forget-about-me.mp3",
+        albumTitle: "Room 25",
+        trackLength: "3:39"
     },
 
 ];
