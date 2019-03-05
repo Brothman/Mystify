@@ -3,7 +3,14 @@ import albumModel from '../resources/albums/albumModel';
 import trackModel from '../resources/tracks/trackModel';
 import mongoose from 'mongoose';
 
-mongoose.connect('mongodb://localhost:27017/mystify', { useNewUrlParser: true });
+const env = process.env.NODE_ENV || 'dev';
+
+if (env == 'dev') {
+    mongoose.connect('mongodb://localhost:27017/mystify', { useNewUrlParser: true });
+}
+else {
+    mongoose.connect('mongodb://heroku_3rtfnd25:clrnenj47a1plb0hp7e4ta1tgp@ds113825.mlab.com:13825/heroku_3rtfnd25', { useNewUrlParser: true });
+}
 
 const artists = [
     { 
