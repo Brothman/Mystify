@@ -17,8 +17,6 @@ app.use(bodyParser.json());
 //Serve my static files from the public folder for the index.html to use
 app.use(express.static(path.resolve(__dirname, '..', 'public')));
 
-mongoose.connect('mongodb://localhost:27017/mystify', { useNewUrlParser: true });
-
 // app.use('/api/user', userRouter);
 app.use('/api/albums', albumRouter);
 // app.use('/api/artists', artistRouter);
@@ -57,6 +55,15 @@ app.get('*', (req, res) => {
 });
 
 const env = process.env.NODE_ENV || 'dev';
+
+if (env == 'dev') {
+    mongoose.connect('mongodb://localhost:27017/mystify', { useNewUrlParser: true });
+}
+else {
+    mongoose.connect('mongodb://heroku_3rtfnd25:clrnenj47a1plb0hp7e4ta1tgp@ds113825.mlab.com:13825/heroku_3rtfnd25', { useNewUrlParser: true });
+}
+
+
 
 //process.env.PORT lets the port be set by Heroku
 //PORT will be undefined if run locally with nodemon server.js
