@@ -681,6 +681,24 @@ const tracks = [
         trackLength: "3:34"
     },
     {
+        title: "Nana",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Mark+Eliyahu/mark-eliyahu-nana.mp3",
+        albumTitle: "Roads",
+        trackLength: "4:04"
+    },
+    {
+        title: "Through Me",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Mark+Eliyahu/mark-eliyahu-through-me.mp3",
+        albumTitle: "Roads",
+        trackLength: "3:09"
+    },
+    {
+        title: "Temptation",
+        trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Mark+Eliyahu/mark-eliyahu-temptation.mp3",
+        albumTitle: "Roads",
+        trackLength: "3:13"
+    },
+    {
         title: "Don\'t Forget About Me",
         trackURL: "https://s3.us-east-2.amazonaws.com/mystify-images/Audio/Noname/noname-dont-forget-about-me.mp3",
         albumTitle: "Room 25",
