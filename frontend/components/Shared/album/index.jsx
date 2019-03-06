@@ -29,10 +29,10 @@ class Album extends React.Component {
             this.props.addSongToPlayQueue(newSong);
         });
 
-        this.playThisSong(newSongs[0]);
+        this.playThisSong(null, newSongs[0]);
     }
 
-    playThisSong = (song) => {
+    playThisSong = (clicked, song) => {
         let idx = 0;
 
         //handle what happens if someone clicks play or pause on the song

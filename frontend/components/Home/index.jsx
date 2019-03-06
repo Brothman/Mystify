@@ -46,6 +46,7 @@ class Home extends React.Component {
                            tracks={this.filterArtistTracks(artist._id)} />
         });
     }
+    
     render() { 
         return ( 
             <div className="home">
