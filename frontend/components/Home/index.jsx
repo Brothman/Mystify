@@ -25,6 +25,8 @@ class Home extends React.Component {
         this.props.clearTracks();
     }
 
+    //we are downloading way too much on the home page
+
     filterArtistTracks = (artistID) => {
         const newSongs = [];
         return this.props.tracks.filter(track => {
@@ -38,8 +40,7 @@ class Home extends React.Component {
     
                 const newSong = { title, albumImgURL, albumID, artist, song }
                 newSongs.push(newSong);
-                // this.props.addSongToPlayQueue(song);
-                this.props.addSongToNewPlayQueue(newSong);
+                // this.props.addSongToNewPlayQueue(newSong);
                 return true;
             }
             return false;
@@ -56,7 +57,8 @@ class Home extends React.Component {
                            imageUrl={artist.imageUrl} 
                            name={artist.name}
                            tracks={this.filterArtistTracks(artist._id)}
-                           playSong={(song) => this.props.playSong(song)} />
+                           playSong={(song) => this.props.playSong(song)} 
+                           addSongToNewPlayQueue={(song) => this.props.addSongToNewPlayQueue(song)} />
         });
     }
     render() { 
@@ -64,7 +66,7 @@ class Home extends React.Component {
             <div className="home">
                 <Sidebar />
                 <Header />
-                { (!this.props.artists.length >= 1) ? null : 
+                {(!this.props.artists.length >= 1 && !this.props.tracks.length >= 1) ? null : 
                     <React.Fragment>
                         <div className="home__artists">
                             {this.createArtists()}

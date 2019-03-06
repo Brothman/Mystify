@@ -16,7 +16,6 @@ export const receiveSong = (song) => {
 
 //Regular action creator, return a plain old Javascript object.
 export const playSong = (song) => {
-    debugger
     return {
         type: PLAY_SONG,
         song: song,
