@@ -80,8 +80,8 @@ class Search extends React.Component {
                         { this.state.text.length > 0 ? 
                        <div className="search__results-container">
                             <Header />
-                            <Route exact path="/search" render={props => <Artists {...props} artists={this.filterArtists(this.props.artists)} /> } />
-                            <Route path="/search/albums" render={props => <Albums {...props} albums={this.filterAlbums(this.props.albums)} /> } />
+                            <Route exact path="/search" render={props => <Artists {...props} artists={this.filterArtists(this.props.artists)} tracks={this.props.tracks} /> } />
+                            <Route path="/search/albums" render={props => <Albums {...props} albums={this.filterAlbums(this.props.albums)} tracks={this.props.tracks} /> } />
                             <Route path="/search/tracks" render={props => <Tracks {...props} tracks={this.filterTracks(this.props.tracks)} /> } />
                             <Route path="/search/playlists" render={props => <Artists {...props} artists={this.filterArtists(this.props.artists)} /> } />
                         </div>
