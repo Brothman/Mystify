@@ -16,16 +16,26 @@ class Artist extends React.Component {
     playArtistSong = (e) => {
         e.preventDefault();
 
+        // this.props.tracks.forEach(track => {
+        //     console.log(this.props.addSongToPlayQueue)
+        //     this.props.addSongToPlayQueue(track);
+        // });
+        const newSongs = [];
+
         this.props.tracks.forEach(track => {
-            console.log(this.props.addSongToPlayQueue)
-            this.props.addSongToPlayQueue(track);
+            const title = track.title;
+            const trackURL = track.trackURL;
+            const albumImgURL = track.album.imageURL;
+            const albumID = track.album._id;
+            const artist = track.artist;
+            const song = new Audio(trackURL);
+
+            const newSong = { title, albumImgURL, albumID, artist, song }
+            newSongs.push(newSong);
+            this.props.addSongToPlayQueue(newSong);
         });
 
-        const tracks = this.props.tracks;
-        const playSong = this.props.playSong;
-        console.log(tracks[0]);
-        // playSong(tracks[0]);
-        this.playThisSong(tracks[0]);
+        this.playThisSong(newSongs[0]);
     }
 
     playThisSong = (song) => {

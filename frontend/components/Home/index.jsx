@@ -26,28 +26,37 @@ class Home extends React.Component {
 
     //we are downloading way too much on the home page
     //if we download once clicked, that is faster, I think?
+    //HUGE - I THINK THE DOM ERRORS HAPPEN WHEN THE SONG DOES NOT YET LOAD
 
     filterArtistTracks = (artistID) => {
-        const newSongs = [];
         return this.props.tracks.filter(track => {
             if (track.artist._id === artistID) {
-                const title = track.title;
-                const trackURL = track.trackURL;
-                const albumImgURL = track.album.imageURL;
-                const albumID = track.album._id;
-                const artist = track.artist;
-                const song = new Audio(trackURL);
-    
-                const newSong = { title, albumImgURL, albumID, artist, song }
-                newSongs.push(newSong);
-                // this.props.addSongToNewPlayQueue(newSong);
                 return true;
             }
             return false;
-        })
-        .map((track, idx) => {
-            return newSongs[idx];
         });
+
+        // const newSongs = [];
+        // return this.props.tracks.filter(track => {
+        //     if (track.artist._id === artistID) {
+        //         const title = track.title;
+        //         const trackURL = track.trackURL;
+        //         const albumImgURL = track.album.imageURL;
+        //         const albumID = track.album._id;
+        //         const artist = track.artist;
+        //         // const song = new Audio(trackURL);
+        //         const song = "gu";
+    
+        //         const newSong = { title, albumImgURL, albumID, artist, song }
+        //         newSongs.push(newSong);
+        //         // this.props.addSongToNewPlayQueue(newSong);
+        //         return true;
+        //     }
+        //     return false;
+        // })
+        // .map((track, idx) => {
+        //     return newSongs[idx];
+        // });
     }
 
     createArtists = () => {
