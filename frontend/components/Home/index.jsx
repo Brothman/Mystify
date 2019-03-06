@@ -7,7 +7,6 @@ import Artist from '../Shared/artist/index.jsx';
 import { getArtists } from '../../actions/artistActions';
 import { getAllTracks, clearTracks } from '../../actions/trackActions';
 import { connect } from 'react-redux';
-import { playSong, addSongToNewPlayQueue } from '../../actions/songActions.js';
 
 
 class Home extends React.Component {
@@ -26,6 +25,7 @@ class Home extends React.Component {
     }
 
     //we are downloading way too much on the home page
+    //if we download once clicked, that is faster, I think?
 
     filterArtistTracks = (artistID) => {
         const newSongs = [];
@@ -56,9 +56,7 @@ class Home extends React.Component {
                            key={idx} 
                            imageUrl={artist.imageUrl} 
                            name={artist.name}
-                           tracks={this.filterArtistTracks(artist._id)}
-                           playSong={(song) => this.props.playSong(song)} 
-                           addSongToNewPlayQueue={(song) => this.props.addSongToNewPlayQueue(song)} />
+                           tracks={this.filterArtistTracks(artist._id)} />
         });
     }
     render() { 
@@ -91,8 +89,6 @@ const mapDispatchToProps = dispatch => {
         getArtists: () => dispatch(getArtists()),
         getAllTracks: () => dispatch(getAllTracks()),
         clearTracks: () => dispatch(clearTracks()),
-        playSong: (song) => dispatch(playSong(song)),
-        addSongToNewPlayQueue: (song) => dispatch(addSongToNewPlayQueue(song)),
     };
 };
 
