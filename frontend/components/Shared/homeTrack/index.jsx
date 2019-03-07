@@ -22,59 +22,35 @@ class HomeTrack extends React.Component {
         const albumImgURL = this.props.album.imageURL;
         const albumID = this.props.album._id;
         const artist = this.props.artist;
-        const song = new Audio(trackURL);
+        const song = trackURL;
 
         const newSong = { title, albumImgURL, albumID, artist, song }
-        // this.props.addSongToPlayQueue(song);
-        this.props.addSongToNewPlayQueue(newSong);
 
         this.setState({ song: newSong });
     }
 
     playThisSong = (clicked, song) => {
-        let idx = 0;
+        if (clicked) {
+            song = this.props.createAudioAPI(song);
+        }
 
-        //Nothing is on the backburner yet, first time playing a song, or clicked
-        //actually could just be clicked?
-        if (this.props.playQueue.length == 0 || (clicked && this.props.newPlayQueue.length > 0)) {
-            const newPlayQueue = this.props.newPlayQueue;
-            for (let i = 0; i < newPlayQueue.length; i++) {
-                if (newPlayQueue[i].title == song.title) {
-                    idx = i;
-                }
+        let idx = 0;
+        const playQueue = this.props.playQueue;
+        for (let i = 0; i < playQueue.length; i++) {
+            if (playQueue[i].title == song.title) {
+                idx = i;
             }
-            if (idx == newPlayQueue.length - 1) {
-                //make the button turn to pause
-                song.song.addEventListener('ended', () => {
-                    showPlayButton();
-                });
-             }
-            else {
-                song.song.addEventListener('ended', () => {
-                    //need for loop to find idx
-                    this.playThisSong(false, newPlayQueue[idx + 1]);
-                });
-            }
-            this.props.replacePlayQueue(newPlayQueue);
+        }
+
+        if (idx == playQueue.length - 1) {
+            song.song.addEventListener('ended', () => {
+                showPlayButton();
+            });
         }
         else {
-            const playQueue = this.props.playQueue;
-            for (let i = 0; i < playQueue.length; i++) {
-                if (playQueue[i].title == song.title) {
-                    idx = i;
-                }
-            }
-
-            if (idx == playQueue.length - 1) {
-                song.song.addEventListener('ended', () => {
-                    showPlayButton();
-                });
-            }
-            else {
-                song.song.addEventListener('ended', () => {
-                    this.playThisSong(false, playQueue[idx + 1]);
-                })
-            }
+            song.song.addEventListener('ended', () => {
+                this.playThisSong(false, playQueue[idx + 1]);
+            })
         }
 
         this.props.playSong(song);

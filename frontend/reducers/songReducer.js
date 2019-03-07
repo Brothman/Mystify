@@ -30,7 +30,20 @@ const updateTimeInState = (song, input) => {
         + 'color-stop(' + realVal + ', #aaa), '
         + 'color-stop(' + realVal + ', #404040)'
         + ')';
-} 
+}
+
+const safePlay = (oldSong) => {
+    const oldSongPromise = oldSong.play();
+    if (oldSongPromise) {
+        oldSongPromise.catch(() => {
+            oldSong.pause();
+            oldSong = new Audio(oldSong.src);
+            oldSong.play();
+            console.log('Error occured')
+        });
+    }
+    return oldSong;
+};
 
 
 //default state is the empty Object
@@ -60,29 +73,34 @@ const songReducer = (state = {}, action) => {
                     //Failed to load, no supported source found -> DOMPromiseRejection
                     oldSong.currentTime = 0;
                 }
-                const oldSongPromise = oldSong.play();
-                if (oldSongPromise) { 
-                    oldSongPromise.catch(() => {
-                        oldSong.play();
-                        console.log('Error occured')
-                    });
-                }
+                // const oldSongPromise = oldSong.play();
+                // if (oldSongPromise) { 
+                //     oldSongPromise.catch(() => {
+                //         oldSong = new Audio(oldSong.src);
+                //         oldSong.play();
+                //         console.log('Error occured')
+                //     });
+                // }
+                console.log(1);
+                const safeSong = safePlay(oldSong);
                 showPauseButton();
-                return state;
+                return {...state, song: safeSong};
             }
             //for a new track
             else if (!oldSong) {
-                newSong.play();
+                // newSong.play();
+                console.log(2);
+                const safeSong = safePlay(newSong);
                 showPauseButton();
 
                 const input = document.querySelector('.audio-player__time-slider');
-                newSong.addEventListener('timeupdate', () => updateTimeInState(newSong, input));
+                safeSong.addEventListener('timeupdate', () => updateTimeInState(newSong, input));
                 return { 
                         title: action.song.title, 
                         albumImgURL: action.song.albumImgURL,
                         albumID: action.song.albumID,
                         artist: action.song.artist,
-                        song: newSong 
+                        song: safeSong 
                     };
             }
             else if (oldSong.src == newSong.src && !oldSong.paused) {
@@ -91,9 +109,11 @@ const songReducer = (state = {}, action) => {
                 return state;
             }
             else if (oldSong.src == newSong.src) {
-                oldSong.play();
+                // oldSong.play();
+                console.log(3);
+                const safeSong = safePlay(oldSong);
                 showPauseButton();
-                return state;
+                return { ...state, song: safeSong };
             }
             else {
                 oldSong.pause();
@@ -102,16 +122,18 @@ const songReducer = (state = {}, action) => {
                 const input = document.querySelector('.audio-player__time-slider');
                 oldSong.removeEventListener('timeupdate', () => updateTimeInState(oldSong, input));
 
-                newSong.play();
+                // newSong.play();
+                console.log(4);
+                const safeSong = safePlay(newSong);
                 showPauseButton();
 
-                newSong.addEventListener('timeupdate', () => updateTimeInState(newSong, input));
+                safeSong.addEventListener('timeupdate', () => updateTimeInState(newSong, input));
                 return {
                     title: action.song.title,
                     albumImgURL: action.song.albumImgURL,
                     albumID: action.song.albumID,
                     artist: action.song.artist,
-                    song: newSong
+                    song: safeSong
                 };
             }
         case (UPDATE_CURRENT_TIME): 

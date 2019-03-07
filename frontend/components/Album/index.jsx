@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { getAlbumTracks, clearTracks } from '../../actions/trackActions.js';
 import { clearPlayQueue, clearNewPlayQueue } from '../../actions/playQueueActions.js';
 import { getAlbum } from '../../actions/albumActions';
+import { addSongToPlayQueue } from '../../actions/songActions';
 import { connect } from 'react-redux';
 
 
@@ -56,8 +57,32 @@ class Album extends React.Component {
                           trackLength={track.trackLength}
                           album={track.album}
                           artist={track.artist}
+                          createAudioAPI={(song) => this.createAudioAPI(song)}
                           key={idx} />
         });
+    }
+
+    createAudioAPI = (clickedSong) => {
+        let chosenSong;
+
+        this.props.clearPlayQueue();
+
+        this.props.tracks.forEach(track => {
+            const title = track.title;
+            const trackURL = track.trackURL;
+            const albumImgURL = track.album.imageURL;
+            const albumID = track.album._id;
+            const artist = track.artist;
+            const song = new Audio(trackURL);
+
+            const newSong = { title, albumImgURL, albumID, artist, song }
+            if (trackURL == clickedSong.song) {
+                chosenSong = newSong;
+            }
+            this.props.addSongToPlayQueue(newSong);
+        });
+
+        return chosenSong;
     }
 
     render() {
@@ -112,6 +137,7 @@ const mapDispatchToProps = dispatch => {
         clearTracks: () => dispatch(clearTracks()),
         clearPlayQueue: () => dispatch(clearPlayQueue()),
         clearNewPlayQueue: () => dispatch(clearNewPlayQueue()),
+        addSongToPlayQueue: (song) => dispatch(addSongToPlayQueue(song)),
     };
 };
 
