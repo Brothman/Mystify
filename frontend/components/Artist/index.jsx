@@ -1,6 +1,5 @@
 import React from 'react';
 import Sidebar from '../Shared/sidebar/index.jsx';
-//hi
 import Track from '../Shared/track/index';
 import { Link, NavLink } from 'react-router-dom';
 

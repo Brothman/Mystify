@@ -129,6 +129,12 @@
 .header__logo:hover {
     opacity: 1;
 }
+
+.header a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 30px;
+}
 .splash {
     display: grid;
     grid-template-rows: 1fr 100px 50px 100px 1fr;

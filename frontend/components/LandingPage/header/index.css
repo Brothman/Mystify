@@ -42,3 +42,9 @@
 .header__logo:hover {
     opacity: 1;
 }
+
+.header a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 30px;
+}

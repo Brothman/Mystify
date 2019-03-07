@@ -32,17 +32,25 @@ const updateTimeInState = (song, input) => {
         + ')';
 }
 
-const safePlay = (oldSong) => {
-    const oldSongPromise = oldSong.play();
-    if (oldSongPromise) {
-        oldSongPromise.catch(() => {
-            oldSong.pause();
-            oldSong = new Audio(oldSong.src);
-            oldSong.play();
+const safePlay = (song) => {
+    const songPromise = song.play();
+    let replacementSong = song;
+    if (songPromise) {
+        console.log(song)
+        songPromise.catch(() => {
+            song.pause();
+            replacementSong = new Audio(song.src);
+            // console.log(replacementSong)
+            // replacementSong.play();
+            //WE HAVE LEARNED SOME VALUABLE LESSONS TODAY:
+            //1. IT IS THE OLD SONG THAT ERRORS OUT, NOT THE NEW ONE
+            //2 The reason the new song doesn't play is because old requests are still firing in the background
+            //3. I need to find a way to cancel API requests when they are no longer needed
+            //4. I have a suspicion that happens by changing the src of one Audio tag. This is another re-factor of the entire code.
             console.log('Error occured')
         });
     }
-    return oldSong;
+    return replacementSong;
 };
 
 
@@ -73,14 +81,6 @@ const songReducer = (state = {}, action) => {
                     //Failed to load, no supported source found -> DOMPromiseRejection
                     oldSong.currentTime = 0;
                 }
-                // const oldSongPromise = oldSong.play();
-                // if (oldSongPromise) { 
-                //     oldSongPromise.catch(() => {
-                //         oldSong = new Audio(oldSong.src);
-                //         oldSong.play();
-                //         console.log('Error occured')
-                //     });
-                // }
                 console.log(1);
                 const safeSong = safePlay(oldSong);
                 showPauseButton();
@@ -91,6 +91,7 @@ const songReducer = (state = {}, action) => {
                 // newSong.play();
                 console.log(2);
                 const safeSong = safePlay(newSong);
+
                 showPauseButton();
 
                 const input = document.querySelector('.audio-player__time-slider');
