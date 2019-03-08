@@ -118,6 +118,8 @@ const songReducer = (state = {}, action) => {
             }
             else {
                 oldSong.pause();
+                //clean up memory leaks and stop downloading/clear up sockets for future audio tags
+                oldSong.src = "";
                 oldSong.currentTime = 0;
 
                 const input = document.querySelector('.audio-player__time-slider');

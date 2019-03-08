@@ -111,7 +111,10 @@ class ArtistPage extends React.Component {
             const albumImgURL = track.album.imageURL;
             const albumID = track.album._id;
             const artist = track.artist;
-            const song = new Audio(trackURL);
+            // const song = new Audio(trackURL);
+            const song = new Audio();
+            song.preload = 'none';
+            song.src = trackURL;
 
             const newSong = { title, albumImgURL, albumID, artist, song }
             if (trackURL == clickedSong.song) {
