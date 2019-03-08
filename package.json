@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack --watch --mode=development",
     "nodemon": "nodemon --exec babel-node backend/server.js",
-    "start": "npm run webpack & npm run nodemon",
+    "start": "babel-node backend/server.js",
+    "startDev": "npm run webpack & npm run nodemon",
     "seed": "babel-node backend/database/seed.js"
   },
   "repository": {
