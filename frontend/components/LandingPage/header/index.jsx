@@ -10,8 +10,8 @@ const Header = () => {
             <a href="https://www.linkedin.com/in/brothman7000" className="header__nav-item"> LinkedIn </a>
             <a href="https://github.com/Brothman" className="header__nav-item"> Github </a>
             <div className="header__pipe"> </div>
-            <h6 className="header__nav-item">Sign Up</h6>
-            <h6 className="header__nav-item">Log In</h6>
+            <Link to="/home" className="header__nav-item">Sign Up</Link>
+            <Link to="/home" className="header__nav-item">Log In</Link>
         </div>
      );
 }
