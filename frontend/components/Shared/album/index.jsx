@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { clearPlayQueue } from '../../../actions/playQueueActions';
 import { addSongToPlayQueue } from '../../../actions/songActions';
 import { playSong, addSongToNewPlayQueue } from '../../../actions/songActions.js';
 
@@ -15,6 +16,8 @@ class Album extends React.Component {
         e.preventDefault();
 
         const newSongs = [];
+
+        this.props.clearPlayQueue();
 
         this.props.tracks.forEach(track => {
             const title = track.title;
@@ -99,6 +102,7 @@ const mapDispatchToProps = dispatch => {
         addSongToPlayQueue: (song) => dispatch(addSongToPlayQueue(song)),
         playSong: (song) => dispatch(playSong(song)),
         addSongToNewPlayQueue: (song) => dispatch(addSongToNewPlayQueue(song)),
+        clearPlayQueue: () => dispatch(clearPlayQueue()),
     };
 };
 
