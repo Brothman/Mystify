@@ -77,6 +77,8 @@ pickle-email-*.html
 
 bundle.js
 bundle.js.map
+main.css
+main.css.map
 
 ### Node ###
 
