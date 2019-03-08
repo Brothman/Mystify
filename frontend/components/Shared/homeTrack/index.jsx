@@ -34,26 +34,30 @@ class HomeTrack extends React.Component {
             song = this.props.createAudioAPI(song);
         }
 
-        let idx = 0;
-        const playQueue = this.props.playQueue;
-        for (let i = 0; i < playQueue.length; i++) {
-            if (playQueue[i].title == song.title) {
-                idx = i;
+        //using setTimeout to put this on the asynchronous stack, so playQueue updates first
+        setTimeout(() => {
+            let idx = 0;
+            const playQueue = this.props.playQueue;
+            for (let i = 0; i < playQueue.length; i++) {
+                if (playQueue[i].title == song.title) {
+                    idx = i;
+                }
             }
-        }
 
-        if (idx == playQueue.length - 1) {
-            song.song.addEventListener('ended', () => {
-                showPlayButton();
-            });
-        }
-        else {
-            song.song.addEventListener('ended', () => {
-                this.playThisSong(false, playQueue[idx + 1]);
-            })
-        }
+            if (idx == playQueue.length - 1) {
+                //make the button turn to pause
+                song.song.addEventListener('ended', () => {
+                    showPlayButton();
+                });
+            }
+            else {
+                song.song.addEventListener('ended', () => {
+                    this.playThisSong(false, playQueue[idx + 1]);
+                })
+            }
 
-        this.props.playSong(song);
+            this.props.playSong(song);
+        }, 0);
     }
 
     componentWillUnmount(){

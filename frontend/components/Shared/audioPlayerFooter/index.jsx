@@ -11,6 +11,7 @@ class AudioPlayerFooter extends React.Component {
         super(props)
         this.state = { 
             tempTime: 0,
+            duration: null
         };
     }
 
@@ -109,6 +110,11 @@ class AudioPlayerFooter extends React.Component {
             }
             else {
                 const newSong = this.props.playQueue[idx + 1];
+                
+                if (newSong.song.backupSRC) {
+                    newSong.song.src = newSong.song.backupSRC;
+                }
+
                 if (idx !== lastIndex-1) {
                     newSong.song.addEventListener('ended', () => {
                         //need for loop to find idx
@@ -165,6 +171,11 @@ class AudioPlayerFooter extends React.Component {
             }
             else {
                 const newSong = this.props.playQueue[idx - 1];
+
+                if (newSong.song.backupSRC) {
+                    newSong.song.src = newSong.song.backupSRC;
+                }
+
                 if (idx !== 0) {
                     newSong.song.addEventListener('ended', () => {
                         //need for loop to find idx
@@ -179,9 +190,18 @@ class AudioPlayerFooter extends React.Component {
         }
     }
 
+    //FIX END TIME OF SONG DURATION
+
     render() {
         //for error handling
         const song = this.props.song.song ? this.props.song.song : this.props.song;
+        //means we have a song, but
+        let duration = null; 
+        Number.isNaN(song.duration) ? song.addEventListener('loadedmetadata', (e) => {
+            duration = e.target.duration;
+            this.setState({ duration });
+        }) : null;
+        //we need song to update on non click
         return (
             <div className="audio-player">
                 {(this.props.song.albumImgURL && this.props.song.title && this.props.song.artist) ?
@@ -214,11 +234,11 @@ class AudioPlayerFooter extends React.Component {
                         <input onChange={(e) => this.updateCurrentTime(e)}
                             type="range"
                             min="0"
-                            max={song.duration ? song.duration : 250}
+                            max={this.state.duration ? this.state.duration : 250}
                             step="0.01"
                             value={song.currentTime ? song.currentTime : this.state.tempTime }
                             className="audio-player__time-slider" />
-                        <p className="audio-player__time">{song.duration ? this.formatTime(song.duration) : '3:00'}</p>
+                        <p className="audio-player__time">{this.state.duration ? this.formatTime(this.state.duration) : '3:00'}</p>
                     </div>
                 </div>
 

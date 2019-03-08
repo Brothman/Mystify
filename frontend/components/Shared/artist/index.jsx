@@ -27,6 +27,7 @@ class Artist extends React.Component {
 
             // const song = new Audio(trackURL);
             const song = new Audio();
+            // song.preload = 'metadata';
             song.preload = 'none';
             song.src = trackURL;
         
@@ -35,15 +36,19 @@ class Artist extends React.Component {
             this.props.addSongToPlayQueue(newSong);
         });
 
-        this.playThisSong(null, newSongs[0]);
+        //using setTimeout to put this on the asynchronous stack, so playQueue updates first
+        setTimeout(() => this.playThisSong(null, newSongs[0]), 0);
     }
 
     playThisSong = (clicked, song) => {
+        console.log(this.props.playQueue)
+
         let idx = 0;
 
         //handle what happens if someone clicks play or pause on the song
 
         const playQueue = this.props.playQueue;
+        console.log(playQueue)
         for (let i = 0; i < playQueue.length; i++) {
             if (playQueue[i].title == song.title) {
                 idx = i;

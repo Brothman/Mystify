@@ -75,6 +75,7 @@ class Album extends React.Component {
             const artist = track.artist;
             // const song = new Audio(trackURL);
             const song = new Audio();
+            // song.preload = 'metadata';
             song.preload = 'none';
             song.src = trackURL;
 

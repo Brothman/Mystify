@@ -24,6 +24,7 @@ class Album extends React.Component {
             const artist = track.artist;
             // const song = new Audio(trackURL);
             const song = new Audio();
+            // song.preload = 'metadata';
             song.preload = 'none';
             song.src = trackURL;
 
@@ -32,7 +33,8 @@ class Album extends React.Component {
             this.props.addSongToPlayQueue(newSong);
         });
 
-        this.playThisSong(null, newSongs[0]);
+        //using setTimeout to put this on the asynchronous stack, so playQueue updates first
+        setTimeout(() => this.playThisSong(null, newSongs[0]), 0);
     }
 
     playThisSong = (clicked, song) => {
