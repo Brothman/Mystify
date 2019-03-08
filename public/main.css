@@ -133,7 +133,6 @@
 .header a {
     text-decoration: none;
     color: inherit;
-    font-size: 30px;
 }
 .splash {
     display: grid;
