@@ -19,6 +19,11 @@ Coming soon!
 ## Key Features
 Coming soon!
 
+#### Limit Network Requests
+
+###### Web Audio API
+
+Code Snippet HERE
 
 #### Express Routing to interact with ```Mongoose``` and the ```mongodb``` database.
 
