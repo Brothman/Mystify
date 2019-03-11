@@ -1203,6 +1203,22 @@
   background-color: blue;
 }
 
+.shuffle, .repeat-loop {
+    fill: rgba(255,255,255,0.6);
+}
+
+.shuffle--active, .repeat-loop--active {
+    fill: green;
+    stroke: green;
+}
+
+.shuffle path, .repeat-loop path {
+    fill: inherit;
+}
+
+.shuffle--active:hover path, .repeat-loop--active:hover path {
+    fill: inherit;
+}
 body, h6, h1, h3 {
     margin: 0;
     padding: 0;

@@ -10,6 +10,7 @@ import { getAlbum } from '../../actions/albumActions';
 import { addSongToPlayQueue } from '../../actions/songActions';
 import { connect } from 'react-redux';
 
+// import { createAudioAPI } from '../../utils/songMethods';
 
 class Album extends React.Component {
 
@@ -50,18 +51,6 @@ class Album extends React.Component {
         }
     }
 
-    createTracks = () => {
-        return this.props.tracks.map((track, idx) => {
-            return <Track title={track.title} 
-                          trackURL={track.trackURL} 
-                          trackLength={track.trackLength}
-                          album={track.album}
-                          artist={track.artist}
-                          createAudioAPI={(song) => this.createAudioAPI(song)}
-                          key={idx} />
-        });
-    }
-
     createAudioAPI = (clickedSong) => {
         let chosenSong;
 
@@ -87,6 +76,19 @@ class Album extends React.Component {
         });
 
         return chosenSong;
+    }
+
+
+    createTracks = () => {
+        return this.props.tracks.map((track, idx) => {
+            return <Track title={track.title} 
+                          trackURL={track.trackURL} 
+                          trackLength={track.trackLength}
+                          album={track.album}
+                          artist={track.artist}
+                          createAudioAPI={(song) => this.createAudioAPI(song)}
+                          key={idx} />
+        });
     }
 
     render() {

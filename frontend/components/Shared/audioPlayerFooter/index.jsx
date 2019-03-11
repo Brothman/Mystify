@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { playSong, updateSongCurrentTime } from '../../../actions/songActions';
+import { shufflePlayQueue } from '../../../actions/playQueueActions';
 import { Link } from 'react-router-dom';
 import { showPlayButton, showMuteButton, showVolumeButton } from '../../../utils/editTheDOM';
 
@@ -90,6 +91,12 @@ class AudioPlayerFooter extends React.Component {
                 return;
             }
 
+           const loopButton = document.querySelector('.repeat-loop');
+            if (Array.from(loopButton.classList).includes('repeat-loop--active')) {
+                song.song.currentTime = 0;
+                return;
+            }
+
             let idx = -1;
             const lastIndex = this.props.playQueue.length - 1;
 
@@ -127,29 +134,27 @@ class AudioPlayerFooter extends React.Component {
     }
 
     shuffle = () => {
-        const playQueue = this.props.playQueue;
+        if (!this.props.song.song) {
+            //break early if we haven't first selected a song
+            return;
+        }
+        this.props.shufflePlayQueue();
     }
 
     loop = () => {
         const song = this.props.song.song;
-        const arrowLoopSVG = document.querySelectorAll('.arrow');
-        
-        if (song.loop) {
-            song.loop = false;  
-            for (let i = 0; i < arrowLoopSVG.length; i++) {
-                const arrow = arrowLoopSVG[i];
-                // arrow.style.fill = 'rgba(255, 255, 255, 0.6)';
-                arrow.style.className = 'arrow';
-            }
+        if (!song) {
+            return;
+        }
+        const loopButton = document.querySelector('.repeat-loop');
+
+        if (Array.from(loopButton.classList).includes('repeat-loop--active')) {
+            loopButton.classList.remove('repeat-loop--active');
+            song.loop = false;
         }
         else {
+            loopButton.classList.add('repeat-loop--active');
             song.loop = true;
-            for (let i = 0; i < arrowLoopSVG.length; i++) {
-                const arrow = arrowLoopSVG[i];
-                // arrow.style.fill = '#1db954';
-                debugger
-                arrow.style.className += ' green';
-            }
         }
     }
 
@@ -290,6 +295,7 @@ const mapDispatchToProps = dispatch => {
     return {
         playSong: (song) => dispatch(playSong(song)),
         updateSongCurrentTime: (time) => dispatch(updateSongCurrentTime(time)),
+        shufflePlayQueue: () => dispatch(shufflePlayQueue()),
     };
 };
 

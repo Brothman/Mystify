@@ -46,7 +46,7 @@ class track extends React.Component {
         if (clicked) {
             song = this.props.createAudioAPI(song);
         }
-
+        
         //using setTimeout to put this on the asynchronous stack, so playQueue updates first
         setTimeout(() => {
             let idx = 0;
