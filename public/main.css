@@ -344,6 +344,9 @@
     display: grid;
     grid-template-rows: repeat(auto-fill, minmax(54px, 1fr));
 }
+.playlist {
+    background: linear-gradient(#f037a5 -60%, #fae62d 140%);
+}
 .album {
     display: grid;
     grid-template-columns: 230px 50px 400px 1fr 75px;
