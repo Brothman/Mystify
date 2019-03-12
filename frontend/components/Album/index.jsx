@@ -11,6 +11,7 @@ import { addSongToPlayQueue } from '../../actions/songActions';
 import { connect } from 'react-redux';
 
 // import { createAudioAPI } from '../../utils/songMethods';
+import { addAudioAPI } from '../../utils/songFunctions';
 
 class Album extends React.Component {
 
@@ -30,55 +31,6 @@ class Album extends React.Component {
         this.props.clearNewPlayQueue();
     }
 
-    playMusic = (newSong) => {
-        const song = this.state.song;
-        if (!song) {
-            this.setState({ song: newSong, playing: true });
-            newSong.play();
-        }
-        else if (song.src == newSong.src && this.state.playing) {
-            song.pause();
-            this.setState({ playing: false })
-        }
-        else if (song.src == newSong.src) {
-            song.play();
-            this.setState({ playing: true })
-        }
-        else {
-            song.pause();
-            newSong.play();
-            this.setState({ song: newSong, playing: true });
-        }
-    }
-
-    createAudioAPI = (clickedSong) => {
-        let chosenSong;
-
-        this.props.clearPlayQueue();
-
-        this.props.tracks.forEach(track => {
-            const title = track.title;
-            const trackURL = track.trackURL;
-            const albumImgURL = track.album.imageURL;
-            const albumID = track.album._id;
-            const artist = track.artist;
-            // const song = new Audio(trackURL);
-            const song = new Audio();
-            // song.preload = 'metadata';
-            song.preload = 'none';
-            song.src = trackURL;
-
-            const newSong = { title, albumImgURL, albumID, artist, song }
-            if (trackURL == clickedSong.song) {
-                chosenSong = newSong;
-            }
-            this.props.addSongToPlayQueue(newSong);
-        });
-
-        return chosenSong;
-    }
-
-
     createTracks = () => {
         return this.props.tracks.map((track, idx) => {
             return <Track title={track.title} 
@@ -86,7 +38,7 @@ class Album extends React.Component {
                           trackLength={track.trackLength}
                           album={track.album}
                           artist={track.artist}
-                          createAudioAPI={(song) => this.createAudioAPI(song)}
+                          createAudioAPI={(song) => this.props.createAudioAPI(song)}
                           key={idx} />
         });
     }
@@ -147,5 +99,5 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Album);
+export default connect(mapStateToProps, mapDispatchToProps)(addAudioAPI(Album));
 

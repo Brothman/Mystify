@@ -10,6 +10,7 @@ import { playSong } from '../../actions/songActions';
 import { clearPlayQueue, clearNewPlayQueue } from '../../actions/playQueueActions.js';
 import { addSongToPlayQueue } from '../../actions/songActions';
 import { connect } from 'react-redux';
+import { addAudioAPI } from '../../utils/songFunctions';
 
 class ArtistPage extends React.Component {
 
@@ -44,7 +45,7 @@ class ArtistPage extends React.Component {
                 trackLength={track.trackLength}
                 album={track.album}
                 artist={track.artist}
-                createAudioAPI={(song) => this.createAudioAPI(song)}
+                createAudioAPI={(song) => this.props.createAudioAPI(song)}
                 key={idx} />
         });
     }
@@ -99,33 +100,6 @@ class ArtistPage extends React.Component {
             }
         }
     };
-
-    createAudioAPI = (clickedSong) => {
-        let chosenSong;
-
-        this.props.clearPlayQueue();
-
-        this.props.tracks.forEach(track => {
-            const title = track.title;
-            const trackURL = track.trackURL;
-            const albumImgURL = track.album.imageURL;
-            const albumID = track.album._id;
-            const artist = track.artist;
-            // const song = new Audio(trackURL);
-            const song = new Audio();
-            // song.preload = 'metadata';
-            song.preload = 'none';
-            song.src = trackURL;
-
-            const newSong = { title, albumImgURL, albumID, artist, song }
-            if (trackURL == clickedSong.song) {
-                chosenSong = newSong;
-            }
-            this.props.addSongToPlayQueue(newSong);
-        });
-
-        return chosenSong;
-    }
 
     render() {
         //don't show outlines of img as data will be fetched quickly
@@ -195,4 +169,4 @@ const mapDispatchToProps = dispatch => {
     };
 }; 
 
-export default connect(mapStateToProps, mapDispatchToProps)(ArtistPage);
+export default connect(mapStateToProps, mapDispatchToProps)(addAudioAPI(ArtistPage));
