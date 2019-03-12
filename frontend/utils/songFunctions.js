@@ -31,8 +31,7 @@ export const addAudioAPI = (WrappedComponent) => {
         }
 
         render() {
-            return <WrappedComponent playMusic={this.playMusic} 
-                                     createAudioAPI={this.createAudioAPI}
+            return <WrappedComponent createAudioAPI={this.createAudioAPI}
                                      {...this.props} />
         }
     };
@@ -41,4 +40,44 @@ export const addAudioAPI = (WrappedComponent) => {
 };
 
 
+export const addPlayThisSong = (WrappedComponent) => {
+    class HigherOrderComponent extends React.Component {
 
+        playThisSong = (clicked, song) => {
+            if (clicked) {
+                song = this.props.createAudioAPI(song);
+            }
+
+            //using setTimeout to put this on the asynchronous stack, so playQueue updates first
+            setTimeout(() => {
+                let idx = 0;
+                const playQueue = this.props.playQueue;
+                for (let i = 0; i < playQueue.length; i++) {
+                    if (playQueue[i].title == song.title) {
+                        idx = i;
+                    }
+                }
+
+                if (idx == playQueue.length - 1) {
+                    //make the button turn to pause
+                    song.song.addEventListener('ended', () => {
+                        showPlayButton();
+                    });
+                }
+                else {
+                    song.song.addEventListener('ended', () => {
+                        this.playThisSong(false, playQueue[idx + 1]);
+                    })
+                }
+
+                this.props.playSong(song);
+            }, 0);
+        }
+        
+        render() {
+            return <WrappedComponent playThisSong={this.playThisSong} 
+                                     {...this.props} />
+        }
+    }
+    return HigherOrderComponent;
+};

@@ -36,7 +36,6 @@ const safePlay = (song) => {
     const songPromise = song.play();
     let replacementSong = song;
     if (songPromise) {
-        console.log(song)
         songPromise.catch(() => {
             song.pause();
             replacementSong = new Audio(song.src);
@@ -81,7 +80,6 @@ const songReducer = (state = {}, action) => {
                     //Failed to load, no supported source found -> DOMPromiseRejection
                     oldSong.currentTime = 0;
                 }
-                console.log(1);
                 const safeSong = safePlay(oldSong);
                 showPauseButton();
                 return {...state, song: safeSong};
@@ -89,7 +87,6 @@ const songReducer = (state = {}, action) => {
             //for a new track
             else if (!oldSong) {
                 // newSong.play();
-                console.log(2);
                 const safeSong = safePlay(newSong);
 
                 showPauseButton();
@@ -111,7 +108,6 @@ const songReducer = (state = {}, action) => {
             }
             else if (oldSong.src == newSong.src) {
                 // oldSong.play();
-                console.log(3);
                 const safeSong = safePlay(oldSong);
                 showPauseButton();
                 return { ...state, song: safeSong };
@@ -129,7 +125,6 @@ const songReducer = (state = {}, action) => {
                 oldSong.removeEventListener('timeupdate', () => updateTimeInState(oldSong, input));
 
                 // newSong.play();
-                console.log(4);
                 const safeSong = safePlay(newSong);
                 showPauseButton();
 

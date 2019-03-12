@@ -6,7 +6,7 @@ import { replacePlayQueue } from '../../../actions/playQueueActions';
 
 import { Link } from 'react-router-dom';
 import { showPlayButton } from '../../../utils/editTheDOM';
-
+import { addPlayThisSong } from '../../../utils/songFunctions';
 
 class HomeTrack extends React.Component {
 
@@ -29,37 +29,6 @@ class HomeTrack extends React.Component {
         this.setState({ song: newSong });
     }
 
-    playThisSong = (clicked, song) => {
-        if (clicked) {
-            song = this.props.createAudioAPI(song);
-        }
-
-        //using setTimeout to put this on the asynchronous stack, so playQueue updates first
-        setTimeout(() => {
-            let idx = 0;
-            const playQueue = this.props.playQueue;
-            for (let i = 0; i < playQueue.length; i++) {
-                if (playQueue[i].title == song.title) {
-                    idx = i;
-                }
-            }
-
-            if (idx == playQueue.length - 1) {
-                //make the button turn to pause
-                song.song.addEventListener('ended', () => {
-                    showPlayButton();
-                });
-            }
-            else {
-                song.song.addEventListener('ended', () => {
-                    this.playThisSong(false, playQueue[idx + 1]);
-                })
-            }
-
-            this.props.playSong(song);
-        }, 0);
-    }
-
     componentWillUnmount(){
         // this.props.clearPlayQueue();
         // this.props.clearTracks();
@@ -73,7 +42,7 @@ class HomeTrack extends React.Component {
 
         //CHECK TO SEE IF this.props.song.title matches the title AND it is not paused. If so, render a different style
         return (
-            <div onClick={() => this.playThisSong(true, this.state.song)} className={`track-home song-${title}`} >
+            <div onClick={() => this.props.playThisSong(true, this.state.song)} className={`track-home song-${title}`} >
                 <svg className="home-track__icon-play" viewBox="0 0 85 100"><path fill={this.props.song.title == title ? "#1db954" : "currentColor"} d="M81 44.6c5 3 5 7.8 0 10.8L9 98.7c-5 3-9 .7-9-5V6.3c0-5.7 4-8 9-5l72 43.3z"><title>PLAY</title></path></svg>
                 <div className="home-track__info">
                     <p className={this.props.song.title == title ? "home-track__title track--green" : "home-track__title"}> {title}</p>
@@ -106,4 +75,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomeTrack);
+export default connect(mapStateToProps, mapDispatchToProps)(addPlayThisSong(HomeTrack));
