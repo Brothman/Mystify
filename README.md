@@ -1,7 +1,7 @@
 # Mystify
 A fullstack clone of Spotify built in React, Redux, Node, and Express along with MongoDB.
 
-#  A Sunday Funday!
+#  A Saturday Berlin Day!
 
 <img src="./Mystify-Demo.gif" />
 
