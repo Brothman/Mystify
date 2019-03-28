@@ -107,6 +107,21 @@ These components clean up after themselves to ensure a fresh state ([]) for inco
 ```
 Holding these two arrays ```playQueue``` and ```newPlayQueue``` in state solved the annoying and difficult problem of maintaining a ```playQueue``` as a ```User``` navigates the pages as well as retaining the interactivity of the ```tracks``` on the current page to create a ```newPlayQueue``` if clicked.
 
+
+
+#### Limit Unnecessary Network Requests for Songs
+
+###### Web Audio API, Set Preload to None
+
+```
+ const song = new Audio();
+    
+ song.preload = 'none';
+ song.src = trackURL;
+```
+
+This ensures the song does not issue a network request until it is played. This saves the user from issuing too many conflicting network requests, as well as saves me money because I do not have my S3 Amazon AWS Bucket sending unnecessary data to each user. 
+
 ## To Do
 Figure out why the uncaught in DOM Promise exception occurs.
 What we know:
