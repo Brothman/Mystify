@@ -127,4 +127,11 @@ Figure out why the uncaught in DOM Promise exception occurs.
 What we know:
 After switching pages, a track sometimes loses its trackURL, which causes no Audio element to be created. But where does that trackURL go? That is the million dollar question. 
 
+1. Update ReadMe
+2. Erase the NewPlayQueue in ReadMe as we only have one PlayQueue
+3. Abstract out similar logic into Higher Order Components -> put into PlayQueue
+4. Show the abstracted DOM Editing logic.
+5. Explain the logic behind how Songs are tracked in Redux state
+6. Fix the volume bar to continue to work on new songs. 
+
 ## Updates Coming Later Today!
