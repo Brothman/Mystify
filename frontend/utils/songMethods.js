@@ -1,4 +1,5 @@
 export const createAudioAPI = (clickedSong) => {
+    console.log(this)
     let chosenSong;
 
     this.props.clearPlayQueue();
