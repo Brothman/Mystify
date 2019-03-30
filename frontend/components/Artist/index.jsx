@@ -10,6 +10,8 @@ import { playSong } from '../../actions/songActions';
 import { clearPlayQueue, clearNewPlayQueue } from '../../actions/playQueueActions.js';
 import { addSongToPlayQueue } from '../../actions/songActions';
 import { connect } from 'react-redux';
+import { addAudioAPI, addPlayThisSong } from '../../utils/songFunctions';
+
 
 class ArtistPage extends React.Component {
 
@@ -44,9 +46,41 @@ class ArtistPage extends React.Component {
                 trackLength={track.trackLength}
                 album={track.album}
                 artist={track.artist}
-                createAudioAPI={(song) => this.createAudioAPI(song)}
+                createAudioAPI={(song) => this.props.createAudioAPI(song)}
                 key={idx} />
         });
+    }
+
+    playArtistSong = (e, album) => {
+        e.preventDefault();
+
+        const newSongs = [];
+
+        this.props.clearPlayQueue();
+
+        this.props.tracks.forEach(track => {
+            if (track.album.title !== album.title) {
+                return;
+            }
+            else {
+                const title = track.title;
+                const trackURL = track.trackURL;
+                const albumImgURL = track.album.imageURL;
+                const albumID = track.album._id;
+                const artist = track.artist;
+                const song = new Audio();
+    
+                song.preload = 'none';
+                song.src = trackURL;
+    
+                const newSong = { title, albumImgURL, albumID, artist, song }
+                newSongs.push(newSong);
+                this.props.addSongToPlayQueue(newSong);
+            }
+        });
+
+        //using setTimeout to put this on the asynchronous stack, so playQueue updates first
+        setTimeout(() => this.props.playThisSong(null, newSongs[0]), 0);
     }
 
     createAlbums = () => {
@@ -56,8 +90,11 @@ class ArtistPage extends React.Component {
                     <div className="artist__album-img-and-title">
                         <Link className="artist__album-img" to={`/album/${album._id}`}> 
                             <img className="artist__album-img" src={album.imageURL} />
-                            <div className="artist__play-button">
-                                <svg viewBox="0 0 300 300" className="svg-play"><circle cx="150" cy="150" r="100" strokeWidth="3"></circle><path d="M 110 95 L 110 205 Q 110 210 116 209 L 208 153 Q 210 150 208 147 L 116 92 Q 110 90 110 95 Z" strokeWidth="3"></path></svg>
+                            <div onClick={e => this.playArtistSong(e, album)} className="artist__play-button">
+                                <svg viewBox="0 0 300 300" className="svg-play">
+                                    <circle cx="150" cy="150" r="100" strokeWidth="3"></circle>
+                                    <path d="M 110 95 L 110 205 Q 110 210 116 209 L 208 153 Q 210 150 208 147 L 116 92 Q 110 90 110 95 Z" strokeWidth="3"></path>
+                                </svg>
                             </div>
                             <div className="artist-page__black-layer" />
                         </Link>
@@ -70,62 +107,45 @@ class ArtistPage extends React.Component {
         });
     }
 
-    playAlbumSong = () => {
-        //checks if we have a song, as well as if it we are on a new artist's page from the current song
-        if (!this.props.song.song) {
-            if (this.props.newPlayQueue.length > 0) {
-                this.props.playSong(this.props.newPlayQueue[0]);
-            }
-            else {
-                this.props.playSong(this.props.playQueue[0]);
-            }
-        }
-        else {
-            if (this.props.newPlayQueue.length > 0) {
-                if (this.props.newPlayQueue[0].artist.name !== this.props.song.artist.name ) {
-                    this.props.playSong(this.props.newPlayQueue[0]);
-                }
-                else {
-                    this.props.playSong(null);
-                }
-            }
-            else {
-                if (this.props.playQueue[0].artist.name !== this.props.song.artist.name) {
-                    this.props.playSong(this.props.playQueue[0]);
-                }
-                else {
-                    this.props.playSong(null);
-                }
-            }
-        }
-    };
-
-    createAudioAPI = (clickedSong) => {
-        let chosenSong;
-
+    setupPlayQueue = () => { 
         this.props.clearPlayQueue();
 
         this.props.tracks.forEach(track => {
-            const title = track.title;
-            const trackURL = track.trackURL;
-            const albumImgURL = track.album.imageURL;
-            const albumID = track.album._id;
-            const artist = track.artist;
-            // const song = new Audio(trackURL);
-            const song = new Audio();
-            // song.preload = 'metadata';
-            song.preload = 'none';
-            song.src = trackURL;
+                const title = track.title;
+                const trackURL = track.trackURL;
+                const albumImgURL = track.album.imageURL;
+                const albumID = track.album._id;
+                const artist = track.artist;
+                const song = new Audio();
 
-            const newSong = { title, albumImgURL, albumID, artist, song }
-            if (trackURL == clickedSong.song) {
-                chosenSong = newSong;
-            }
-            this.props.addSongToPlayQueue(newSong);
+                song.preload = 'none';
+                song.src = trackURL;
+
+                const newSong = { title, albumImgURL, albumID, artist, song }
+                this.props.addSongToPlayQueue(newSong);
         });
-
-        return chosenSong;
     }
+
+
+    playAlbumSong = () => {
+        //checks if we have a song, as well as if it we are on a new artist's page from the current song
+        if (!this.props.song.song) {
+            this.setupPlayQueue();
+            setTimeout(() => this.props.playThisSong(null, this.props.playQueue[0]), 0);
+        }
+        else {
+            if (this.props.tracks[0].artist.name !== this.props.song.artist.name) {
+                this.setupPlayQueue();
+                //using setTimeout to put this on the asynchronous stack, so playQueue updates first
+                // setTimeout(() => this.props.playThisSong(null, newSongs[0]), 0);
+                setTimeout(() => this.props.playThisSong(null, this.props.playQueue[0]), 0);
+
+            }
+            else {
+                this.props.playSong(null);
+            }
+        }
+    };
 
     render() {
         //don't show outlines of img as data will be fetched quickly
@@ -195,4 +215,4 @@ const mapDispatchToProps = dispatch => {
     };
 }; 
 
-export default connect(mapStateToProps, mapDispatchToProps)(ArtistPage);
+export default connect(mapStateToProps, mapDispatchToProps)(addPlayThisSong(addAudioAPI(ArtistPage)));

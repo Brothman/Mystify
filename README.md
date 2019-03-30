@@ -1,7 +1,7 @@
 # Mystify
 A fullstack clone of Spotify built in React, Redux, Node, and Express along with MongoDB.
 
-#  A Sunday Funday!
+#  A Wednesday Second to Last DPS Day!
 
 <img src="./Mystify-Demo.gif" />
 
@@ -107,9 +107,31 @@ These components clean up after themselves to ensure a fresh state ([]) for inco
 ```
 Holding these two arrays ```playQueue``` and ```newPlayQueue``` in state solved the annoying and difficult problem of maintaining a ```playQueue``` as a ```User``` navigates the pages as well as retaining the interactivity of the ```tracks``` on the current page to create a ```newPlayQueue``` if clicked.
 
+
+
+#### Limit Unnecessary Network Requests for Songs
+
+###### Web Audio API, Set Preload to None
+
+```
+ const song = new Audio();
+    
+ song.preload = 'none';
+ song.src = trackURL;
+```
+
+This ensures the song does not issue a network request until it is played. This saves the user from issuing too many conflicting network requests, as well as saves me money because I do not have my S3 Amazon AWS Bucket sending unnecessary data to each user. 
+
 ## To Do
 Figure out why the uncaught in DOM Promise exception occurs.
 What we know:
 After switching pages, a track sometimes loses its trackURL, which causes no Audio element to be created. But where does that trackURL go? That is the million dollar question. 
+
+1. Update ReadMe
+2. Erase the NewPlayQueue in ReadMe as we only have one PlayQueue
+3. Abstract out similar logic into Higher Order Components -> put into PlayQueue
+4. Show the abstracted DOM Editing logic.
+5. Explain the logic behind how Songs are tracked in Redux state
+6. Fix the volume bar to continue to work on new songs. 
 
 ## Updates Coming Later Today!

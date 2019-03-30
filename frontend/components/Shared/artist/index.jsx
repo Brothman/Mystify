@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { clearPlayQueue } from '../../../actions/playQueueActions';
 import { addSongToPlayQueue } from '../../../actions/songActions';
 import { playSong, addSongToNewPlayQueue } from '../../../actions/songActions.js';
+import { addPlayThisSong } from '../../../utils/songFunctions';
 
 
 class Artist extends React.Component {
@@ -39,37 +40,7 @@ class Artist extends React.Component {
         });
 
         //using setTimeout to put this on the asynchronous stack, so playQueue updates first
-        setTimeout(() => this.playThisSong(null, newSongs[0]), 0);
-    }
-
-    playThisSong = (clicked, song) => {
-        console.log(this.props.playQueue)
-
-        let idx = 0;
-
-        //handle what happens if someone clicks play or pause on the song
-
-        const playQueue = this.props.playQueue;
-        console.log(playQueue)
-        for (let i = 0; i < playQueue.length; i++) {
-            if (playQueue[i].title == song.title) {
-                idx = i;
-            }
-        }
-
-        if (idx == playQueue.length - 1) {
-            //make the button turn to pause
-            song.song.addEventListener('ended', () => {
-                showPlayButton();
-            });
-        }
-        else {
-            song.song.addEventListener('ended', () => {
-                this.playThisSong(false, playQueue[idx + 1]);
-            })
-        }
-
-        this.props.playSong(song);
+        setTimeout(() => this.props.playThisSong(null, newSongs[0]), 0);
     }
 
     render() {
@@ -112,7 +83,7 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Artist);
+export default connect(mapStateToProps, mapDispatchToProps)(addPlayThisSong(Artist));
 
 
 
