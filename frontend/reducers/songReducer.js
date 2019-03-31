@@ -33,13 +33,13 @@ const updateTimeInState = (song, input) => {
 }
 
 const safePlay = (song) => {
+    maintainVolumeLevel(song);
     const songPromise = song.play();
     let replacementSong = song;
     if (songPromise) {
         songPromise.catch(() => {
             song.pause();
             replacementSong = new Audio(song.src);
-            // console.log(replacementSong)
             // replacementSong.play();
             //WE HAVE LEARNED SOME VALUABLE LESSONS TODAY:
             //1. IT IS THE OLD SONG THAT ERRORS OUT, NOT THE NEW ONE
@@ -51,6 +51,13 @@ const safePlay = (song) => {
     }
     return replacementSong;
 };
+
+const maintainVolumeLevel = (song) => {
+    const volumeSlider = document.querySelector('.audio-player__volume-input');
+    console.log(volumeSlider.value)
+    console.log(volumeSlider)
+    song.volume = volumeSlider.value;
+}
 
 
 //default state is the empty Object
