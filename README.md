@@ -1,7 +1,7 @@
 # Mystify
 A fullstack clone of Spotify built in React, Redux, Node, and Express along with MongoDB.
 
-#  A Wednesday Second to Last DPS Day!
+#  A Monday DPS Is Over Day!
 
 <img src="./Mystify-Demo.gif" />
 
