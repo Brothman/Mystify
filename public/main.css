@@ -297,7 +297,7 @@
     grid-template-rows: 100px 1fr; 
     width: 100vw;
     height: calc(100vh - 100px);
-    overflow: scroll;
+    overflow-y: scroll;
     grid-template-areas:
     " sidebar  header  header  header  "
     " sidebar    .    albums    .     ";
@@ -325,7 +325,7 @@
     /* height: 100%;
     min-height: 100vh; */
     height: calc(100vh - 100px);
-    overflow: scroll;
+    overflow-y: scroll;
     grid-template-areas:
     " sidebar  header  header  header  "
     " sidebar    .    tracks    .     ";
@@ -353,6 +353,7 @@
     grid-template-rows: 50px 1fr; 
     width: 100vw;
     height: calc(100vh - 100px);
+    overflow-y: scroll;
     grid-template-areas:
     " sidebar    .             .              .      .   "
     " sidebar    .    album__information    tracks   .   ";
@@ -410,7 +411,7 @@
     display: grid;
     grid-template-columns: 230px 50px 400px 1fr 75px;
     grid-template-rows: 50px 75px 60px 40px 100px 210px 30px 50px 400px 25px;
-    overflow: scroll;
+    overflow-y: scroll;
     width: 100vw;
     height: calc(100vh - 100px);
     grid-template-areas:

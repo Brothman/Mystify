@@ -6,7 +6,7 @@
     /* height: 100%;
     min-height: 100vh; */
     height: calc(100vh - 100px);
-    overflow: scroll;
+    overflow-y: scroll;
     grid-template-areas:
     " sidebar  header  header  header  "
     " sidebar    .    tracks    .     ";
