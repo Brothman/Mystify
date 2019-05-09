@@ -1,7 +1,7 @@
 # Mystify
 A fullstack clone of Spotify built in React, Redux, Node, and Express along with MongoDB.
 
-#  Time to Complete ReadMe.
+#  Time to Complete ReadMe. Also, my updates disappeared!
 
 <img src="./Mystify-Demo.gif" />
 
